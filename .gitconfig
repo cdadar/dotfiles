@@ -1,0 +1,23 @@
+[user]
+	email = chenshuang_93@sina.com
+	name = jiarenlu
+[push]
+	default = simple
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	co = checkout
+	br = branch
+	ca = commit -a
+	s = status
+	mg = merge
+	tg = tag
+	st = stash
+	ps = push
+	pl = pull
+	cl = clone
+	sm = submodule
+	caa = commit -a --amend
+	a = add
+	r = rm
+	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	al = alias

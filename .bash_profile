@@ -21,9 +21,9 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin=$PATH:/usr/local/bin
 #export PATH
 
 # Initialization for FDK command line tools.Wed Mar 23 11:02:58 2016
-FDK_EXE="/home/chen/bin/FDK/Tools/linux"
-PATH=${PATH}:"/home/chen/bin/FDK/Tools/linux"
+FDK_EXE="~/bin/FDK/Tools/linux"
+PATH=${PATH}:"~/bin/FDK/Tools/linux"
 export PATH
 export FDK_EXE
 
-[ -s "/home/chen/.dnx/dnvm/dnvm.sh" ] && . "/home/chen/.dnx/dnvm/dnvm.sh" # Load dnvm
+[ -s "~/.dnx/dnvm/dnvm.sh" ] && . "~/.dnx/dnvm/dnvm.sh" # Load dnvm

@@ -1,5 +1,5 @@
 [user]
-	email = chenshuang_93@sina.com
+	email = gunbanmi@gmail.com
 	name = jiarenlu
 [push]
 	default = simple
@@ -21,3 +21,6 @@
 	r = rm
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	al = alias
+
+[core]
+	autocrlf = input

@@ -85,6 +85,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/phd'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'stephenmckinney/vim-solarized-powerline'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-fswitch'
@@ -107,7 +108,8 @@ Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'suan/vim-instant-markdown'
-" Plugin 'lilydjwg/fcitx.vim'
+Plugin 'chrisbra/vim-diff-enhanced'
+Plugin 'lilydjwg/fcitx.vim'
 
 " 插件列表结束
 call vundle#end()
@@ -115,11 +117,22 @@ filetype plugin indent on
 " <<<<
 
 " 配色方案
+set t_Co=256
+let g:solarized_termcolors=256
+" if has('gui_running')
+"     set background=dark
+" else
+"     " set background=light
+"     set background=dark
+" endif
 set background=dark
 colorscheme solarized
+
 "colorscheme molokai
 "colorscheme phd
 
+" 指定用更佳的算法来进行diff
+let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 " >>
 " 营造专注气氛
 
@@ -160,8 +173,8 @@ set ruler
 set number
 
 " 高亮显示当前行/列
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
 " 高亮显示搜索结果
 set hlsearch
@@ -178,7 +191,7 @@ set guifont=YaHei\ Consolas\ Hybrid\ 10.5
 set nowrap
 
 " 设置状态栏主题风格
-let g:Powerline_colorscheme='solarized256'
+let g:Powerline_colorscheme='solarized'
 
 " <<
 
@@ -285,7 +298,7 @@ let g:tagbar_type_cpp = {
      \ 'kinds'     : [
          \ 'c:classes:0:1',
          \ 'd:macros:0:1',
-         \ 'e:enumerators:0:0', 
+         \ 'e:enumerators:0:0',
          \ 'f:functions:0:1',
          \ 'g:enumeration:0:1',
          \ 'l:local:0:1',
@@ -319,7 +332,7 @@ let g:tagbar_type_cpp = {
 
 " >>
 " 代码导航
- 
+
 " 基于标签的代码导航
 
 " 设置插件 indexer 调用 ctags 的参数
@@ -433,7 +446,7 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_seed_identifiers_with_syntax=1
 
 " <<
- 
+
 " >>
 " 由接口快速生成实现框架
 
@@ -444,7 +457,7 @@ let g:disable_protodef_sorting=1
 
 " >>
 " 库信息参考
- 
+
 " 启用:Man命令查看各类man信息
 source $VIMRUNTIME/ftplugin/man.vim
 
@@ -473,7 +486,7 @@ let NERDTreeAutoDeleteBuffer=1
 
 " >>
 " 多文档编辑
- 
+
 " 显示/隐藏 MiniBufExplorer 窗口
 map <Leader>bl :MBEToggle<cr>
 
@@ -503,18 +516,21 @@ map <leader>ss :mksession! my.vim<cr>
 map <leader>rs :source my.vim<cr>
 
 " <<
- 
+
 " 设置快捷键实现一键编译及运行
 nmap <Leader>m :wa<CR> :cd build/<CR> :!rm -rf main<CR> :!cmake CMakeLists.txt<CR>:make<CR><CR> :cw<CR> :cd ..<CR>
 nmap <Leader>g :wa<CR>:cd build/<CR>:!rm -rf main<CR>:!cmake CMakeLists.txt<CR>:make<CR><CR>:cw<CR>:cd ..<CR>:!build/main<CR>
 
 " >>
 " 快速选中结对符内的文本
- 
+
 " 快捷键
 map <SPACE> <Plug>(wildfire-fuel)
 vmap <S-SPACE> <Plug>(wildfire-water)
-
+" diff快捷键
+nmap 1 :diffget BASE
+nmap 2 :diffget LOCAL
+nmap 3 :diffget REMOTE
 " 适用于哪些结对符
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 
@@ -522,4 +538,3 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 
 " 调用 gundo 树
 nnoremap <Leader>ud :GundoToggle<CR>
-

@@ -59,3 +59,5 @@ export PATH=$HOME/.cabal/bin:$PATH
 
 # steam no runtime
 export STEAM_RUNTIME=1
+
+export TERM=xterm-256color

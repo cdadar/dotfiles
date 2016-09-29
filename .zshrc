@@ -49,8 +49,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z)
-
+# plugins=(git z d zsh-autosuggestions web-search wd)
+plugins=(git z d zsh-autosuggestions web-search wd)
 # User configuration
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
@@ -59,6 +59,9 @@ plugins=(git z)
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+
+# ZSH_THEME="agnoster"
+
 alias sudo="sudo "
 
 
@@ -70,6 +73,9 @@ alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
 EDITOR='emacsclient -a ""'
 
 # java
+
+#export JAVA_HOME=/usr/java/jdk1.6.0_45
+#export JRE_HOME=/usr/java/jdk1.6.0_45/jre
 export JAVA_HOME=/home/chen/program/jdk1.8.0_73/
 export JRE_HOME=/home/chen/program/jdk1.8.0_73/jre
 #export JAVA_HOME=/home/chen/program/jdk1.7.0_79
@@ -98,17 +104,20 @@ export PATH=$PATH:$NODE_HOME/bin
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
 # Android_SDK
-export ANDROID_SDK=~/program/android-sdk-linux
+#export ANDROID_SDK=~/program/android-sdk-linux
 # Android ndk
-export ANDROID_NDK_HOME=~/program/android-ndk
-export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
+#export ANDROID_NDK_HOME=~/program/android-ndk
+#export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
 
 
 #cabel Haskell package manager
 export PATH=$HOME/.cabal/bin:$PATH
 
 # steam no runtime
-export STEAM_RUNTIME=1
+export STEAM_RUNTIME=0
+
+export http_proxy="http://localhost:8118"
+export https_proxy="http://localhost:8118"
 
 
 source $ZSH/oh-my-zsh.sh
@@ -128,7 +137,9 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="$HOME/.ssh"
+
+ssh-add "$SSH_KEY_PATH/work_rsa"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -139,13 +150,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#终端配色
+export TERM=xterm-256color
 
 tmux_init()
 {
     tmux new-session -s "chen" -d -n "local"    # 开启一个会话
-    tmux new-window -n "other"          # 开启一个窗口
-    tmux split-window -h                # 开启一个竖屏
-    tmux split-window -v "top"          # 开启一个横屏,并执行top命令
 }
 
 # 判断是否已有开启的tmux会话，没有则开启

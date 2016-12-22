@@ -1,6 +1,6 @@
 [user]
-	email = gunbanmi@gmail.com
-	name = jiarenlu
+	email = chens@fangde.com
+	name = chens
 [push]
 	default = simple
 [alias]
@@ -26,3 +26,6 @@
 	autocrlf = input
 [merge]
 	tool = vimdiff
+[diff]
+	tool = vimdiff
+

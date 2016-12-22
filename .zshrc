@@ -104,20 +104,20 @@ export PATH=$PATH:$NODE_HOME/bin
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
 # Android_SDK
-#export ANDROID_SDK=~/program/android-sdk-linux
+export ANDROID_SDK=~/program/android-sdk-linux
 # Android ndk
-#export ANDROID_NDK_HOME=~/program/android-ndk
-#export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
+export ANDROID_NDK_HOME=~/program/android-ndk
+export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
 
 
 #cabel Haskell package manager
 export PATH=$HOME/.cabal/bin:$PATH
 
 # steam no runtime
-export STEAM_RUNTIME=0
+export STEAM_RUNTIME=1
 
-export http_proxy="http://localhost:8118"
-export https_proxy="http://localhost:8118"
+#export http_proxy="http://localhost:8118"
+#export https_proxy="http://localhost:8118"
 
 
 source $ZSH/oh-my-zsh.sh

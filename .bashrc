@@ -61,3 +61,9 @@ export PATH=$HOME/.cabal/bin:$PATH
 export STEAM_RUNTIME=1
 
 export TERM=xterm-256color
+
+
+# ssh
+export SSH_KEY_PATH="$HOME/.ssh"
+
+ssh-add "$SSH_KEY_PATH/work_rsa"

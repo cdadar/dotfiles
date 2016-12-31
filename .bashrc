@@ -57,6 +57,13 @@ export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HO
 #cabel Haskell package manager
 export PATH=$HOME/.cabal/bin:$PATH
 
+# ssh
+export SSH_KEY_PATH="$HOME/.ssh"
+
+ssh-add "$SSH_KEY_PATH/work_rsa"
+
+
+
 # steam no runtime
 export STEAM_RUNTIME=1
 

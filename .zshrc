@@ -137,9 +137,8 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="$HOME/.ssh"
-
-# ssh-add "$SSH_KEY_PATH/work_rsa"
+export SSH_KEY_PATH="$HOME/.ssh"
+ssh-add "$SSH_KEY_PATH/work_rsa"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -153,9 +152,12 @@ source $ZSH/oh-my-zsh.sh
 #终端配色
 export TERM=xterm-256color
 
+export MALLOC_CHECK_=1
+
 tmux_init()
 {
     tmux new-session -s "chen" -d -n "local"    # 开启一个会话
+    tmux attach
 }
 
 # 判断是否已有开启的tmux会话，没有则开启

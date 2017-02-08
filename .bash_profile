@@ -2,8 +2,13 @@
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+    . ~/.bashrc
 fi
+
+if [ -f ~/.zshrc ]; then
+    . ~/.zshrc
+fi
+
 
 # User specific environment and startup programs
 
@@ -20,10 +25,9 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin=$PATH:/usr/local/bin
 # export STEAM_RUNTIME=0
 #export PATH
 
-# Initialization for FDK command line tools.Wed Mar 23 11:02:58 2016
-FDK_EXE="~/bin/FDK/Tools/linux"
-PATH=${PATH}:"~/bin/FDK/Tools/linux"
-export PATH
-export FDK_EXE
-
 [ -s "~/.dnx/dnvm/dnvm.sh" ] && . "~/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+
+# ssh
+export SSH_KEY_PATH="$HOME/.ssh"
+ssh-add "$SSH_KEY_PATH/work_rsa"

@@ -12,9 +12,6 @@ fi
 alias sudo="sudo "
 
 
-alias mysqlbak_remote="mysqldump -u root -h mysql.bmdcy.com -P 13306 -p "
-#alias mysqlbak_wjk="mysqldump -u root  -h 121.43.116.222 -p "
-
 alias em='emacsclient -t -a ""'  #在终端中开启emacs
 alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
 EDITOR='emacsclient -a ""'

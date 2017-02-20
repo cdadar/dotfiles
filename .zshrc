@@ -62,16 +62,6 @@ plugins=(git z d zsh-autosuggestions web-search wd)
 
 # ZSH_THEME="agnoster"
 
-alias sudo="sudo "
-
-
-alias mysqlbak_remote="mysqldump -u root -h mysql.bmdcy.com -P 13306 -p "
-#alias mysqlbak_wjk="mysqldump -u root  -h 121.43.116.222 -p "
-
-alias em='emacsclient -t -a ""'  #在终端中开启emacs
-alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
-EDITOR='emacsclient -a ""'
-
 # java
 
 #export JAVA_HOME=/usr/java/jdk1.6.0_45
@@ -164,3 +154,11 @@ tmux_init()
 if which tmux 2>&1 >/dev/null; then
     test -z "$TMUX" && (tmux attach || tmux_init)
 fi
+
+
+
+alias sudo="sudo "
+
+alias em='emacsclient -t -a ""'  #在终端中开启emacs
+alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
+EDITOR='emacsclient -a ""'

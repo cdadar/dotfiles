@@ -58,63 +58,7 @@ plugins=(git z d zsh-autosuggestions web-search wd)
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-#终端配色
-export TERM=xterm-256color
-
-export MALLOC_CHECK_=1
-
-# java
-
-#export JAVA_HOME=/usr/java/jdk1.6.0_45
-#export JRE_HOME=/usr/java/jdk1.6.0_45/jre
-export JAVA_HOME=~/program/jdk1.8.0_73/
-export JRE_HOME=~/program/jdk1.8.0_73/jre
-#export JAVA_HOME=~/program/jdk1.7.0_79
-#export JRE_HOME=~/program/jdk1.7.0_79jre
-export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
-export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
-
-# ant
-export ANT_HOME=~/source/ant/bootstrap
-export PATH=$PATH:$ANT_HOME/bin
-
-# mevan
-export MAVEN_HOME=~/program/maven
-export M2_HOME=~/program/maven
-export  PATH=$PATH:$MAVEN_HOME/bin
-
-# gradle
-GRADLE_HOME=~/program/gradle
-export PATH=$PATH:$GRADLE_HOME/bin
-#lwqq
-#export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-
-# node
-export NODE_HOME=/usr/local
-export PATH=$PATH:$NODE_HOME/bin
-export NODE_PATH=$NODE_HOME/lib/node_modules
-
-# Android_SDK
-export ANDROID_SDK=~/program/android-sdk-linux
-# Android ndk
-export ANDROID_NDK_HOME=~/program/android-ndk
-export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
-
-
-#cabel Haskell package manager
-export PATH=$HOME/.cabal/bin:$PATH
-
-# steam no runtime
-export STEAM_RUNTIME=1
-
-#export http_proxy="http://localhost:8118"
-#export https_proxy="http://localhost:8118"
-
-# ssh
-export SSH_KEY_PATH="$HOME/.ssh"
-eval `ssh-agent -s`
-ssh-add "$SSH_KEY_PATH/work_rsa"
-
+source ~/.bash_profile
 
 # User specific aliases and functions
 
@@ -128,12 +72,6 @@ tmux_init()
 if which tmux 2>&1 >/dev/null; then
     test -z "$TMUX" && (tmux attach || tmux_init)
 fi
-
-alias sudo="sudo "
-
-alias em='emacsclient -t -a ""'  #在终端中开启emacs
-alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
-EDITOR='emacsclient -a ""'
 
 # ZSH_THEME="agnoster"
 

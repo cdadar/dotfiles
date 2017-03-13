@@ -5,11 +5,6 @@ if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
-if [ -f ~/.zshrc ]; then
-    . ~/.zshrc
-fi
-
-
 # User specific environment and startup programs
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin=$PATH:/usr/local/bin
@@ -26,8 +21,3 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin=$PATH:/usr/local/bin
 #export PATH
 
 [ -s "~/.dnx/dnvm/dnvm.sh" ] && . "~/.dnx/dnvm/dnvm.sh" # Load dnvm
-
-
-# ssh
-export SSH_KEY_PATH="$HOME/.ssh"
-ssh-add "$SSH_KEY_PATH/work_rsa"

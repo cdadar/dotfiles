@@ -98,15 +98,15 @@ export MALLOC_CHECK_=1
 
 #export JAVA_HOME=/usr/java/jdk1.6.0_45
 #export JRE_HOME=/usr/java/jdk1.6.0_45/jre
-export JAVA_HOME=/home/chen/program/jdk1.8.0_73/
-export JRE_HOME=/home/chen/program/jdk1.8.0_73/jre
-#export JAVA_HOME=/home/chen/program/jdk1.7.0_79
-#export JRE_HOME=/home/chen/program/jdk1.7.0_79jre
+export JAVA_HOME=~/program/jdk1.8.0_73/
+export JRE_HOME=~/program/jdk1.8.0_73/jre
+#export JAVA_HOME=~/program/jdk1.7.0_79
+#export JRE_HOME=~/program/jdk1.7.0_79jre
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 
 # ant
-export ANT_HOME=/home/chen/source/ant/bootstrap
+export ANT_HOME=~/source/ant/bootstrap
 export PATH=$PATH:$ANT_HOME/bin
 
 # mevan

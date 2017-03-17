@@ -32,6 +32,11 @@ export MAVEN_HOME=~/program/maven
 export M2_HOME=~/program/maven
 export  PATH=$PATH:$MAVEN_HOME/bin
 
+# activeMQ
+export ACTIVEMQ_HOME=~/program/apache-activemq
+export PATH=$PATH:$ACTIVEMQ_HOME/bin
+
+
 # gradle
 GRADLE_HOME=~/program/gradle
 export PATH=$PATH:$GRADLE_HOME/bin

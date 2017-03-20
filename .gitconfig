@@ -21,11 +21,14 @@
 	r = rm
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	al = alias
+	d = difftool
 
 [core]
 	autocrlf = input
 [merge]
 	tool = vimdiff
+	conflictstyle = diff3
 [diff]
 	tool = vimdiff
-
+[difftool]
+	prompt = false

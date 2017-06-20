@@ -1,0 +1,11 @@
+.config/chromium
+*.bin
+.place_holder
+default.yaml
+installation.yaml
+luna_pinyin.userdb.kct
+luna_pinyin.userdb/
+luna_pinyin_simp.schema.yaml
+symbols.yaml
+user.yaml
+weasel.yaml

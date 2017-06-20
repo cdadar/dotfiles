@@ -44,10 +44,10 @@ xtere*eightBitControl: false
 xterm*eightBitOutput: true
 ! -- Enables True-Type rendering:
 xterm*renderFont: true
-xterm*faceName: source-han-sans
-xterm*faceNameDoublesize: source-han-sans
+xterm*faceName: source code pro
+xterm*faceNameDoublesize: source han sans
 xterm*wideChars: true
-xterm*wideFont: source-han-sans
+xterm*wideFont: source code pro
 ! -- Define the size increments used when changing font size
 xterm*faceSize: 10
 xterm*faceSize1: 6

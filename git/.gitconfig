@@ -2,8 +2,8 @@
 	path = /home/chens/workspace/.gitconfig
 
 [user]
-	email = gunbanmi@gmail.com
-	name = cdadar
+	email = chens@fangde.com
+	name = chens
 [push]
 	default = simple
 [alias]

@@ -9,7 +9,7 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 
 
 
-let g:DoxygenToolkit_authorName="cdadar, gunbanmi@gmail.com" 
+let g:DoxygenToolkit_authorName="chens, chens@fangde.com"
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 let g:DoxygenToolkit_versionString=""
@@ -18,11 +18,11 @@ let g:DoxygenToolkit_compactOneLineDoc = "yes"
 " 注释生成
 function! InsertDox()
         "return "\:".getline('.')
-        " 空行 C-D 生成文件注释
+        " 空行C-D生成文件注释
         if getline('.') =~ '^\s*$'
                 return "\:DoxAuthor\<CR>"
         else
-        " 非空行 C-D 生成函数注释
+        " 非空行C-D生成函数注释
                 return "\:Dox\<CR>\<ESC>"
 endfunction
 

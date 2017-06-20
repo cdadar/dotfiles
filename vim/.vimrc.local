@@ -12,7 +12,7 @@ set nobackup
 " Doxygen 注释生成
 "  原映射 <C-D> 与内置"向下翻半页"冲突，改为 <leader>dox
 " -------------------------------------------------------------------
-let g:DoxygenToolkit_authorName="cdadar, gunbanmi@gmail.com"
+let g:DoxygenToolkit_authorName="chens, cs@cang.com"
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 let g:DoxygenToolkit_versionString=""

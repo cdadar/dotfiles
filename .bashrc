@@ -95,3 +95,6 @@ export TERM=xterm-256color
 
 # 错误检查
 export MALLOC_CHECK_=1
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

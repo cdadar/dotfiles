@@ -60,6 +60,10 @@ export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HO
 export PATH=$HOME/.cabal/bin:$PATH
 
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
@@ -88,13 +92,10 @@ export SSH_KEY_PATH="$HOME/.ssh"
 ssh-add "$SSH_KEY_PATH/work_rsa"
 
 # steam no runtime
-export STEAM_RUNTIME=1
+# export STEAM_RUNTIME=1
 
 # 终端颜色
 export TERM=xterm-256color
 
 # 错误检查
 export MALLOC_CHECK_=1
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

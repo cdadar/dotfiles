@@ -2,6 +2,10 @@
 
 vim tmux tern git
 
+## tmux ##
+
+need xclip
+
 ## xterm ##
 
 xrdb ~/.Xresourcse

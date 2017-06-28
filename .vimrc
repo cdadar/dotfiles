@@ -6,6 +6,12 @@ set smartcase
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Use UTF-8 without BOM
+set encoding=utf-8 nobomb
+
+" Change mapleader
+let mapleader=","
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -46,3 +52,7 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+
+" Save a file as root (,W)
+noremap <leader>W :w !sudo tee % > /dev/null<CR>

@@ -1,7 +1,8 @@
 {
   "libs": [
     "browser",
-    "jquery"
+    "jquery",
+    "react"
   ],
   "plugins": {
     "node": {}

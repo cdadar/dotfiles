@@ -9,3 +9,6 @@ luna_pinyin_simp.schema.yaml
 symbols.yaml
 user.yaml
 weasel.yaml
+
+.tmux/plugins
+.vim/

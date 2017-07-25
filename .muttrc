@@ -1,52 +1,18 @@
-set mbox_type=Maildir
-set folder=$HOME/.mail
-set header_cache=~/.mail/.hcache
-set header=no
+set realname='chens'
+
+set sendmail="/usr/bin/msmtp"
+
 set edit_headers=yes
+set folder=~/mail
 set mbox=+mbox
 set spoolfile=+inbox
 set record=+sent
 set postponed=+drafts
 set mbox_type=Maildir
 
-
-set to_chars="+TCFL"
-set quit=ask-yes
-
-auto_view text/html
-#确定当你退出时，是否提示你把信件从 spool 移动到的 mbox 文件
-set move=no
-#当Mutt用thread方式显示时，是否用纯ascii表示树状列表
-set ascii_chars=yes
-#回信时是否包含原文
-set include
-#回信的引文之前插入那个符号
-set indent_str="> "
-
-score "~N" +4
-score "~s 通知" +2
-score "~D" -5
-score "~O" +1
-score "~s believe" -10
-
-set sort=score
-set sort_aux=date
-#自动翻到下一封信
-set pager_stop
-#当外部程序退出时，是否要求用户按一个键才返回
-set wait_key=yes
-
-set index_format="%4C %Z %{%b %d} %-15.15L (%4l) %s"
-#使用emacs 编辑
-set editor="emacsclient"
-
-set realname='Disgruntled Kangaroo'
-
-set sendmail="/usr/bin/msmtp"
-
+set index_format="%4C %Z %{%b %d} %-15.15L (%4l) %s"'
+set sort_aux = last-date-received
+set sort = reverse-threads
+set date_format = "%m/%d/%t"
 
 mailboxes +inbox +lovey-dovey +happy-kangaroos
-
-subscribe centos-zh@centos.org
-subscribe chinese-request@lists.fedoraproject.org
-

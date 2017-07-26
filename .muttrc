@@ -15,4 +15,8 @@ set sort_aux = last-date-received
 set sort = reverse-threads
 set date_format = "%m/%d/%t"
 
+# set editor="emacsclient -a \"\" -t"
+
 mailboxes +inbox +lovey-dovey +happy-kangaroos
+
+subscribe opensuse-factory@opensuse.org

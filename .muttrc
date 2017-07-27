@@ -11,8 +11,8 @@ set postponed=+drafts
 set mbox_type=Maildir
 
 set index_format="%4C %Z %{%b %d} %-15.15L (%4l) %s"'
-set sort_aux = last-date-received
-set sort = reverse-threads
+# set sort_aux = last-date-received
+# set sort = reverse-threads
 set date_format = "%m/%d/%t"
 
 # set editor="emacsclient -a \"\" -t"

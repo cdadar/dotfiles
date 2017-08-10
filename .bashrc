@@ -61,8 +61,10 @@ export PATH=$HOME/.cabal/bin:$PATH
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
 
+# add rbenv to path
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 SSH_ENV="$HOME/.ssh/environment"
 
@@ -100,6 +102,6 @@ export TERM=xterm-256color
 # 错误检查
 export MALLOC_CHECK_=1
 
+
 #  export HTTP_PROXY=http://127.0.0.1:8118
-export PATH="$HOME/.rbenv/bin:$PATH"
 

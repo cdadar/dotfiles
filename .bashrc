@@ -66,6 +66,8 @@ export PATH=$HOME/.cabal/bin:$PATH
 # add rbenv to path
 export PATH="$HOME/.rbenv/bin:$PATH"
 
+eval "$(rbenv init -)"
+
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {

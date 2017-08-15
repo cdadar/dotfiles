@@ -58,7 +58,6 @@ plugins=(z d zsh-autosuggestions web-search wd)
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-source ~/.bash_profile
 
 
 
@@ -103,3 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source $HOME/.bash_profile
+
+source $HOME/.zshenv

@@ -100,6 +100,8 @@ ssh-add "$SSH_KEY_PATH/work_rsa"
 # steam no runtime
 # export STEAM_RUNTIME=1
 
+export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
+
 # 终端颜色
 export TERM=xterm-256color
 

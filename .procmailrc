@@ -1,3 +1,56 @@
 MAILDIR=$HOME/mail
 DEFAULT=$MAILDIR/inbox/
 LOGFILE=$MAILDIR/log
+
+:0
+* ^To: opensuse-factory@opensuse.org|opensuse-project@opensuse.org
+opensuse/
+
+:0
+* ^Cc: opensuse-factory@opensuse.org|opensuse-project@opensuse.org
+opensuse/
+
+
+:0
+* ^To: chinese@lists.fedoraproject.org
+fedora/
+
+:0
+* ^From: noreply@emacs-china.org
+emacs-china/
+
+:0
+* ^From: no_reply@email.apple.com|appleid@id.apple.com
+apple/
+
+
+:0
+* ^Subject: .*shadowsocks/shadowsocks.*
+shadowsocks/
+
+:0
+* ^Subject: .*521xueweihan/HelloGitHub.*
+hellogithub/
+
+:0
+* ^Subject: .*purcell/emacs.d.*
+emacs.d/
+
+:0
+* ^Subject: .*bbatsov/prelude.*
+prelude/
+
+:0
+* ^Subject: .*FZUG/repo.*
+fzug/
+
+
+:0
+* ^From: notifications@github.com|noreply@github.com
+github/
+
+
+# 剩下的邮件存放至inbox目录中
+:0
+* .*
+inbox/

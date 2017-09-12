@@ -3,50 +3,49 @@ DEFAULT=$MAILDIR/inbox/
 LOGFILE=$MAILDIR/log
 
 :0
-* ^To: opensuse-factory@opensuse.org|opensuse-project@opensuse.org
+* ^To|^Cc:.*@opensuse.org
 opensuse/
 
 :0
-* ^Cc: opensuse-factory@opensuse.org|opensuse-project@opensuse.org
-opensuse/
-
-
-:0
-* ^To: chinese@lists.fedoraproject.org
+* ^To:chinese@lists.fedoraproject.org
 fedora/
 
 :0
-* ^From: noreply@emacs-china.org
+* ^From:noreply@emacs-china.org
 emacs-china/
 
 :0
-* ^From: no_reply@email.apple.com|appleid@id.apple.com
+* ^From:.*apple.com
 apple/
 
 
 :0
-* ^Subject: .*shadowsocks/shadowsocks.*
+* ^Subject:.*shadowsocks/shadowsocks.*
 shadowsocks/
 
 :0
-* ^Subject: .*521xueweihan/HelloGitHub.*
+* ^Subject:.*521xueweihan/HelloGitHub.*
 hellogithub/
 
 :0
-* ^Subject: .*purcell/emacs.d.*
+* ^Subject:.*purcell/emacs.d.*
 emacs.d/
 
 :0
-* ^Subject: .*bbatsov/prelude.*
+* ^Subject:.*bbatsov/prelude.*
 prelude/
 
 :0
-* ^Subject: .*FZUG/repo.*
+* ^Subject:.*FZUG/repo.*
 fzug/
+
+:0
+* ^From:.*plus.google.com
+google+/
 
 
 :0
-* ^From: notifications@github.com|noreply@github.com
+* ^From:notifications@github.com|noreply@github.com
 github/
 
 

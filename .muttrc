@@ -21,7 +21,9 @@ set record=+sent
 set postponed=+drafts
 
 # 设置编辑时使用的编辑器
-set editor = "vim"
+#set editor = "vim"
+set editor="emacsclient -a \"\" -t"
+
 
 # 设置终端显示时采用的字符集
 set charset = "utf-8"
@@ -40,29 +42,28 @@ set move = ask-yes
 # set sort = reverse-threads
 set date_format = "%m/%d/%t"
 
-# set editor="emacsclient -a \"\" -t"
 
 mailboxes +inbox +lovey-dovey +happy-kangaroos
 
 subscribe opensuse-factory@opensuse.org  opensuse-project@opensuse.org  chinese@lists.fedoraproject.org
 
 # Vim式键位映射, \c表示ctrl键
-bind pager G bottom
-bind pager j next-line
-bind pager k previous-line
-bind pager \cf next-page
-bind pager \cb previous-page
-bind pager \cj next-entry
-bind pager \ck previous-entry
-bind pager gg top
-bind pager G bottom
-bind index gg first-entry
-bind index G last-entry
-bind index R group-reply
-bind index \cf next-page
-bind index \cb previous-page
-bind index } bottom-page
-bind index f change-folder
+# bind pager G bottom
+# bind pager j next-line
+# bind pager k previous-line
+# bind pager \cf next-page
+# bind pager \cb previous-page
+# bind pager \cj next-entry
+# bind pager \ck previous-entry
+# bind pager gg top
+# bind pager G bottom
+# bind index gg first-entry
+# bind index G last-entry
+# bind index R group-reply
+# bind index \cf next-page
+# bind index \cb previous-page
+# bind index } bottom-page
+# bind index f change-folder
 
 
 

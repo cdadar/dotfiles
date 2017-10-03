@@ -45,7 +45,7 @@ xterm*eightBitOutput: true
 ! -- Enables True-Type rendering:
 xterm*renderFont: true
 xterm*faceName: source code pro
-xterm*faceNameDoublesize: source han sans
+xterm*faceNameDoublesize: Noto Serif SC
 xterm*wideChars: true
 xterm*wideFont: source code pro
 ! -- Define the size increments used when changing font size

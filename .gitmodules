@@ -1,6 +1,3 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule ".tmux/plugins"]
-	path = .tmux/plugins
-	url = git@github.com:tmux-plugins/tpm.git

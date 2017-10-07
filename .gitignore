@@ -10,5 +10,6 @@ symbols.yaml
 user.yaml
 weasel.yaml
 
-.tmux/plugins
 .vim/
+
+.directory

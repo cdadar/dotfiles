@@ -28,6 +28,12 @@ apple/
 * ^Subject:.*shadowsocks/shadowsocks.*
 shadowsocks/
 
+
+:0
+* ^Subject:.*melpa/melpa.*
+melpa/
+
+
 :0
 * ^Subject:.*521xueweihan/HelloGitHub.*
 hellogithub/

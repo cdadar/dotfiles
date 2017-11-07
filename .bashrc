@@ -70,6 +70,14 @@ eval "$(rbenv init -)"
 
 export PATH=$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.rbenv/shims/:$PATH
 
+# python virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+# export PROJECT_HOME=$HOME/workspace
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+source /usr/bin/virtualenvwrapper.sh
+
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {

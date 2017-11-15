@@ -86,7 +86,7 @@ end
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
-editor = os.getenv("EDITOR") or os.getenv("VISUAL") or "emacsclient -c" or "vi"
+editor = os.getenv("EDITOR") or os.getenv("VISUAL") or "emacsclient -nc" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 menubar.utils.terminal = terminal
@@ -398,7 +398,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,"Next tag" ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,"Clear Choice"),
     awful.key({modkey,}, "F1",keydoc.display,"Display Keymap Menu"),
-    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+    awful.key({ }, "Print", function () awful.util.spawn("DISPLAY=:0 scrot -e 'mv $f ~/Pictures/ 2>/dev/null'") end),
     
     awful.key({ modkey,           }, "j",
         function ()

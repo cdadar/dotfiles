@@ -83,9 +83,10 @@ do
     end
 end
 
+
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
-editor = os.getenv("EDITOR") or os.getenv("VISUAL") or "vi"
+editor = os.getenv("EDITOR") or os.getenv("VISUAL") or "emacsclient -c" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 menubar.utils.terminal = terminal
@@ -101,7 +102,6 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -112,11 +112,15 @@ local layouts =
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
+    awful.layout.suit.floating
 }
 -- }}}
 
+
 -- {{{ Wallpaper
+beautiful.wallpaper = "/home/chens/Pictures/code.png" 
+
 if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
@@ -136,7 +140,7 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
   mysystem_menu = {
-      { 'Lock Screen',     'light-locker-command --lock', menubar.utils.lookup_icon('system-lock-screen') },
+      { 'Lock Screen',     'xscreensaver-command -activate', menubar.utils.lookup_icon('system-lock-screen') },
       { 'Logout',           awesome.quit,                 menubar.utils.lookup_icon('system-log-out')     },
       { 'Reboot System',   'systemctl reboot',            menubar.utils.lookup_icon('reboot-notifier')    },
       { 'Shutdown System', 'systemctl poweroff',          menubar.utils.lookup_icon('system-shutdown')    }
@@ -394,7 +398,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,"Next tag" ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,"Clear Choice"),
     awful.key({modkey,}, "F1",keydoc.display,"Display Keymap Menu"),
-
+    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+    
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -667,3 +672,24 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+-- {{{ auto start
+function run_once(prg)
+  awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. ")")
+end
+
+do
+  local cmds = 
+  { 
+    "mutt",
+    --and so on...
+  }
+
+  for _,i in pairs(cmds) do
+     run_once(i)
+  end
+end
+
+
+--}}}

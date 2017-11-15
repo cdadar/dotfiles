@@ -11,9 +11,11 @@ fi
 # User specific aliases and functions
 alias sudo="sudo "
 
+export ALTERNATE_EDITOR=emacs EDITOR=emacsclient VISUAL=emacsclient
+
 alias em='emacsclient -t -a ""'  #在终端中开启emacs
 alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
-EDITOR='emacsclient -a ""'
+
 
 # java
 export JAVA_HOME=~/program/jdk1.8.0_73/

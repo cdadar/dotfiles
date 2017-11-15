@@ -398,7 +398,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,"Next tag" ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,"Clear Choice"),
     awful.key({modkey,}, "F1",keydoc.display,"Display Keymap Menu"),
-    awful.key({ }, "Print", function () awful.util.spawn("DISPLAY=:0 scrot -e 'mv $f ~/Pictures/ 2>/dev/null'") end),
+    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
     
     awful.key({ modkey,           }, "j",
         function ()
@@ -678,6 +678,14 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 function run_once(prg)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. ")")
 end
+
+function start_daemon(dae)
+   daeCheck = os.execute("ps -eF | grep -v grep | grep -w " .. dae)
+   if (daeCheck ~= 0) then
+      os.execute(dae .. " &")
+   end
+end
+
 
 do
   local cmds = 

@@ -394,12 +394,12 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
    keydoc.group("Global Keys"),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,"Previous Tag" ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,"Next tag" ),
+    awful.key({ modkey, "Shift"   }, "Left",          awful.tag.viewprev,"Previous Tag" ),
+    awful.key({ modkey, "Shift"   }, "Right",         awful.tag.viewnext,"Next tag" ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,"Clear Choice"),
-    awful.key({modkey,}, "F1",keydoc.display,"Display Keymap Menu"),
+    awful.key({ modkey,           }, "F1",keydoc.display,"Display Keymap Menu"),
     awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
-    awful.key({"Shift" }, "Print", function () awful.util.spawn("scrot -s -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+    awful.key({ modkey,           }, "t", function () awful.util.spawn("emacsclient -nc -a ''") end),
     
     awful.key({ modkey,           }, "j",
         function ()
@@ -594,6 +594,18 @@ awful.rules.rules = {
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
+      properties = { floating = true } },
+    { rule = { class = "xterm" },
+      properties = { floating = true } },
+    { rule = { class = "emacsclient" },
+      properties = { floating = true } },
+    { rule = { class = "emacs" },
+      properties = { floating = true } },
+    { rule = { class = "netease-cloud-music" },
+      properties = { floating = true } },
+    { rule = { class = "google-chrome" },
+      properties = { floating = true } },
+    { rule = { class = "keepassx" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },

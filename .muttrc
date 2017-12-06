@@ -162,4 +162,3 @@ color quoted2       cyan            black
 color quoted3       yellow          black
 color quoted4       red             black
 
-set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"

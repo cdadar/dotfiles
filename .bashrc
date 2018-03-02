@@ -11,7 +11,9 @@ fi
 # User specific aliases and functions
 alias sudo="sudo "
 
-export ALTERNATE_EDITOR=emacs EDITOR=emacsclient VISUAL=emacsclient
+#export ALTERNATE_EDITOR=emacs EDITOR=emacsclient VISUAL=emacsclient
+export ALTERNATE_EDITOR=vim EDITOR=vim VISUAL=vim
+
 
 alias em='emacsclient -t -a ""'  #在终端中开启emacs
 alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
@@ -58,8 +60,15 @@ export ANDROID_SDK=~/program/android-sdk-linux
 export ANDROID_NDK_HOME=~/program/android-ndk
 export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
 
+# grails
+export GRAILS_HOME=~/program/grails
+export PATH=$GRAILS_HOME/bin:$PATH
+
 #cabel Haskell package manager
 export PATH=$HOME/.cabal/bin:$PATH
+
+#lisp roswell
+export PATH=$HOME/.roswell/bin:$PATH
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -80,6 +89,13 @@ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 source /usr/bin/virtualenvwrapper.sh
 
+# yarn
+export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
+
+# php composer
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
+
+#ssh 
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
@@ -120,6 +136,10 @@ export TERM=xterm-256color
 # 错误检查
 export MALLOC_CHECK_=1
 
+
+
+# export HTTP_PROXY_REQUEST_FULLURI=0
+# export HTTPS_PROXY_REQUEST_FULLURI=0
 
 # export HTTP_PROXY=http://127.0.0.1:8118
 

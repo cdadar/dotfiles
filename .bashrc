@@ -95,6 +95,11 @@ export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin
 # php composer
 export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
+# go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+
 #ssh 
 SSH_ENV="$HOME/.ssh/environment"
 

@@ -2,9 +2,9 @@
 --exclude=*.cvs*
 --exclude=*.svn*
 --exclude=*.git*
+--exclude=*.idea*
 --exclude=*compiled*
 --exclude=*public_html*
---exclude=*.idea*
 --exclude=*bower_components*
 --exclude=*images*
 --exclude=*.DS_Store*
@@ -19,7 +19,6 @@
 --exclude=*.min.css
 --exclude=*.pack.js
 --exclude=*.log
---exclude=*vender*
 --exclude=*.sql
 --exclude=*.sass
 --exclude=*.ftl
@@ -27,43 +26,37 @@
 --exclude=TAGS
 --exclude=GTAGS
 --exclude=GPATH
---exclude=*node_modules*
 --exclude=GRTAGS
 --exclude=*doc*
 --exclude=*tmp*
 --exclude=.#*
---tag-relative=yes
---recurse=yes
---c-kinds=+defgpstux
-
---langmap=html:.htm.html.erb.cmp.page.component
---regex-html=/[ \t]+ng-(controller|click|change|show|if|blur|focus|disabled|repeat)[ \t]*=[ \t]*['"][^a-zA-Z0-9$]*([a-zA-Z0-9$]{4,})/\2/o,object/
 
 --langdef=js
---langmap=js:.js.ts
---regex-js=/\.controller[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,controller/
---regex-js=/\.controllerAs[ \t]*:[ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,controller/
---regex-js=/\.filter[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,filter/
---regex-js=/\.state[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,state/
---regex-js=/^[ \t]*state:[ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,state/
---regex-js=/\.factory[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,factory/
---regex-js=/\.constant[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,constant/
---regex-js=/\.service[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,service/
---regex-js=/\.directive[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,directive/
---regex-js=/.*[.][\s]*module\(['"]([a-zA-Z0-9_.-]+)['"], *\[([ ,"'a-zA-Z0-9_.-]+)* *\]\)/\1/m,module/
---regex-js=/[.](when\(['"][a-zA-Z0-9_\/]+['"])/\1/r,ngRoute/
---regex-js=/function[ \t]+([A-Za-z0-9_$]+)[ \t]*\([^)]*\)/\1/,function/
---regex-js=/(,|^|\.)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*[:=][ \t]*function[ \t]*\(/\2/,function/
---regex-js=/^[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*\([^a-zA-Z0-9, ]*\) *\{ *$/\1/,function/
---regex-js=/^[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*=[ \t]*\(?[a-zA-Z0-9, ]*\)?[ \t]*=>[ \t]*\{/\1/,function/
---regex-js=/^[ \t]*export[ \t]+const[ \t]+([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*=/\1/,function/
+--langmap=js:.js
+--regex-JavaScript=/([A-Za-z0-9._$\(\)]+)[ \t]*[:=][ \t]*function[ \t]*\(/\1/m,method/
+--regex-JavaScript=/([A-Za-z0-9._$\#\(\)]+)[ \t]*[:][ \t]*([A-Za-z0-9._\-\#\'\"]+)[ \t]*/\1/p,property/
+--regex-JavaScript=/([A-Za-z0-9._$\#\(\)]+)[ \t]*[:][ \t]*([A-Za-z0-9\'\"._\-\#\(]+)[ \t]*\{/\1/p,property/
+--regex-JavaScript=/var ([A-Za-z0-9._$\#]+)[ \t]*[=][ \t]*([A-Za-z0-9._'"\$\#\[\{]+)[,|;]/\1/v,variable/
+--regex-JavaScript=/([A-Za-z0-9._$\#]+)[ \t]*[=][ \t]*([A-Za-z0-9._'"\$\#]+)extend\(/\1/c,class/
 
---langdef=less
---langmap=less:.less
---regex-less=/^[ \t]*\.([A-Za-z0-9_-]+)/\1/c,class,classes/
---regex-less=/^[ \t]*#([A-Za-z0-9_-]+)/\1/i,id,ids/
---regex-less=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
---regex-less=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,media,medias/
+--regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
+--regex-ruby=/(^|;)[ \t]*(has_many|belongs_to|has_one|has_and_belongs_to_many)\(? *:([[:alnum:]_]+)/\3/f,function,association/
+--regex-ruby=/(^|;)[ \t]*(named_)?scope\(? *:([[:alnum:]_]+)/\3/f,function,named_scope/
+--regex-ruby=/(^|;)[ \t]*expose\(? *:([[:alnum:]_]+)/\2/f,function,exposure/
+--regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2/f,function,aasm_event/
+--regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2!/f,function,aasm_event/
+--regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2?/f,function,aasm_event/
+
+--langdef=markdown
+--langmap=markdown:.md.markdown.mdown.mkd.mkdn
+--regex-markdown=/^#[ \t]+(.*)/\1/h,heading1/
+--regex-markdown=/^##[ \t]+(.*)/\1/h,heading2/
+--regex-markdown=/^###[ \t]+(.*)/\1/h,heading3/
+
+--langdef=coffee
+--langmap=coffee:.coffee
+--regex-coffee=/^[ \t]*([A-Za-z.]+)[ \t]+=.*->.*$/\1/f,function/
+--regex-coffee=/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/
 
 --langdef=css
 --langmap=css:.css
@@ -71,10 +64,6 @@
 --langmap=css:+.sass
 --langmap=css:+.styl
 --langmap=css:+.less
---regex-css=/^[ \t]*(\$[A-Za-z0-9_-]+)[ \t]*:[ \t]*.*;[ \t]*$/\1/c,class/
---regex-css=/^,?[ \t]*#?[ \t]*\.([A-Za-z_][A-Za-z0-9_:"' \t\-]+)[ \t]*[\{,]/\1/c,class/
---regex-css=/^[ \t]*\.([A-Za-z_][A-Za-z0-9_:"' \t\-]+)[ \t]*,/\1/c,class/
---regex-css=/^,?[ \t]*([A-Za-z_][A-Za-z0-9_:()="' \t\-]+)[ \t]*[\{,]/\1/t,tags/
 --regex-css=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
 --regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/#\1/i,id,ids/
 --regex-css=/^[ \t]*\.([A-Za-z0-9_-]+)/.\1/c,class,classes/
@@ -85,32 +74,3 @@
 --regex-less=/^[ t]*#([A-Za-z0-9_-]+)/1/i,id,ids/
 --regex-less=/^[ t]*(([A-Za-z0-9_-]+[ tn,]+)+){/1/t,tag,tags/
 --regex-less=/^[ t]*@medias+([A-Za-z0-9_-]+)/1/m,media,medias/
-
---langdef=scss
---langmap=scss:.scss.sass
---regex-scss=/^[ \t]*@mixin ([A-Za-z0-9_-]+)/\1/m,mixin,mixins/
---regex-scss=/^[ \t]*\$([A-Za-z0-9_-]+)/\1/m,variable,variables/
---regex-scss=/^[ \t]*\.([A-Za-z0-9_-]+)/\1/c,class,classes/
---regex-scss=/^[ \t]*&\.([A-Za-z0-9_-]+)/\1/c,class,classes/
---regex-scss=/^[ \t]*#([A-Za-z0-9_-]+)/#\1/i,id,ids/
---regex-scss=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
---regex-scss=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,media,medias/
-
---regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
---regex-ruby=/(^|;)[ \t]*(has_many|belongs_to|has_one|has_and_belongs_to_many)\(? *:([[:alnum:]_]+)/\3/f,function,association/
---regex-ruby=/(^|;)[ \t]*(named_)?scope\(? *:([[:alnum:]_]+)/\3/f,function,named_scope/
---regex-ruby=/(^|;)[ \t]*expose\(? *:([[:alnum:]_]+)/\2/f,function,exposure/
---regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2/f,function,aasm_event/
---regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2!/f,function,aasm_event/
---regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2?/f,function,aasm_event/
-
---langdef=coffee
---langmap=coffee:.coffee
---regex-coffee=/^[ \t]*([A-Za-z.]+)[ \t]+=.*->.*$/\1/f,function/
---regex-coffee=/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/
-
---langdef=markdown
---langmap=markdown:.md.markdown.mdown.mkd.mkdn
---regex-markdown=/^#[ \t]+(.*)/\1/h,heading1/
---regex-markdown=/^##[ \t]+(.*)/\1/h,heading2/
---regex-markdown=/^###[ \t]+(.*)/\1/h,heading3/

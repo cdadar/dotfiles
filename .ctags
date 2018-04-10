@@ -10,6 +10,8 @@
 --exclude=*.DS_Store*
 --exclude=*log*
 --exclude=*target*
+--exclude=*build*
+--exclude=*dist*
 --exclude=*deployment*
 --exclude=*.war
 --exclude=*.jar
@@ -19,6 +21,8 @@
 --exclude=*.min.css
 --exclude=*.pack.js
 --exclude=*.log
+--exclude=*vender*
+--exclude=*node_modules*
 --exclude=*.sql
 --exclude=*.sass
 --exclude=*.ftl

@@ -83,10 +83,9 @@ do
     end
 end
 
-
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
-editor = os.getenv("EDITOR") or os.getenv("VISUAL") or "emacsclient -nc" or "vi"
+editor = os.getenv("EDITOR") or os.getenv("VISUAL") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 menubar.utils.terminal = terminal
@@ -117,10 +116,7 @@ local layouts =
 }
 -- }}}
 
-
 -- {{{ Wallpaper
-beautiful.wallpaper = "/home/chens/Pictures/code.png" 
-
 if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
@@ -140,7 +136,7 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
   mysystem_menu = {
-      { 'Lock Screen',     'xscreensaver-command -activate', menubar.utils.lookup_icon('system-lock-screen') },
+      { 'Lock Screen',     'light-locker-command --lock', menubar.utils.lookup_icon('system-lock-screen') },
       { 'Logout',           awesome.quit,                 menubar.utils.lookup_icon('system-log-out')     },
       { 'Reboot System',   'systemctl reboot',            menubar.utils.lookup_icon('reboot-notifier')    },
       { 'Shutdown System', 'systemctl poweroff',          menubar.utils.lookup_icon('system-shutdown')    }
@@ -398,7 +394,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Right",         awful.tag.viewnext,"Next tag" ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,"Clear Choice"),
     awful.key({ modkey,           }, "F1",keydoc.display,"Display Keymap Menu"),
-    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+    -- awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
     awful.key({ modkey,           }, "t", function () awful.util.spawn("emacsclient -nc -a ''") end),
     
     awful.key({ modkey,           }, "j",

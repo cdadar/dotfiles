@@ -50,7 +50,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git z d zsh-autosuggestions web-search wd)
-plugins=(git z d zsh-autosuggestions zsh-syntax-highlighting web-search wd)
+plugins=(git z d zsh-autosuggestions zsh-syntax-highlighting emacs web-search wd)
 # User configuration
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"

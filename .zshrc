@@ -56,7 +56,6 @@ plugins=(
     d
     zsh-autosuggestions
     zsh-syntax-highlighting
-    emacs
     web-search
     wd
 )

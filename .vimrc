@@ -19,14 +19,16 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
+Bundle "Raimondi/delimitMate"
+
 Plugin 'isRuslan/vim-es6'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'othree/html5.vim'
+Bundle 'ruanyl/vim-fixmyjs'
 
 Plugin 'Chiel92/vim-autoformat'
-Bundle 'ruanyl/vim-fixmyjs'
 Plugin 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 

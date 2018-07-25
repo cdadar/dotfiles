@@ -19,14 +19,16 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'Chiel92/vim-autoformat'
 Plugin 'isRuslan/vim-es6'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'othree/html5.vim'
 
+Plugin 'Chiel92/vim-autoformat'
+Bundle 'ruanyl/vim-fixmyjs'
 Plugin 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -62,6 +64,7 @@ set cursorline
 set cursorcolumn
 " 高亮显示搜索结果
 set hlsearch
+set incsearch
 
 " 禁止折行
 set nowrap
@@ -84,3 +87,23 @@ set softtabstop=4
 
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
+
+if has ( "autocmd" )
+	" 打开文件时，自动定位到上次光标位置
+	autocmd BufReadPost *
+	\ if line("'\"") > 0 && line ("'\"") <= line("$") |
+	\   exe "normal g'\"" |
+	\ endif
+endif  " has ("autocmd")
+
+" js文件格式化，Shift-b
+map <S-b> :call g:Jsbeautify()<CR>
+
+
+"F功能键定义
+map <F8> :NERDTreeToggle<CR>
+map <F11> :bp<CR>
+map <F12> :bn<CR>
+map <F7> <ESC>:wa<CR>:make<CR>
+noremap <F6> :Autoformat<CR>
+noremap <F10> :Fixmyjs<CR>

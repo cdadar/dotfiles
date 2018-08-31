@@ -76,8 +76,7 @@
 --regex-less=/^[ t]*.([A-Za-z0-9_-]+)/1/c,class,classes/
 --regex-less=/^[ t]*#([A-Za-z0-9_-]+)/1/i,id,ids/
 --regex-less=/^[ t]*(([A-Za-z0-9_-]+[ tn,]+)+){/1/t,tag,tags/
---regex-less=/^[ t]*@medias+([A-Za-z0-9_-]+)/1/m,media,medias/
-
+--regex-less=/^[ t]*@medias+([A-Za-z0-9_-]+)/1/m,media,medias
 
 --langdef=php
 --langmap=php:.php

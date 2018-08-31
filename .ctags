@@ -77,3 +77,18 @@
 --regex-less=/^[ t]*#([A-Za-z0-9_-]+)/1/i,id,ids/
 --regex-less=/^[ t]*(([A-Za-z0-9_-]+[ tn,]+)+){/1/t,tag,tags/
 --regex-less=/^[ t]*@medias+([A-Za-z0-9_-]+)/1/m,media,medias/
+
+
+--langdef=php
+--langmap=php:.php
+--regex-php=/^[ \t]*[(private|public|static)( \t)]*function[ \t]+([A-Za-z0-9_]+)[ \t]*\(/\1/f, function, functions/
+--regex-php=/^[ \t]*[(private|public|static)]+[ \t]+\$([A-Za-z0-9_]+)[ \t]*/\1/p, property, properties/
+--regex-php=/^[ \t]*(const)[ \t]+([A-Za-z0-9_]+)[ \t]*/\2/d, const, constants/
+--regex-php=/^\s*(abstract|final)\s+class\s+(\w+)/\2/
+--regex-php=/^\s*const\s+(\w+)/\1/
+--regex-php=/^\s*(public|protected|private|var)\s+(static\s+)?\$(\w+)/\3/
+--regex-php=/^\s*(static\s+)?(public|protected|private|var)\s+\$(\w+)/\3/
+--regex-php=/abstract[ \t]+class[ \t]+([^ ]+)/\1/c/
+--regex-php=/interface[ \t]+([^ ]+)/\1/c/
+--regex-php=/const[ \t]+([^ \t=]+)/\1/d/
+--regex-php=/(public[ \t]+|static[ \t]+|abstract[ \t]+|protected[ \t]+|private[ \t]+)function[ \t]+\&?[ \t]*([^ (]+)/\2/f/

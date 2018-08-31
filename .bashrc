@@ -99,6 +99,9 @@ export PATH=$PATH:$HOME/.config/composer/vendor/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# cask
+export PATH="$HOME/.cask/bin:$PATH"
+
 
 #ssh 
 # SSH_ENV="$HOME/.ssh/environment"

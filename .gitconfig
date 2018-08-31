@@ -32,3 +32,5 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[github]
+	user = cdadar

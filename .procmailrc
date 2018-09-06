@@ -60,6 +60,10 @@ google+/
 github/
 
 
+:0
+* ^From:PlayStation
+psn/
+
 # 剩下的邮件存放至inbox目录中
 :0
 * .*

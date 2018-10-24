@@ -4,6 +4,7 @@
     "jquery",
     "react"
   ],
+  "loadEagerly": [],
   "plugins": {
     "node": {}
   }

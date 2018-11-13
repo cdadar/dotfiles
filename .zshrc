@@ -5,6 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+#ZSH_THEME="theunraveler"
+# ZSH_THEME="agnoster"
 ZSH_THEME="ys"
 
 HIST_STAMPS="yyyy-mm-dd"
@@ -85,7 +87,6 @@ fi
 
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-# ZSH_THEME="agnoster"
 
 source $ZSH/oh-my-zsh.sh
 

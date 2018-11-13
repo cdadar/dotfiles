@@ -102,6 +102,12 @@ export PATH=$PATH:$GOPATH/bin
 # cask
 export PATH="$HOME/.cask/bin:$PATH"
 
+# nix
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    # added by Nix installer
+    . $HOME/.nix-profile/etc/profile.d/nix.sh;
+fi
+
 
 #ssh 
 # SSH_ENV="$HOME/.ssh/environment"

@@ -57,7 +57,6 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
     git
     z
-    d
     zsh-autosuggestions
     zsh-syntax-highlighting
     web-search

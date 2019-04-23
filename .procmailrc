@@ -1,70 +1,117 @@
+PATH=/bin:/usr/bin:/usr/local/bin
 MAILDIR=$HOME/mail
-DEFAULT=$MAILDIR/inbox/
+DEFAULT=$MAILDIR/
+VERBOSE=ON
 LOGFILE=$MAILDIR/log
 
 :0
 * ^To:.*@opensuse.org
-opensuse/
+${MAILDIR}/opensuse/
 
 :0
 * ^Cc:.*@opensuse.org
-opensuse/
+${MAILDIR}/opensuse/
 
 
 :0
 * ^To:chinese@lists.fedoraproject.org
-fedora/
+${MAILDIR}/fedora/
 
 :0
 * ^From:noreply@emacs-china.org
-emacs-china/
+${MAILDIR}/emacs-china/
 
 :0
 * ^From:.*apple.com
-apple/
+${MAILDIR}/apple/
 
 
 :0
 * ^Subject:.*shadowsocks/shadowsocks.*
-shadowsocks/
+${MAILDIR}/shadowsocks/
 
 
 :0
 * ^Subject:.*melpa/melpa.*
-melpa/
+${MAILDIR}/melpa/
 
 
 :0
 * ^Subject:.*521xueweihan/HelloGitHub.*
-hellogithub/
+${MAILDIR}/hellogithub/
+
+:0
+* ^Subject:.*bbatsov/projectile.*
+${MAILDIR}/projectile/
+
+:0
+* ^Subject:.*chai2010/advanced-go-programming-book.*
+${MAILDIR}/advanced-go-programming-book/
+
+:0
+* ^Subject:.*GoogleContainerTools/jib.*
+${MAILDIR}/jib/
+
+:0
+* ^Subject:.*sindresorhus/awesome.*
+${MAILDIR}/awesome/
+
+:0
+* ^Subject:.*go-nuts.*
+${MAILDIR}/go-nuts/
+
 
 :0
 * ^Subject:.*purcell/emacs.d.*
-emacs.d/
+${MAILDIR}/emacs.d/
 
 :0
 * ^Subject:.*bbatsov/prelude.*
-prelude/
+${MAILDIR}/prelude/
 
 :0
 * ^Subject:.*FZUG/repo.*
-fzug/
+${MAILDIR}/fzug/
+
+:0
+* ^From:Emacs China的摘要
+${MAILDIR}/emacs-china/
 
 :0
 * ^From:.*plus.google.com
-google+/
+${MAILDIR}/google+/
 
 
 :0
 * ^From:notifications@github.com|noreply@github.com
-github/
+${MAILDIR}/github/
 
 
 :0
 * ^From:PlayStation
-psn/
+${MAILDIR}/psn/
+
+:0
+* ^To:chenshuang_93@sina.com
+${MAILDIR}/sina/
+
+:0
+* ^To:chenshuang_93@163.com
+${MAILDIR}/163/
+
+:0
+* ^To:chen_akarin@139.com
+${MAILDIR}/139/
+
+:0
+* ^To:*@fangde.com
+${MAILDIR}/fangde/
+
+:0
+* ^From:*@fangde.com
+${MAILDIR}/fangde/
 
 # 剩下的邮件存放至inbox目录中
 :0
 * .*
-inbox/
+${MAILDIR}/inbox/

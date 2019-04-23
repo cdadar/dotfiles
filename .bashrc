@@ -136,9 +136,9 @@ fi
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh"
 ssh-add "$SSH_KEY_PATH/work_rsa"
-
-
 # unset SSH_ASKPASS
+
+
 
 # steam no runtime
 # export STEAM_RUNTIME=1

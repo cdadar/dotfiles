@@ -16,6 +16,11 @@
 	pl = pull
 	cl = clone
 	sm = submodule
+	sbi = submodule init
+	sbu = submodule update
+	sbp = submodule foreach git pull
+	sbc = submodule foreach git co master
+
 	caa = commit -a --amend
 	a = add
 	r = rm

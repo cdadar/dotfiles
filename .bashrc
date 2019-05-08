@@ -159,3 +159,17 @@ export MALLOC_CHECK_=1
 # export HTTP_PROXY=http://127.0.0.1:8118
 
 # export LANG=zh_CN.UTF-8
+
+
+
+# locale
+if [[ $(tty) == /dev/tty* ]]; then
+    setfont /usr/share/kbd/consolefonts/suse12x22.psfu.gz 
+    export LC_ALL="en_US.UTF-8"
+    export LANGUAGE="en_US.UTF-8"
+    export LANG="en_US.UTF-8"
+else
+    export LC_ALL="zh_CN.UTF-8"
+    export LANGUAGE="zh_CN.UTF-8"
+    export LANG="zh_CN.UTF-8"
+fi

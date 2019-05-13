@@ -70,11 +70,16 @@ ${MAILDIR}/emacs.d/
 ${MAILDIR}/prelude/
 
 :0
+* ^TO:emacs-devel.*@gnu.org|^CC:.*emacs-devel.*@gnu.org.*
+${MAILDIR}/emacs-devel/
+
+
+:0
 * ^Subject:.*FZUG/repo.*
 ${MAILDIR}/fzug/
 
 :0
-* ^From:Emacs China的摘要
+* ^Subject:.*Emacs\sChina.*
 ${MAILDIR}/emacs-china/
 
 :0

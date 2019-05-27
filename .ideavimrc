@@ -80,6 +80,7 @@ noremap <leader>q :wq<CR>
 "noremap <leader>w <ESC>:action<CR>
 " error description
 noremap <leader>e <ESC>:action ShowErrorDescription<CR>
+
 " ReformatCode
 noremap <leader>r <ESC>:action ReformatCode<CR>
 " Windows或者MacOS的快捷键都与t相关, 所以选择t作为键
@@ -135,6 +136,8 @@ noremap <leader>b <ESC>:action ViewBreakpoints<CR>
 noremap <leader>n <ESC>:action ToggleLineBreakpoint<CR>
 " mute breakpoints
 noremap <leader>m <ESC>:action XDebugger.MuteBreakpoints<CR>
+
+
 
 " g key relevant
 "
@@ -216,6 +219,5 @@ noremap ' <ESC>:action Replace<CR>
 noremap [[ <ESC>:action MethodUp<CR>
 " next method
 noremap ]] <ESC>:action MethodDown<CR>
-
 " multiple cursors
-map <A-M>  <A-N>
+map <A-N>

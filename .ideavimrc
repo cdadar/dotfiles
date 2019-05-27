@@ -101,8 +101,10 @@ noremap <leader>A <ESC>:action AceTargetAction<CR>
 noremap <leader>s <ESC>:action FileStructurePopup<CR>
 " debug option
 noremap <leader>d <ESC>:action ChooseDebugConfiguration<CR>
+" run option
+noremap <leader>R <ESC>:action ChooseRunConfiguration<CR>
 " 同样也是debug，因为d已经被ChooseDebugConfiguration占领, 所以就放在了d键隔壁.
-" noremap <leader>f <ESC>:action DebugClass<CR>
+noremap <leader>f <ESC>:action DebugClass<CR>
 " g
 noremap <leader>g <ESC>:action Generate<CR>
 " hide all

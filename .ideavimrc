@@ -26,6 +26,8 @@ set showmode
 set clipboard=unnamed
 " 搜索时智能匹配大小写
 set ignorecase smartcase
+" IdeaVimExtension
+:set keep-english-in-normal-and-restore-in-insert
 
 " Insert
 inoremap jk <Esc>

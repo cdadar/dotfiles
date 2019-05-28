@@ -17,6 +17,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'surround.vim'
+Plugin 'terryma/vim-multiple-cursors'
+
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
 Bundle "Raimondi/delimitMate"

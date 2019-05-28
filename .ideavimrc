@@ -220,4 +220,4 @@ noremap [[ <ESC>:action MethodUp<CR>
 " next method
 noremap ]] <ESC>:action MethodDown<CR>
 " multiple cursors
-map <A-N>
+" map <A-N> <A-X> <A-P>

@@ -65,9 +65,6 @@ noremap <C-O> <ESC>:action Back<CR>
 noremap <C-I> <ESC>:action Forward<CR>
 noremap <C-D> <C-D>zz
 noremap <C-U> <C-U>zz
-" E和R是为了保持与Chrome中的SurfingKeys的键位一致
-noremap E gT
-noremap R gt
 noremap J <ESC>:action EditorJoinLines<CR>
 
 noremap <leader> | <ESC> :vsp<CR>
@@ -126,12 +123,14 @@ noremap <leader>l <ESC>:action HighlightUsagesInFile<CR>
 noremap <leader>; "0p
 
 " 本行皆为debug所用
+
 " resume - z
-noremap <leader>z <ESC>:action Resume<CR>
+" noremap <leader>z <ESC>:action Resume<CR>
 " step over
-noremap <leader>x <ESC>:action StepOver<CR>
+" noremap <leader>x <ESC>:action StepOver<CR>
 " step into
-noremap <leader>c <ESC>:action SmartStepInto<CR>
+" noremap <leader>c <ESC>:action SmartStepInto<CR>
+
 " evaluate expression - v
 noremap <leader>v <ESC>:action EvaluateExpression<CR>
 " breakpoints

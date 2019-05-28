@@ -57,6 +57,10 @@ ${MAILDIR}/jib/
 ${MAILDIR}/awesome/
 
 :0
+* ^Subject:.*texmacs/texmacs.*
+${MAILDIR}/texmacs/
+
+:0
 * ^Subject:.*go-nuts.*
 ${MAILDIR}/go-nuts/
 
@@ -70,7 +74,7 @@ ${MAILDIR}/emacs.d/
 ${MAILDIR}/prelude/
 
 :0
-* ^TO:emacs-devel.*@gnu.org|^CC:.*emacs-devel.*@gnu.org.*
+* ^To:emacs-devel.*@gnu.org|^Cc:.*emacs-devel.*@gnu.org.*|^List:emacs-devel.gnu.org
 ${MAILDIR}/emacs-devel/
 
 

@@ -79,11 +79,16 @@ noremap <leader>` <ESC>:action SelectInProjectView<CR>
 noremap <leader>q :wq<CR>
 " w
 "noremap <leader>w <ESC>:action<CR>
+" <A-F7> FindUsages
+noremap <leader>w <ESC>:action FindUsages<CR>
 " error description
 noremap <leader>e <ESC>:action ShowErrorDescription<CR>
 
 " ReformatCode
 noremap <leader>r <ESC>:action ReformatCode<CR>
+" run option
+noremap <leader>R <ESC>:action ChooseRunConfiguration<CR>
+
 " Windows或者MacOS的快捷键都与t相关, 所以选择t作为键
 noremap <leader>t <ESC>:action Refactorings.QuickListPopupAction<CR>
 " y
@@ -92,6 +97,7 @@ noremap <leader>t <ESC>:action Refactorings.QuickListPopupAction<CR>
 noremap <leader>u <ESC>:action ShowUsages<CR>
 " import
 noremap <leader>i <ESC>:action Maven.Reimport<CR>
+
 " open file path
 noremap <leader>o <ESC>:action ShowFilePath<CR>
 " show projects
@@ -105,8 +111,7 @@ noremap <leader>A <ESC>:action AceTargetAction<CR>
 noremap <leader>s <ESC>:action FileStructurePopup<CR>
 " debug option
 noremap <leader>d <ESC>:action ChooseDebugConfiguration<CR>
-" run option
-noremap <leader>R <ESC>:action ChooseRunConfiguration<CR>
+
 " 同样也是debug，因为d已经被ChooseDebugConfiguration占领, 所以就放在了d键隔壁.
 noremap <leader>f <ESC>:action DebugClass<CR>
 " g
@@ -122,8 +127,14 @@ noremap <leader>l <ESC>:action HighlightUsagesInFile<CR>
 " 粘贴最近复制寄存器
 noremap <leader>; "0p
 
-" 本行皆为debug所用
 
+
+noremap <leader>z <ESC>:action RearrangeCode<CR>
+
+" maven clean install
+noremap <leader>ci <ESC>:action MavenRunHelperCleanInstall<CR>
+
+" 本行皆为debug所用
 " resume - z
 " noremap <leader>z <ESC>:action Resume<CR>
 " step over

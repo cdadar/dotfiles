@@ -107,10 +107,10 @@ noremap <leader>p <ESC>:action ManageRecentProjects<CR>
 noremap <leader>a <ESC>:action AceAction<CR>
 
 noremap <leader>A <ESC>:action AceTargetAction<CR>
-" structure
-noremap <leader>s <ESC>:action FileStructurePopup<CR>
+" " structure
+" noremap <leader>s <ESC>:action FileStructurePopup<CR>
 " debug option
-noremap <leader>d <ESC>:action ChooseDebugConfiguration<CR>
+" noremap <leader>d <ESC>:action ChooseDebugConfiguration<CR>
 
 " 同样也是debug，因为d已经被ChooseDebugConfiguration占领, 所以就放在了d键隔壁.
 noremap <leader>f <ESC>:action DebugClass<CR>
@@ -126,8 +126,6 @@ noremap <leader>k <ESC>:action GotoPreviousError<CR>
 noremap <leader>l <ESC>:action HighlightUsagesInFile<CR>
 " 粘贴最近复制寄存器
 noremap <leader>; "0p
-
-
 
 noremap <leader>z <ESC>:action RearrangeCode<CR>
 

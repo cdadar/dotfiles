@@ -131,8 +131,10 @@ noremap <leader>; "0p
 
 noremap <leader>z <ESC>:action RearrangeCode<CR>
 
-" maven clean install
+" maven clean install(third party plugin MavenHelper)
 noremap <leader>ci <ESC>:action MavenRunHelperCleanInstall<CR>
+
+noremap <leader>cc <ESC>:action CompileProject<CR>
 
 " 本行皆为debug所用
 " resume - z

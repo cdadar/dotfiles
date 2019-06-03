@@ -20,29 +20,29 @@ alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
 
 
 # java
-export JAVA_HOME=~/program/jdk1.8.0_73/
-export JRE_HOME=~/program/jdk1.8.0_73/jre
-#export JAVA_HOME=~/program/jdk1.7.0_79
-#export JRE_HOME=~/program/jdk1.7.0_79jre
+export JAVA_HOME=$HOME/program/jdk1.8.0_73/
+export JRE_HOME=$HOME/program/jdk1.8.0_73/jre
+#export JAVA_HOME=$HOME/program/jdk1.7.0_79
+#export JRE_HOME=$HOME/program/jdk1.7.0_79jre
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 
 # ant
-export ANT_HOME=~/source/ant/bootstrap
+export ANT_HOME=$HOME/source/ant/bootstrap
 export PATH=$PATH:$ANT_HOME/bin
 
 # mevan
-export MAVEN_HOME=~/program/maven
-export M2_HOME=~/program/maven
+export MAVEN_HOME=$HOME/program/maven
+export M2_HOME=$HOME/program/maven
 export  PATH=$PATH:$MAVEN_HOME/bin
 
 # activeMQ
-export ACTIVEMQ_HOME=~/program/apache-activemq
+export ACTIVEMQ_HOME=$HOME/program/apache-activemq
 export PATH=$PATH:$ACTIVEMQ_HOME/bin
 
 
 # gradle
-GRADLE_HOME=~/program/gradle
+GRADLE_HOME=$HOME/program/gradle
 export PATH=$PATH:$GRADLE_HOME/bin
 
 #lwqq
@@ -54,14 +54,14 @@ export PATH=$PATH:$NODE_HOME/bin
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
 # Android_SDK
-export ANDROID_SDK=~/program/android-sdk-linux
+export ANDROID_SDK=$HOME/program/android-sdk-linux
 
 # Android ndk
-export ANDROID_NDK_HOME=~/program/android-ndk
+export ANDROID_NDK_HOME=$HOME/program/android-ndk
 export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
 
 # grails
-export GRAILS_HOME=~/program/grails
+export GRAILS_HOME=$HOME/program/grails
 export PATH=$GRAILS_HOME/bin:$PATH
 
 #cabel Haskell package manager
@@ -69,7 +69,6 @@ export PATH=$HOME/.cabal/bin:$PATH
 
 #lisp roswell
 export PATH=$HOME/.roswell/bin:$PATH
-
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"

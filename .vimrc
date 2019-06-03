@@ -47,6 +47,9 @@ Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 
+Plug 'Chiel92/vim-autoformat'
+Plug 'ludovicchabant/vim-gutentags'
+
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -97,12 +100,16 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
+Plug 'othree/html5.vim'
 
 
 " javascript
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
-
+Plug 'pangloss/vim-javascript'
+Plug 'isRuslan/vim-es6'
+Plug 'mxw/vim-jsx'
+Plug 'ruanyl/vim-fixmyjs'
 
 " lisp
 "" Lisp Bundle

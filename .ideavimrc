@@ -6,7 +6,7 @@
 
 
 " leader
-let mapleader = " "
+let mapleader = ","
 
 " 启用vim surround功能
 set surround
@@ -26,8 +26,8 @@ set showmode
 set clipboard=unnamed
 " 搜索时智能匹配大小写
 set ignorecase smartcase
-" IdeaVimExtension
-set keep-english-in-normal-and-restore-in-insert
+" " IdeaVimExtension
+" set keep-english-in-normal-and-restore-in-insert
 
 " Insert
 inoremap jk <Esc>

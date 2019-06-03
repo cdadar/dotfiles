@@ -102,6 +102,10 @@ export PATH=$PATH:$GOPATH/bin
 # cask
 export PATH="$HOME/.cask/bin:$PATH"
 
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+
 # nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     # added by Nix installer

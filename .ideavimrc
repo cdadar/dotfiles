@@ -14,8 +14,8 @@ set surround
 set multiple-cursors
 " 显示行号
 set nu
-" 显示相对行号
-set rnu
+" " 显示相对行号
+" set rnu
 " 高亮搜索
 set hlsearch
 " 自动定位到输入中的字符串，不需要回车搜索

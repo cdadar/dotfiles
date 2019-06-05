@@ -30,7 +30,7 @@ set ignorecase smartcase
 " set keep-english-in-normal-and-restore-in-insert
 
 " Insert
-inoremap jk <Esc>
+" inoremap jk <Esc>
 " Normal
 nnoremap dd ddzz
 " Visual

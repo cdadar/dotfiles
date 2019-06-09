@@ -49,6 +49,7 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'kien/ctrlp.vim'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -604,6 +605,7 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
+
 
 " vim-javascript
 augroup vimrc-javascript

@@ -1,0 +1,21 @@
+*  dotfiles
+
+vim tmux tern git
+** tmux
+
+need xclip
+**  xterm
+
+xrdb ~/.Xresourcse
+
+** ideavim
+
+: ln -s <paht>/dotfiles/.ideavimrc $HOME/
+
+** awesome
+
+: ln <path>/dotfiles/awesome $HOME/.config/awesome
+
+** 代办
+*** TODO install to shell
+*** TODO vim config

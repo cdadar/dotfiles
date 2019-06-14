@@ -1,6 +1,6 @@
 " M->cmd, A->option, C->control
 " M->Win, A-> alt, C-> ctrl
-" <ESC> - escape, <BS> - backspace, <CR> - return
+" <ESC> - escape, <BS> - backspace, <cr> - return
 
 
 
@@ -62,180 +62,204 @@ noremap } }zz
 noremap [{ [{zz
 noremap ]} ]}zz
 noremap gd gdzz
-noremap <C-O> <ESC>:action Back<CR>
-noremap <C-I> <ESC>:action Forward<CR>
+noremap <C-O> <ESC>:action Back<cr>
+noremap <C-I> <ESC>:action Forward<cr>
 noremap <C-D> <C-D>zz
 noremap <C-U> <C-U>zz
-noremap J <ESC>:action EditorJoinLines<CR>
+noremap J <ESC>:action EditorJoinLines<cr>
 
-noremap <leader> | <ESC> :vsp<CR>
-noremap <leader> - <ESC> :sp<CR>
+noremap <leader> | <ESC> :vsp<cr>
+noremap <leader> - <ESC> :sp<cr>
+
+" System/Global
+inoremap <c-a> <c-o>^
+inoremap <c-f> <Right>
+inoremap <c-b> <Left>
+inoremap <c-n> <Down>
+inoremap <c-p> <Up>
+inoremap <c-d> <Del>
+nnoremap <c-c> i
+nnoremap <c-a> ^
+nnoremap <cr> :action EditorStartNewLine<cr>
+noremap <m-m> :action ToggleBookmark<cr>
+noremap <m-a-b> :action ToggleLineBreakpoint<cr>
 
 
 " 个人习惯
-noremap <leader>` <ESC>:action SelectInProjectView<CR>
+noremap <leader>` <ESC>:action SelectInProjectView<cr>
 
 " Leader key relevant
 " quit
-noremap <leader>q :wq<CR>
+noremap <leader>q :wq<cr>
 " w
-"noremap <leader>w <ESC>:action<CR>
+"noremap <leader>w <ESC>:action<cr>
 " <A-F7> FindUsages
-noremap <leader>w <ESC>:action FindUsages<CR>
+noremap <leader>w <ESC>:action FindUsages<cr>
 " error description
-noremap <leader>e <ESC>:action ShowErrorDescription<CR>
+noremap <leader>e <ESC>:action ShowErrorDescription<cr>
 
 " ReformatCode
-noremap <leader>r <ESC>:action ReformatCode<CR>
+noremap <leader>r <ESC>:action ReformatCode<cr>
 " run option
-noremap <leader>R <ESC>:action ChooseRunConfiguration<CR>
+noremap <leader>R <ESC>:action ChooseRunConfiguration<cr>
 
 " Windows或者MacOS的快捷键都与t相关, 所以选择t作为键
-noremap <leader>t <ESC>:action Refactorings.QuickListPopupAction<CR>
+noremap <leader>t <ESC>:action Refactorings.QuickListPopupAction<cr>
 " y
-"noremap <leader>y <ESC>:action <CR>
+"noremap <leader>y <ESC>:action <cr>
 " usage
-noremap <leader>u <ESC>:action ShowUsages<CR>
+noremap <leader>u <ESC>:action ShowUsages<cr>
 " import
-noremap <leader>i <ESC>:action Maven.Reimport<CR>
+noremap <leader>i <ESC>:action Maven.Reimport<cr>
 
 " open file path
-noremap <leader>o <ESC>:action ShowFilePath<CR>
+noremap <leader>o <ESC>:action ShowFilePath<cr>
 " show projects
-noremap <leader>p <ESC>:action ManageRecentProjects<CR>
+noremap <leader>p <ESC>:action ManageRecentProjects<cr>
 
 " ace jump
-noremap <leader>a <ESC>:action AceAction<CR>
+noremap <leader>a <ESC>:action AceAction<cr>
 
-noremap <leader>A <ESC>:action AceTargetAction<CR>
-" " structure
-" noremap <leader>s <ESC>:action FileStructurePopup<CR>
+noremap <leader>A <ESC>:action AceTargetAction<cr>
+
+" structure
+" noremap <leader>s <ESC>:action FileStructurePopup<cr>
 " debug option
-" noremap <leader>d <ESC>:action ChooseDebugConfiguration<CR>
+" noremap <leader>d <ESC>:action ChooseDebugConfiguration<cr>
+" Getting Help
+noremap <leader>d <ESC>:action QuickJavaDoc<cr>
+
 
 " 同样也是debug，因为d已经被ChooseDebugConfiguration占领, 所以就放在了d键隔壁.
-noremap <leader>f <ESC>:action DebugClass<CR>
+noremap <leader>f <ESC>:action DebugClass<cr>
 " g
-noremap <leader>gg <ESC>:action Generate<CR>
+noremap <leader>gg <ESC>:action Generate<cr>
 "" Git
-noremap <Leader>gll <ESC>:action Vcs.UpdateProject<CR>
+noremap <Leader>gll <ESC>:action Vcs.UpdateProject<cr>
 
 " hide all
-noremap <leader>h <ESC>:action HideAllWindows<CR>
+" noremap <leader>h <ESC>:action HideAllWindows<cr>
+
+
 " jump to next error
-noremap <leader>j <ESC>:action GotoNextError<CR>
+noremap <leader>j <ESC>:action GotoNextError<cr>
 " jump to previous error，就近原则
-noremap <leader>k <ESC>:action GotoPreviousError<CR>
+noremap <leader>k <ESC>:action GotoPreviousError<cr>
 " light up
-noremap <leader>l <ESC>:action HighlightUsagesInFile<CR>
+noremap <leader>l <ESC>:action HighlightUsagesInFile<cr>
 " 粘贴最近复制寄存器
 noremap <leader>; "0p
 
-noremap <leader>z <ESC>:action RearrangeCode<CR>
+noremap <leader>z <ESC>:action RearrangeCode<cr>
 
 " maven clean install(third party plugin MavenHelper)
-noremap <leader>ci <ESC>:action MavenRunHelperCleanInstall<CR>
+noremap <leader>ci <ESC>:action MavenRunHelperCleanInstall<cr>
 
-noremap <leader>cc <ESC>:action CompileProject<CR>
+noremap <leader>cc <ESC>:action CompileProject<cr>
 
 " 本行皆为debug所用
 " resume - z
-" noremap <leader>z <ESC>:action Resume<CR>
+" noremap <leader>z <ESC>:action Resume<cr>
 " step over
-" noremap <leader>x <ESC>:action StepOver<CR>
+" noremap <leader>x <ESC>:action StepOver<cr>
 " step into
-" noremap <leader>c <ESC>:action SmartStepInto<CR>
+" noremap <leader>c <ESC>:action SmartStepInto<cr>
 
 " evaluate expression - v
-noremap <leader>v <ESC>:action EvaluateExpression<CR>
+noremap <leader>v <ESC>:action EvaluateExpression<cr>
 " breakpoints
-noremap <leader>b <ESC>:action ViewBreakpoints<CR>
+noremap <leader>b <ESC>:action ViewBreakpoints<cr>
 " 因为属于breakpoint范畴的功能, 所以就选择了b和m的隔壁
-noremap <leader>n <ESC>:action ToggleLineBreakpoint<CR>
+noremap <leader>n <ESC>:action ToggleLineBreakpoint<cr>
 " mute breakpoints
-noremap <leader>m <ESC>:action XDebugger.MuteBreakpoints<CR>
+noremap <leader>m <ESC>:action XDebugger.MuteBreakpoints<cr>
 
 
 
 " g key relevant
 "
 " q
-"noremap gq <ESC>:action <CR>
+"noremap gq <ESC>:action <cr>
 " switcher
-noremap gw <ESC>:action RecentFiles<CR>
+noremap gw <ESC>:action RecentFiles<cr>
 " e
-"noremap ge <ESC>:action <CR>
+"noremap ge <ESC>:action <cr>
 " r
-"noremap gr <ESC>:action <CR>
+"noremap gr <ESC>:action <cr>
 " translator(third party plugin)
-noremap gt <ESC>:action $EditorTranslateAction<CR>
+noremap gt <ESC>:action $EditorTranslateAction<cr>
 " y
-noremap gy <ESC>:action CopyReference<CR>
+noremap gy <ESC>:action CopyReference<cr>
 " u
-"noremap gu <ESC>:action <CR>
+"noremap gu <ESC>:action <cr>
 " intention
-noremap gi <ESC>:action ShowIntentionActions<CR>
+noremap gi <ESC>:action ShowIntentionActions<cr>
 " o
-"noremap go <ESC>:action <CR>
+"noremap go <ESC>:action <cr>
 " param info
-noremap gp <ESC>:action ParameterInfo<CR>
+noremap gp <ESC>:action ParameterInfo<cr>
 
 " a
-"noremap ga <ESC>:action emacsIDEAs.AceJump<CR>
+"noremap ga <ESC>:action emacsIDEAs.AceJump<cr>
 " goto source
-noremap gs <ESC>:action GotoImplementation<CR>
+noremap gs <ESC>:action GotoImplementation<cr>
 " goto declaration
-noremap gd <ESC>:action GotoDeclaration<CR>
+noremap gd <ESC>:action GotoDeclaration<cr>
 " goto file
-noremap gf <ESC>:action GotoFile<CR>
+noremap gf <ESC>:action GotoFile<cr>
 " g
-"noremap gg <ESC>:action MUST_NOT_BE_CHANGED!!!<CR>
+"noremap gg <ESC>:action MUST_NOT_BE_CHANGED!!!<cr>
 " hierarchy
-noremap ghc <ESC>:action CallHierarchy<CR>
-noremap ght <ESC>:action TypeHierarchy<CR>
-noremap ghm <ESC>:action MethodHierarchy<CR>
+noremap ghc <ESC>:action CallHierarchy<cr>
+noremap ght <ESC>:action TypeHierarchy<cr>
+noremap ghm <ESC>:action MethodHierarchy<cr>
 " j analyze data flow in
-noremap gj <ESC>:action SliceBackward<CR>
+noremap gj <ESC>:action SliceBackward<cr>
 " k analyze data flow out
-noremap gk <ESC>:action SliceForward<CR>
+noremap gk <ESC>:action SliceForward<cr>
 " l
-"noremap gl <ESC>:action <CR>
+"noremap gl <ESC>:action <cr>
 
 " z
-"noremap gz <ESC>:action <CR>
+"noremap gz <ESC>:action <cr>
 " close all but this
-noremap gx <ESC>:action CloseAllEditorsButActive<CR>
+noremap gx <ESC>:action CloseAllEditorsButActive<cr>
 " compile
-noremap gc <ESC>:action CompileDirty<CR>
+noremap gc <ESC>:action CompileDirty<cr>
 " v
-"noremap gv <ESC>:action <CR>
+"noremap gv <ESC>:action <cr>
 " b
-noremap gb <ESC>:action FindBugs.CurrentFileAction<CR>
+noremap gb <ESC>:action FindBugs.CurrentFileAction<cr>
 " goto class
-noremap gn <ESC>:action GotoClass<CR>
+noremap gn <ESC>:action GotoClass<cr>
 " goto method
-noremap gm <ESC>:action GotoSymbol<CR>
+noremap gm <ESC>:action GotoSymbol<cr>
 
 " \ also works
-"noremap \q <ESC>:action <CR>
+"noremap \q <ESC>:action <cr>
 " refresh
-noremap \r <ESC>:source ~/.ideavimrc<CR>
+noremap \r <ESC>:source ~/.ideavimrc<cr>
 " git flow
-noremap \[ <ESC>:action Gitflow.OpenGitflowPopup<CR>
+noremap \[ <ESC>:action Gitflow.OpenGitflowPopup<cr>
 " Vcs
-noremap \] <ESC>:action Vcs.QuickListPopupAction<CR>
+noremap \] <ESC>:action Vcs.QuickListPopupAction<cr>
 
 " global find
-noremap g/ <ESC>:action FindInPath<CR>
+noremap g/ <ESC>:action FindInPath<cr>
 " gloaal replace
-noremap g' <ESC>:action ReplaceInPath<CR>
+noremap g' <ESC>:action ReplaceInPath<cr>
 " find
-noremap / <ESC>:action Find<CR>
+noremap / <ESC>:action Find<cr>
 " replace
-noremap ' <ESC>:action Replace<CR>
+noremap ' <ESC>:action Replace<cr>
 " previous method
-noremap [[ <ESC>:action MethodUp<CR>
+noremap [[ <ESC>:action MethodUp<cr>
 " next method
-noremap ]] <ESC>:action MethodDown<CR>
+noremap ]] <ESC>:action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+nnoremap [b :action GotoPreviousBookmark<cr>
+nnoremap ]b :action GotoNextBookmark<cr>
+
 " multiple cursors
 " map <A-N> <A-X> <A-P>

@@ -18,6 +18,7 @@ export ALTERNATE_EDITOR=vim EDITOR=vim VISUAL=vim
 alias em='emacsclient -t -a ""'  #在终端中开启emacs
 alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
 
+alias wm_test='Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome'
 
 # java
 export JAVA_HOME=$HOME/program/jdk1.8.0_73/

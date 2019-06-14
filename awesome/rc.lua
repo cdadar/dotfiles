@@ -542,7 +542,29 @@ globalkeys = awful.util.table.join(
       {description = "lua execute prompt", group = "awesome"}),
    -- Menubar
    awful.key({ modkey }, "p", function() menubar.show() end,
-      {description = "show the menubar", group = "launcher"})
+      {description = "show the menubar", group = "launcher"}),
+
+   awful.key({ }, "Print",
+      function ()
+         awful.util.spawn("xfce4-screenshooter -w")
+   end),
+   awful.key({ "Shift" }, "Print",
+      function ()
+         awful.util.spawn("xfce4-screenshooter -r")
+   end),
+   awful.key({ modkey,           }, "t",
+      function ()
+         awful.util.spawn("emacsclient -nc -a ''")
+   end),
+   awful.key({ modkey,           }, "e",
+      function ()
+         awful.util.spawn("thunar")
+   end),
+   awful.key({ "Control", "Mod1" }, "Delete",
+      function ()
+         awful.util.spawn("xscreensaver-command --lock")
+   end)
+
 )
 
 clientkeys = awful.util.table.join(
@@ -587,29 +609,7 @@ clientkeys = awful.util.table.join(
    awful.key({ }, "XF86AudioMute",
       function ()
          awful.util.spawn_with_shell("amixer sset Master toggle")
-   end),
-
-   awful.key({ }, "Print",
-      function ()
-         awful.util.spawn("xfce4-screenshooter -w")
-   end),
-   awful.key({ "Shift" }, "Print",
-      function ()
-         awful.util.spawn("xfce4-screenshooter -r")
-   end),
-   awful.key({ modkey,           }, "t",
-      function ()
-         awful.util.spawn("emacsclient -nc -a ''")
-   end),
-   awful.key({ modkey,           }, "e",
-      function ()
-         awful.util.spawn("thunar")
-   end),
-   awful.key({ "Control", "Mod1" }, "Delete",
-      function ()
-         awful.util.spawn("xscreensaver-command --lock")
    end)
-
 )
 
 -- Bind all key numbers to tags.

@@ -6,6 +6,7 @@
 --exclude=*compiled*
 --exclude=*public_html*
 --exclude=*bower_components*
+--exclude=*node_modules*
 --exclude=*images*
 --exclude=*.DS_Store*
 --exclude=*log*
@@ -140,9 +141,6 @@
 --exclude=test
 --exclude=tests
 
-
-
-
 --regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
 --regex-ruby=/(^|;)[ \t]*(has_many|belongs_to|has_one|has_and_belongs_to_many)\(? *:([[:alnum:]_]+)/\3/f,function,association/
 --regex-ruby=/(^|;)[ \t]*(named_)?scope\(? *:([[:alnum:]_]+)/\3/f,function,named_scope/
@@ -176,18 +174,6 @@
 --langmap=less:.less
 --regex-less=/^[ t]*.([A-Za-z0-9_-]+)/1/c,class,classes/
 --regex-less=/^[ t]*#([A-Za-z0-9_-]+)/1/i,id,ids/
-
-
---langdef=php
---langmap=php:.php
---regex-php=/abstract[ \t]+class[ \t]+([^ ]+)/\1/c/
---regex-php=/interface[ \t]+([^ ]+)/\1/i/
---regex-php=/^[ \t]*[(private|public|static)( \t)]*function[ \t]+([A-Za-z0-9_]+)[ \t]*\(/\1/f, function, functions/
---regex-php=/(public[ \t]+|static[ \t]+|abstract[ \t]+|protected[ \t]+|private[ \t]+)function[ \t]+\&?[ \t]*([^ (]+)/\2/f/
---regex-php=/^[ \t]*[(private|public|static)]+[ \t]+\$([A-Za-z0-9_]+)[ \t]*/\1/p, property, properties/
---regex-php=/^[ \t]*(const)[ \t]+([A-Za-z0-9_]+)[ \t]*/\2/d, const, constants/
---regex-php=/const[ \t]+([^ \t=]+)/\1/d/
-
 
 
 --langmap=perl:+.pod

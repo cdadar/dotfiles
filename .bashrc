@@ -169,7 +169,7 @@ export MALLOC_CHECK_=1
 
 # export LANG=zh_CN.UTF-8
 
-
+xrdb $HOME/.Xresources
 
 # locale
 if [[ $(tty) == /dev/tty* ]]; then

@@ -227,8 +227,8 @@ noremap gx <ESC>:action CloseAllEditorsButActive<cr>
 " compile
 noremap gc <ESC>:action CompileDirty<cr>
 " v
-"noremap gv <ESC>:action <cr>
-noremap gv <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
+" noremap gv <ESC>:action <cr>
+" noremap gv <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
 " b
 noremap gb <ESC>:action SonarLint.AnalyzeFiles<cr>
 " goto class

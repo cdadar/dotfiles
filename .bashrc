@@ -32,7 +32,7 @@ export TERM=xterm-256color
 export MALLOC_CHECK_=1
 
 # load xterm config
-xrdb $HOME/.Xresources
+# xrdb $HOME/.Xresources
 
 
 # export HTTP_PROXY_REQUEST_FULLURI=0

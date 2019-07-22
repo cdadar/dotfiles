@@ -49,6 +49,7 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'lifepillar/vim-mucomplete'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'

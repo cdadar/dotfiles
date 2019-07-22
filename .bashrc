@@ -31,9 +31,6 @@ export TERM=xterm-256color
 # 错误检查
 export MALLOC_CHECK_=1
 
-# load xterm config
-# xrdb $HOME/.Xresources
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # export HTTP_PROXY_REQUEST_FULLURI=0
 # export HTTPS_PROXY_REQUEST_FULLURI=0

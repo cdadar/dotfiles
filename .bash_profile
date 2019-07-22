@@ -148,4 +148,7 @@ else
     export LANG="zh_CN.UTF-8"
 fi
 
+
 # load xterm config
+# xrdb $HOME/.Xresources
+# [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources

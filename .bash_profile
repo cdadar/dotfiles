@@ -149,4 +149,3 @@ else
 fi
 
 # load xterm config
-xrdb $HOME/.Xresources

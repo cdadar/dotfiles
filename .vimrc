@@ -5,7 +5,7 @@
 "*****************************************************************************
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "c,go,haskell,html,javascript,lisp,lua,perl,php,python,ruby,rust,typescript"
+let g:vim_bootstrap_langs = "c,go,haskell,html,javascript,lua,perl,php,python,ruby,rust,typescript"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -111,11 +111,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
 Plug 'mxw/vim-jsx'
 Plug 'ruanyl/vim-fixmyjs'
-
-" lisp
-"" Lisp Bundle
-Plug 'vim-scripts/slimv.vim'
-
 
 " lua
 "" Lua Bundle
@@ -613,15 +608,9 @@ augroup vimrc-javascript
   autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
 augroup END
 
-
-" lisp
-
-
 " lua
 
-
 " perl
-
 
 " php
 

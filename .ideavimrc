@@ -36,9 +36,6 @@ set ideajoin
 noremap <C-O> <ESC>:action Back<cr>
 noremap <C-I> <ESC>:action Forward<cr>
 
-noremap <leader> | <ESC> :vsp<cr>
-noremap <leader> - <ESC> :sp<cr>
-
 " System/Global
 inoremap <c-a> <c-o>^
 inoremap <c-e> <c-o>$
@@ -163,6 +160,11 @@ nnoremap gk :<C-u>action GotoTypeDeclaration<CR>
 nnoremap gi :<C-u>action GotoImplementation<CR>
 nnoremap gs :<C-u>action GotoSuperMethod<CR>
 nnoremap gt :<C-u>action GotoTest<CR>
+
+nnoremap ghc :<C-u>action CallHierarchy<cr>
+nnoremap ght :<C-u>action TypeHierarchy<cr>
+nnoremap ghm :<C-u>action MethodHierarchy<cr>
+
 nnoremap <C-k> :<C-u>action ShowUsages<CR>
 
 " Goto file
@@ -195,6 +197,8 @@ vnoremap > >gv
 nnoremap <Leader>c<Leader> :<C-u>action CommentByLineComment<CR>
 nnoremap <Leader>=  :<C-u>action ReformatCode<CR>
 nnoremap <C-S-=> :<C-u>action ReformatCode<CR>
+nnoremap <C-S--> :<C-u>action RearrangeCode<cr>
+nnoremap <Leader>- :<C-u>action RearrangeCode<cr>
 nnoremap <C-S-U> :<C-u>action EditorToggleCase<CR>
 
 " Select
@@ -274,3 +278,13 @@ nnoremap <C-F5>  :<C-u>action Refresh<CR>
 " SnoarLint
 noremap <Leader>sc <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
 noremap <Leader>sf <ESC>:action SonarLint.AnalyzeFiles<cr>
+
+
+" previous method
+noremap [[ <ESC>:action MethodUp<cr>
+" next method
+noremap ]] <ESC>:action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+nnoremap [b :action GotoPreviousBookmark<cr>
+nnoremap ]b :action GotoNextBookmark<cr>

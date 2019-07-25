@@ -71,8 +71,7 @@ plugins=(
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-
-
+bindkey -e #emacs
 
 # User specific aliases and functions
 

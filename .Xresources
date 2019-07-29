@@ -153,48 +153,105 @@ xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35
 
 ! --- xrxvt {{{1
 !------------------------------------------------------------------------------
-!!$HOME/.Xresources
-URxvt.preeditType:Root
-!!调整此处设置输入法
-URxvt.inputMethod:fcitx
-!!颜色设置
-URxvt.depth:32
-!!中括号内数表示透明度
-URxvt.inheritPixmap:true
-URxvt.background:#000000
-URxvt.foreground:#ffffff
-URxvt.colorBD:Gray95
-URxvt.colorUL:Green
-URxvt.color1:Red2
-URxvt.color4:RoyalBlue
-URxvt.color5:Magenta2
-URxvt.color8:Gray50
-URxvt.color10:Green2
-URxvt.color12:DodgerBlue
-URxvt.color14:Cyan2
-URxvt.color15:Gray95
-!!URL操作
-URxvt.urlLauncher:chromium
-URxvt.matcher.button:1
-Urxvt.perl-ext-common:matcher
-!!滚动条设置
-URxvt.scrollBar:False
-URxvt.scrollBar_floating:False
-URxvt.scrollstyle:plain
-!!滚屏设置
-URxvt.mouseWheelScrollPage:True
-URxvt.scrollTtyOutput:False
-URxvt.scrollWithBuffer:True
-URxvt.scrollTtyKeypress:True
-!!光标闪烁
-URxvt.cursorBlink:True
-URxvt.saveLines:3000
-!!边框
-URxvt.borderLess:False
-!!字体设置
 Xft.dpi:96
-URxvt.font:xft:Source Code Pro:antialias=True:pixelsize=18,xft:WenQuanYi Zen Hei:pixelsize=18
-URxvt.boldfont:xft:Source Code Pro:antialias=True:pixelsize=18,xft:WenQuanYi Zen Hei:pixelsize=18
+Xft.antialias:true
+Xft.rgba:rgb
+Xft.hinting:true
+Xft.hintstyle:hintslight
+
+URxvt.loginShell:true
+URxvt.inputMethod:fcitx
+URxvt.depth:32
+
+URxvt.mouseWheelScrollPage:true
+URxvt.scrollBar:false
+URxvt.scrollBar_floating:false
+URxvt.scrollstyle:rxvt
+URxvt.scrollTtyOutput:false
+URxvt.scrollWithBuffer:true
+URxvt.scrollTtyKeypress:true
+
+URxvt.cursorBlink:true
+URxvt.cursorUnderline:false
+
+URxvt.saveLines:100
+URxvt.borderLess:false
+
+URxvt.allow_bold:false
+URxvt.font:xft:Monaco:style=Regular:antialias=True:size=12,xft:Source Han Sans CN:style=Regular:size=12
+URxvt.boldfont:xft:Source Code Pro:style=Regular:antialias=True:size=12,xft:Source Han Sans CN:style=Regular:size=12
+
+!URxvt.inheritPixmap:false
+URxvt.transparent:false
+URxvt.shading:20
+URxvt.intensityStyles: false
+
+URxvt.perl-ext-common: default,matcher,font-size
+URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.matcher.button: 1
+
+!https://github.com/majutsushi/urxvt-font-size
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-equal:  font-size:reset
+
+!!######################### Colorscheme settings ########################!
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
 
 
 ! --- xmessage {{{1

@@ -232,6 +232,8 @@ nnoremap <C-F7> :<C-u>action Generate<CR>
 " Git
 nnoremap \\gm :<C-u>action Vcs.QuickListPopupAction<CR>
 nnoremap \\gc :<C-u>action CheckinProject<CR>
+nnoremap \\gp :<C-u>action Git.Commit.And.Push.Executor<CR>
+nnoremap \\gu :<C-u>action Vcs.UpdateProject<CR>
 
 " History
 nnoremap \\h  :<C-u>action RecentChanges<CR>

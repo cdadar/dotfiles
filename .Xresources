@@ -183,7 +183,6 @@ URxvt.borderLess:False
 
 URxvt.allow_bold:false
 
-Xft.dpi:96
 URxvt.font:xft:Source Code Pro:antialias=True:pixelsize=13,xft:WenQuanYi Zen Hei:pixelsize=13
 URxvt.boldfont:xft:Source Code Pro:antialias=True:pixelsize=13,xft:WenQuanYi Zen Hei:pixelsize=13
 
@@ -193,7 +192,8 @@ URxvt.shading:20
 URxvt.intensityStyles: false
 
 !select url
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,tabbed
+URxvt.perl-ext-common: default,matcher,clipboard,url-select,keyboard-select,fullscreen,resize-font
+URxvt.url-launcher: /usr/bin/google-chrome-stable
 URxvt.url-select.launcher: /usr/bin/google-chrome-stable
 URxvt.url-select.underline: true
 URxvt.keysym.M-u: perl:url-select:select_next
@@ -201,18 +201,23 @@ URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.colorUL: #4682B4
 
+! cut and paste
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+
+URxvt.matcher.button: 1
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+URxvt.matcher.rend.0: Uline Bold fg5
 
 !https://github.com/majutsushi/urxvt-font-size
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
 URxvt.keysym.C-equal:  font-size:reset
 
-
-!tabs
-! URxvt.tabbed.tabbar-fg: 5
-! URxvt.tabbed.tabbar-bg: 0
-! URxvt.tabbed.tab-fg: 6
-! URxvt.tabbed.tab-bg: 0
+! fulscreen
+URxvt.keysym.F11: perl:fullscreen:switch
 
 !bell
 URxvt.urgentOnBell: True

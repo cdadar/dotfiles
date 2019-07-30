@@ -75,18 +75,18 @@ bindkey -e #emacs
 
 # User specific aliases and functions
 
-# tmux_init()
-# {
-#     tmux new-session -s "chen" -d -n "local"    # 开启一个会话
-#     tmux attach
-# }
+tmux_init()
+{
+    tmux new-session -s "chen" -d -n "local"    # 开启一个会话
+    tmux attach
+}
 
 # 判断是否已有开启的tmux会话，没有则开启
-# if which tmux 2>&1 >/dev/null; then
-#     test -z "$TMUX" && (tmux attach || tmux_init)
-# fi
+if which tmux 2>&1 >/dev/null; then
+    test -z "$TMUX" && (tmux attach || tmux_init)
+fi
 
-# PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 
 source $ZSH/oh-my-zsh.sh

@@ -13,3 +13,5 @@ weasel.yaml
 .vim/
 
 .directory
+
+.tmux/resurrect/

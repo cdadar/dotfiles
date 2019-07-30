@@ -153,7 +153,6 @@ xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35
 
 ! --- xrxvt {{{1
 !------------------------------------------------------------------------------
-Xft.dpi:96
 Xft.antialias:true
 Xft.rgba:rgb
 Xft.hinting:true
@@ -163,6 +162,7 @@ URxvt.loginShell:true
 URxvt.inputMethod:fcitx
 URxvt.depth:32
 
+!!!滚屏设置
 URxvt.mouseWheelScrollPage:true
 URxvt.scrollBar:false
 URxvt.scrollBar_floating:false
@@ -171,13 +171,19 @@ URxvt.scrollTtyOutput:false
 URxvt.scrollWithBuffer:true
 URxvt.scrollTtyKeypress:true
 
-URxvt.cursorBlink:true
-URxvt.cursorUnderline:false
 
-URxvt.saveLines:100
-URxvt.borderLess:false
+
+!!!光标闪烁
+URxvt.cursorBlink:True
+URxvt.cursorUnderline:false
+URxvt.saveLines:100000
+
+!!!边框
+URxvt.borderLess:False
 
 URxvt.allow_bold:false
+
+Xft.dpi:96
 URxvt.font:xft:Source Code Pro:antialias=True:pixelsize=13,xft:WenQuanYi Zen Hei:pixelsize=13
 URxvt.boldfont:xft:Source Code Pro:antialias=True:pixelsize=13,xft:WenQuanYi Zen Hei:pixelsize=13
 
@@ -186,14 +192,31 @@ URxvt.transparent:false
 URxvt.shading:20
 URxvt.intensityStyles: false
 
-URxvt.perl-ext-common: default,matcher,font-size
-URxvt.url-launcher: /usr/bin/google-chrome-stable
-URxvt.matcher.button: 1
+!select url
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,tabbed
+URxvt.url-select.launcher: /usr/bin/google-chrome-stable
+URxvt.url-select.underline: true
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.colorUL: #4682B4
+
 
 !https://github.com/majutsushi/urxvt-font-size
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
 URxvt.keysym.C-equal:  font-size:reset
+
+
+!tabs
+! URxvt.tabbed.tabbar-fg: 5
+! URxvt.tabbed.tabbar-bg: 0
+! URxvt.tabbed.tab-fg: 6
+! URxvt.tabbed.tab-bg: 0
+
+!bell
+URxvt.urgentOnBell: True
+
 
 ! --- xmessage {{{1
 ! -----------------------------------------------------------------------------

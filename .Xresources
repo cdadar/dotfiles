@@ -205,6 +205,8 @@ URxvt.colorUL: #4682B4
 URxvt.clipboard.autocopy: true
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
 
 URxvt.matcher.button: 1
 URxvt.keysym.C-Delete: perl:matcher:last

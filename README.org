@@ -4,6 +4,9 @@ vim tmux tern git
 ** tmux
 
 need xclip
+
+: tmux show-options -g -s set-clipboard
+
 ** xterm
 
 : xrdb ~/.Xresources

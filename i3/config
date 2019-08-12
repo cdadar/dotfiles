@@ -30,18 +30,25 @@ font pango:monospace 8
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 # start file manager
-bindsym $mod+e exec dolphin
+#bindsym $mod+e exec dolphin
 
-bindsym $mod+t exec 'emacsclient -nc -a ""'
+bindsym $mod+t exec emacsclient -nc -a ""
 
 bindsym $mod+space exec "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
+
+bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
+bindsym XF86AudioMute exec amixer sset Master toggle
+
+bindsym Print exec xfce4-screenshooter -w
+bindsym Shift+Print exec xfce4-screenshooter -r
 
 # lock screen
 bindsym $mod+c exec i3lock -c 000000
 
-set $up h
+set $up k
 set $down j
-set $left k
+set $left h
 set $right l
 
 # use Mouse+$mod to drag floating windows to their wanted position
@@ -208,3 +215,5 @@ exec i3-config-wizard
 
 # start fcitx
 exec fcitx
+
+exec_always --no-startup-id ~/.nutstore/dist/bin/nutstore-pydaemon.py

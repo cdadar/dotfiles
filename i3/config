@@ -37,9 +37,7 @@ bindsym $mod+t exec emacsclient -nc -a ""
 
 # start drofi dmenu
 bindsym $mod+Tab exec --no-startup-id rofi -show window
-bindsym $mod+Shift+d exec --no-startup-id rofi -show run
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+space exec --no-startup-id "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
 
 bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
@@ -114,7 +112,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod1+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent

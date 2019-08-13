@@ -1,6 +1,15 @@
 *  dotfiles
 
 vim tmux tern git
+** xrandr
+
+查看当前屏幕
+: xrandr --current
+
+
+设置屏幕位置
+: xrandr --output VGA1 --left-of HDMI1 --auto
+
 ** tmux
 
 need xclip

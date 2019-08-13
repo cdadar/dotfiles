@@ -166,6 +166,33 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+
+# Assign URxvt terminals to workspace 2
+#assign [class="URxvt"] 2
+# Same thing, but more precise (exact match instead of substring)
+#assign [class="^URxvt$"] 2
+# Same thing, but with a beautiful arrow :)
+#assign [class="^URxvt$"] → 2
+# Assignment to a named workspace
+#assign [class="^URxvt$"] → work
+# Assign to the workspace with number 2, regardless of name
+#assign [class="^URxvt$"] → number 2
+# You can also specify a number + name. If the workspace with number 2 exists,
+# assign will skip the text part.
+#assign [class="^URxvt$"] → number "2: work"
+# Start urxvt -name irssi
+#assign [class="^URxvt$" instance="^irssi$"] → 3
+# Assign urxvt to the output right of the current one
+#assign [class="^URxvt$"] → output right
+# Assign urxvt to the primary output
+#assign [class="^URxvt$"] → output primary
+
+assign [class="^chrome$"] 1
+assign [class="^idea$"] 2
+assign [class="URxvt"] 3
+assign [class="^emacs$"] 4
+
+
 workspace 1 output VGA1
 workspace 2 output HDMI1
 workspace 3 output VGA1

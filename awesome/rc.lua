@@ -546,11 +546,11 @@ globalkeys = awful.util.table.join(
 
    awful.key({ }, "Print",
       function ()
-         awful.util.spawn("xfce4-screenshooter -w")
+         awful.util.spawn("scrot -u -e 'mv $f ~/Images/'")
    end),
    awful.key({ "Shift" }, "Print",
       function ()
-         awful.util.spawn("xfce4-screenshooter -r")
+         awful.util.spawn("scrot -s -e 'mv $f ~/Images/'")
    end),
    awful.key({ modkey,           }, "t",
       function ()

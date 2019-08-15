@@ -48,8 +48,8 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
 
 
-bindsym Print exec xfce4-screenshooter -w
-bindsym Shift+Print exec xfce4-screenshooter -r
+bindsym --release Print exec scrot -u
+bindsym --release Shift+Print exec scrot -s
 
 set $up k
 set $down j
@@ -97,10 +97,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#bindsym $mod+h split h
+bindsym $mod+comma split h
 
 # split in vertical orientation
-#bindsym $mod+v split v
+bindsym $mod+period split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -120,7 +120,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shi+d focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad

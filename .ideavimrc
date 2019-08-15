@@ -250,7 +250,7 @@ nnoremap <C-A-F8> :<C-u>action MavenRunHelperCleanInstall<cr>
 " Debug
 nnoremap <Leader>dd :<C-u>action Debug<CR>
 nnoremap <Leader>dc :<C-u>action ChooseDebugConfiguration<CR>
-nnoremap <C-A-F9>       :<C-u>action ChooseDebugConfiguration<CR>
+nnoremap <C-A-F9>   :<C-u>action ChooseDebugConfiguration<CR>
 nnoremap <S-F9>     :<C-u>action Debug<CR>
 nnoremap <C-F9>     :<C-u>action DebugClass<CR>
 

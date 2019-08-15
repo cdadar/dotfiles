@@ -283,6 +283,15 @@ noremap <Leader>sc <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
 noremap <Leader>sf <ESC>:action SonarLint.AnalyzeFiles<cr>
 
 
+" global find
+noremap g/ <ESC>:action FindInPath<cr>
+" gloaal replace
+noremap g' <ESC>:action ReplaceInPath<cr>
+" find
+noremap / <ESC>:action Find<cr>
+" replace
+noremap ' <ESC>:action Replace<cr>
+
 " previous method
 noremap [[ <ESC>:action MethodUp<cr>
 " next method

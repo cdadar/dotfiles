@@ -48,8 +48,8 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
 
 
-bindsym --release Print exec scrot -u
-bindsym --release Shift+Print exec scrot -s
+bindsym --release Print exec scrot -u -e 'mv $f ~/Images/'
+bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Images/'
 
 set $up k
 set $down j

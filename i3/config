@@ -294,4 +294,6 @@ exec i3-config-wizard
 # start fcitx
 exec fcitx
 
+exec ~/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox
+
 exec_always --no-startup-id ~/.nutstore/dist/bin/nutstore-pydaemon.py

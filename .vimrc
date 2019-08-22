@@ -208,6 +208,8 @@ set smartcase
 
 set fileformats=unix,dos,mac
 
+set showcmd
+
 if exists('$SHELL')
     set shell=$SHELL
 else

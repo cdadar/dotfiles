@@ -46,6 +46,7 @@ bindsym $mod+t exec emacsclient -nc -a ""
 # start drofi dmenu
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
+bindsym $mod+Shift+d exec --no-startup-id "rofi -show drun"
 
 
 bindsym --release Print exec scrot -u -e 'mv $f ~/Images/'
@@ -120,7 +121,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+Shift+d focus child
+bindsym $mod+Shift+a focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad

@@ -43,6 +43,9 @@ export NODE_HOME=/usr/local
 export PATH=$PATH:$NODE_HOME/bin
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
+# yarn
+# export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
+
 # Android_SDK
 export ANDROID_SDK=$HOME/program/android-sdk-linux
 
@@ -78,8 +81,6 @@ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 source /usr/bin/virtualenvwrapper.sh
 
-# yarn
-export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
 
 # php composer
 export PATH=$PATH:$HOME/.config/composer/vendor/bin

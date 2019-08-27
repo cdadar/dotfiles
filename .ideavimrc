@@ -21,6 +21,8 @@ set incsearch
 set showmode
 " 共享系统粘贴板
 set clipboard=unnamed
+" set clipboard+=ideaput
+
 " set clipboard=ideaput
 " 搜索时智能匹配大小写
 set ignorecase smartcase
@@ -61,6 +63,7 @@ noremap x "_x
 noremap ,d "_d
 noremap ,D "_D
 nnoremap ,p :<C-u>action $Paste<CR>
+inoremap <c-v> <Esc>:action $Paste<cr>
 
 
 " Move
@@ -185,7 +188,14 @@ nnoremap <Leader>h  :<C-u>action CallHierarchy<CR>
 " Find word
 nnoremap <Leader>F  :<C-u>action Find<CR>
 nnoremap <Leader>f  :<C-u>action FindInPath<CR>
+" Replace word
+nnoremap <Leader>R <ESC>:action Replace<cr>
+nnoremap <Leader>r <ESC>:action ReplaceInPath<cr>
 
+" global find
+nnoremap g/ <ESC>:action FindInPath<cr>
+" find
+nnoremap / <ESC>:action Find<cr>
 
 " Edit
 vnoremap < <gv
@@ -239,24 +249,18 @@ nnoremap \\hl  :<C-u>action LocalHistory.ShowHistory<CR>
 nnoremap <S-F8> :<C-u>action CompileDirty<CR>
 nnoremap <C-F8> :<C-u>action StopBackgroundProcesses<CR>
 nnoremap <C-S-F8> :<C-u>action Clean<CR>
-nnoremap <C-A-F8> :<C-u>action MavenRunHelperCleanInstall<cr>
 nnoremap <leader>mci :<C-u>action MavenRunHelperCleanInstall<cr>
 
 
 " Debug
-nnoremap <Leader>dd :<C-u>action Debug<CR>
-nnoremap <Leader>dc :<C-u>action ChooseDebugConfiguration<CR>
-nnoremap <C-A-F9>   :<C-u>action ChooseDebugConfiguration<CR>
-nnoremap <S-F9>     :<C-u>action Debug<CR>
-nnoremap <C-F9>     :<C-u>action DebugClass<CR>
+nnoremap <S-A-F9> :<C-u>action ChooseDebugConfiguration<CR>
+nnoremap <C-F9>   :<C-u>action DebugClass<CR>
+nnoremap <S-F9>   :<C-u>action Debug<CR>
 
 " Run
-nnoremap <Leader>rr :<C-u>action Run<CR>
-nnoremap <Leader>rc :<C-u>action ChooseRunConfiguration<CR>
-nnoremap <Leader>tn :<C-u>action RunClass<CR>
-nnoremap <F10>      :<C-u>action ChooseRunConfiguration<CR>
-nnoremap <S-F10>    :<C-u>action Run<CR>
-nnoremap <C-F10>    :<C-u>action RunClass<CR>
+nnoremap <S-A-F10> :<C-u>action ChooseRunConfiguration<CR>
+nnoremap <C-F10>   :<C-u>action RunClass<CR>
+nnoremap <S-F10>   :<C-u>action Run<CR>
 
 " Debugger
 nnoremap <Leader>b  :<C-u>action ToggleLineBreakpoint<CR>
@@ -272,14 +276,6 @@ noremap <Leader>sc <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
 noremap <Leader>sf <ESC>:action SonarLint.AnalyzeFiles<cr>
 
 
-" global find
-noremap g/ <ESC>:action FindInPath<cr>
-" gloaal replace
-noremap g' <ESC>:action ReplaceInPath<cr>
-" find
-noremap / <ESC>:action Find<cr>
-" replace
-noremap ' <ESC>:action Replace<cr>
 
 " previous method
 noremap [[ <ESC>:action MethodUp<cr>

@@ -152,4 +152,4 @@ fi
 
 # load xterm config
 # xrdb $HOME/.Xresources
-# [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
+[[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources

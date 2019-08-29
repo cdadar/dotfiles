@@ -218,6 +218,8 @@ nnoremap ,rs :<C-u>action ChangeSignature<CR>
 nnoremap ,rt :<C-u>action ChangeTypeSignature<CR>
 nnoremap ,ru :<C-u>action MembersPullUp<CR>
 nnoremap ,rd :<C-u>action MemberPushDown<CR>
+nnoremap ,rc :<C-u>action IntroduceConstant<CR>
+nnoremap ,rv :<C-u>action IntroduceVariable<CR>
 nnoremap <S-F7> :<C-u>action RenameElement<CR>
 
 " Generate

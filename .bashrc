@@ -26,7 +26,7 @@ alias wm_test='Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome'
 export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
 
 # 终端颜色
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 # 错误检查
 export MALLOC_CHECK_=1

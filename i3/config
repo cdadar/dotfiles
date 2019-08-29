@@ -240,7 +240,7 @@ bindsym $mod+r mode "resize"
 #                                   Power Managment
 # Use i3lock to lock screen. The background color of lock screen is #111111
 #set $Locker i3lock -c "#111111" && sleep 1
-set $Locker i3lock -t -i ~/Pictures/pink_floyid.png && sleep 1
+set $Locker i3lock -t -i /data/Pictures/code_lock.png && sleep 1
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"

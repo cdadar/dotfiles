@@ -26,12 +26,37 @@ alias wm_test='Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome'
 
 export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
 
+#ssh
+# SSH_ENV="$HOME/.ssh/environment"
+
+# function start_agent {
+#     echo "Initialising new SSH agent..."
+#     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+#     echo succeeded
+#     chmod 600 "${SSH_ENV}"
+#     . "${SSH_ENV}" > /dev/null
+#     /usr/bin/ssh-add;
+# }
+
+# # Source SSH settings, if applicable
+
+# if [ -f "${SSH_ENV}" ]; then
+#     . "${SSH_ENV}" > /dev/null
+#     #ps ${SSH_AGENT_PID} doesn't work under cywgin
+#     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+#         start_agent;
+#     }
+# else
+#     start_agent;
+# fi
+
+
+
 # 终端颜色
 # export TERM=xterm-256color
 
 # 错误检查
 export MALLOC_CHECK_=1
-
 
 # export HTTP_PROXY_REQUEST_FULLURI=0
 # export HTTPS_PROXY_REQUEST_FULLURI=0
@@ -44,16 +69,21 @@ export MALLOC_CHECK_=1
 # xrdb $HOME/.Xresources
 # [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
-
 # locale
 if [[ $(tty) == /dev/tty* ]]; then
     setfont /usr/share/kbd/consolefonts/suse12x22.psfu.gz
     export LC_ALL="en_US.UTF-8"
     export LANGUAGE="en_US.UTF-8"
     export LANG="en_US.UTF-8"
+    exec ssh-agent fish
     exec fish
 else
     export LC_ALL="zh_CN.UTF-8"
     export LANGUAGE="zh_CN.UTF-8"
     export LANG="zh_CN.UTF-8"
 fi
+
+# ssh
+export SSH_KEY_PATH="$HOME/.ssh"
+ssh-add "$SSH_KEY_PATH/work_rsa"
+# unset SSH_ASKPASS

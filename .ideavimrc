@@ -81,6 +81,9 @@ nnoremap [c :<C-u>action VcsShowPrevChangeMarker<CR>
 nnoremap ]c :<C-u>action VcsShowNextChangeMarker<CR>
 nnoremap [e :<C-u>action GotoPreviousError<CR>
 nnoremap ]e :<C-u>action GotoNextError<CR>
+nnoremap [b :action GotoPreviousBookmark<cr>
+nnoremap ]b :action GotoNextBookmark<cr>
+
 nnoremap <C-Up> :<C-u>action MethodUp<CR>
 nnoremap <C-Down> :<C-u>action MethodDown<CR>
 nnoremap <C-S-Up> :<C-u>action VcsShowPrevChangeMarker<CR>
@@ -276,14 +279,3 @@ nnoremap <C-F5>  :<C-u>action Refresh<CR>
 " SnoarLint
 noremap <Leader>sc <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
 noremap <Leader>sf <ESC>:action SonarLint.AnalyzeFiles<cr>
-
-
-
-" previous method
-noremap [[ <ESC>:action MethodUp<cr>
-" next method
-noremap ]] <ESC>:action MethodDown<cr>
-nnoremap [c :action VcsShowPrevChangeMarker<cr>
-nnoremap ]c :action VcsShowNextChangeMarker<cr>
-nnoremap [b :action GotoPreviousBookmark<cr>
-nnoremap ]b :action GotoNextBookmark<cr>

@@ -171,7 +171,7 @@ nnoremap <C-k> :<C-u>action ShowUsages<CR>
 
 " Goto file
 nnoremap <Leader>gs :<C-u>action GotoSymbol<CR>
-nnoremap <F6>       :<C-u>action GotoRelated<CR>
+nnoremap <Leader>gr :<C-u>action GotoRelated<CR>
 
 " Search
 nnoremap <Leader>e  :<C-u>action SearchEverywhere<CR>

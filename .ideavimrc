@@ -216,6 +216,8 @@ nnoremap - :<C-u>action EditorUnSelectWord<CR>
 
 " Refactor
 nnoremap ,rm  :<C-u>action ExtractMethod<CR>
+nnoremap ,ri  :<C-u>action Inline<CR>
+nnoremap ,rD  :<C-u>action DelegateMethods<CR>
 nnoremap ,rn  :<C-u>action RenameElement<CR>
 nnoremap ,rs :<C-u>action ChangeSignature<CR>
 nnoremap ,rt :<C-u>action ChangeTypeSignature<CR>

@@ -225,7 +225,6 @@ nnoremap ,ru :<C-u>action MembersPullUp<CR>
 nnoremap ,rd :<C-u>action MemberPushDown<CR>
 nnoremap ,rc :<C-u>action IntroduceConstant<CR>
 nnoremap ,rv :<C-u>action IntroduceVariable<CR>
-nnoremap <S-F7> :<C-u>action RenameElement<CR>
 
 " Generate
 nnoremap ,g, :<C-u>action Generate<CR>

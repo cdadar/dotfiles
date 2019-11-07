@@ -81,8 +81,8 @@ nnoremap [c :<C-u>action VcsShowPrevChangeMarker<CR>
 nnoremap ]c :<C-u>action VcsShowNextChangeMarker<CR>
 nnoremap [e :<C-u>action GotoPreviousError<CR>
 nnoremap ]e :<C-u>action GotoNextError<CR>
-nnoremap [b :action GotoPreviousBookmark<cr>
-nnoremap ]b :action GotoNextBookmark<cr>
+nnoremap [b :<C-u>action GotoPreviousBookmark<cr>
+nnoremap ]b :<C-u>action GotoNextBookmark<cr>
 
 nnoremap <C-Up> :<C-u>action MethodUp<CR>
 nnoremap <C-Down> :<C-u>action MethodDown<CR>
@@ -90,8 +90,8 @@ nnoremap <C-S-Up> :<C-u>action VcsShowPrevChangeMarker<CR>
 nnoremap <C-S-Down> :<C-u>action VcsShowNextChangeMarker<CR>
 nnoremap <A-Up> :<C-u>action MethodUp<CR>
 nnoremap <A-Down> :<C-u>action MethodDown<CR>
-
-
+nnoremap <A-S-Up> :<C-u>action MoveLineUp<CR>
+nnoremap <A-S-Down> :<C-u>action MoveLineDown<CR>
 
 
  " Navigate

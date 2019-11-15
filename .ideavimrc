@@ -6,9 +6,14 @@
 let mapleader = ' '
 
 " 启用vim surround功能
+" Commands: ys, cs, ds, S
 set surround
 " 启用multi cursor
+" Commands: <A-n>, <A-x>, <A-p>, g<A-n>
 set multiple-cursors
+" 启用 commentary
+" Commands: gcc, gc + motion, v_gc
+set commentary
 " 显示行号
 set nu
 " 显示相对行号

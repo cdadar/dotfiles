@@ -161,6 +161,8 @@ Plug 'posva/vim-vue'
 Plug 'leafOfTree/vim-vue-plugin'
 
 
+" latex
+Plug 'lervag/vimtex'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -721,6 +723,13 @@ let g:yats_host_keyword = 1
 let g:vue_disable_pre_processors=1
 " vim vue plugin
 let g:vim_vue_plugin_load_full_syntax = 1
+
+" latex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 
 "*****************************************************************************

@@ -5,6 +5,9 @@
 " leader
 let mapleader = ' '
 
+set easymotion
+let g:EasyMotion_override_acejump = 0
+
 " 启用vim surround功能
 " Commands: ys, cs, ds, S
 set surround

@@ -168,6 +168,7 @@ nnoremap K :<C-u>action QuickJavaDoc<CR>
 nnoremap gK :<C-u>action GotoDeclaration<CR>
 nnoremap gk :<C-u>action GotoTypeDeclaration<CR>
 nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap gI :<C-u>action ImplementMethods<CR>
 nnoremap gs :<C-u>action GotoSuperMethod<CR>
 nnoremap gt :<C-u>action GotoTest<CR>
 
@@ -244,7 +245,6 @@ nnoremap ,gs :<C-u>action GenerateSetter<CR>
 nnoremap ,ga :<C-u>action GenerateGetterAndSetter<CR>
 nnoremap ,ge :<C-u>action GenerateEquals<CR>
 nnoremap ,gt :<C-u>action GenerateTestMethod<CR>
-nnoremap ,gi :<C-u>action ImplementMethods<CR>
 nnoremap <C-F7> :<C-u>action Generate<CR>
 
 

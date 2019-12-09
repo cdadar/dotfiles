@@ -5,37 +5,13 @@
 	default = simple
 [alias]
 
-	# @see http://magazine.redhat.com/2008/05/02/shipping-quality-code-with-git/
-	# @see http://mislav.uniqpath.com/2014/02/hidden-documentation/
-	# @see https://stackoverflow.com/questions/7124914/how-to-search-a-git-repository-by-commit-message/7124949
-	# All commits in feature branch is squashed into one commit
-	# Find branches containing commit
-	# Find commits by commit message
-	# Find commits by source code
-	# Find tags containing commit
-	# Remove branches that have already been merged with master
-	# Remove branches that have already been merged with master
-	# checkout hunk by hunk
-	# create corresponding remote branch
-	# delete all remote branches except master and HEAD, DANGEROUS!
-	# delete tag(s)
-	# for paste into email title, NO parentheses
-	# for paste into email title, WITH parentheses
-	# merge but not fast-forward
-	# more meaningful alias for infrequent command
-	# remote cherry pick: rpitck url commit-id
-	# reset hunk by hunk
-	# revert the commit but apply change in index only
-	# see http://stackoverflow.com/questions/5308816/how-to-use-git-merge-squash
-	# show holded branches
-	# {{ push one specific commit to remote branch
-	# }}
 	a = add
 	ai = add -i
 	al = alias
 	ap = add --patch # add hunk by hunk
 	au = add -u
 	b = branch
+	# more meaningful alias for infrequent command
 	back = reset --soft HEAD^ # undo the previous commit
 	back2 = reset --soft HEAD^^
 	bm = branch --merged
@@ -44,12 +20,15 @@
 	c = commit
 	ca = commit --amend
 	caa = commit -a --amend
+	# @see http://mislav.uniqpath.com/2014/02/hidden-documentation/
 	cat = "!f() { git show $1:./`git ls-tree -r $1 --name-status | python ~/bin/percol.py`; }; f"
 	cl = clean -fxd
 	cl = clone
 	clr = clean -d -f
+	# revert the commit but apply change in index only
 	cn = cherry-pick --no-commit -x
 	co = checkout
+	# checkout hunk by hunk
 	cp= checkout --patch
 	ct= count-objects
 	d = diff
@@ -57,41 +36,56 @@
 	dc = diff --cached
 	dcs = diff --cached --stat
 	df= diff-tree --no-commit-id --name-only
+	# Remove branches that have already been merged with master
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 	dn=diff --name-only --diff-filter=U #conflicts
 	ds = diff --stat
+	# delete tag(s)
 	dtag = "!f() { git tag -d $1 && git push origin :refs/tags/$1; }; f"
 	dw = diff --color-words
+	# Find branches containing commit
 	fb = "!f() { git branch -a --contains $1; }; f"
 	fc=fetch -p #fetch and clean local invalid ref
 	fetus = !git fetch && git branch -v -a
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h %Cblue%ad %Creset%s%Cgreen [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 	fp=format-patch -n --stdout
+	# Find commits by source code
 	fs = "!f() { git log --pretty=format:'%C(yellow)%h %Cblue%ad %Creset%s%Cgreen [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	# Find tags containing commit
 	ft = "!f() { git describe --always --contains $1; }; f"
 	gp= format-patch -n --stdout
+	# hold, @see http://git-blame.blogspot.com.au/2012/08/leftover-bits.html
 	hd = "!sh -c 'git update-ref refs/hold/$1 refs/heads/$1 && git branch -D $1' -"
 	l = log --pretty=format:'%C(yellow)%h%Creset%C(green)%d%Creset %ad %s %Cred(%an)%Creset' --date=short --decorate --graph
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	# @see http://magazine.redhat.com/2008/05/02/shipping-quality-code-with-git/
+	lg = log --graph
 	ls= log --pretty=format:'%h %s (%an)' --date=short # simple log for clipboard
 	lt = log --topo-order
 	m = merge
 	mg = merge
+	# merge but not fast-forward
 	mn = merge --no-ff
+	# All commits in feature branch is squashed into one commit
+	# see http://stackoverflow.com/questions/5308816/how-to-use-git-merge-squash
 	ms = merge --squash # you need `git commit` after merge
 	mt= mergetool
 	n = checkout -b
-	p1 = "!f() { git push origin $1:`git symbolic-ref --short HEAD`; }; f"
 	pick = cherry-pick
 	pl = pull
+	# create corresponding remote branch
 	pnew = "!f() { git push -u origin `git symbolic-ref --short HEAD`; }; f"
+	# {{ push one specific commit to remote branch
+	p1 = "!f() { git push origin $1:`git symbolic-ref --short HEAD`; }; f"
 	pp1 = "!f() { git push -f origin $1:`git symbolic-ref --short HEAD`; }; f"
+	# }}
 	pr = pull --rebase
 	ps = push
+	# for paste into email title, NO parentheses
 	pwhatis = show -s --pretty='tformat:%h, %s, %ad' --date=short
 	r = rebase
 	ra = rebase --abort
 	rc = rebase --continue
+	# @see https://stackoverflow.com/questions/7124914/how-to-search-a-git-repository-by-commit-message/7124949
 	review = "!f() { git log -p --all --grep=\"$1\"; }; f"
 	rf = rev-parse --show-toplevel # show root folder
 	rfld1=reset HEAD^ --
@@ -99,9 +93,12 @@
 	rh = reset --hard
 	ri = rebase -i
 	rk = rebase --skip
+	# delete all remote branches except master and HEAD, DANGEROUS!
 	rm-remotes-but-master = "!git branch -r | awk -F/ '/\\/[^mH]/{print $2}'| xargs  -I{} git push -f origin :{}"
 	rn = revert --no-commit
+	# reset hunk by hunk
 	rp = reset --patch
+	# remote cherry pick: rpitck url commit-id
 	rpick = "!f() { git fetch $1 master && git cherry-pick $2; }; f"
 	rs=reset --soft
 	s = status
@@ -111,6 +108,7 @@
 	sbi = submodule init
 	sbp = submodule foreach git pull
 	sbu = submodule update
+	# show holded branches
 	shd ="!sh -c 'git show-ref | grep refs/hold'"
 	sm = submodule
 	sr = show-ref
@@ -122,6 +120,7 @@
 	untrack=rm -r --cached # donot track the file(s)
 	up = !git stash && git pull --rebase && git stash pop
 	wc = whatchanged
+	# for paste into email title, WITH parentheses
 	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 	who = "!f() { git log --format='%an' $1 | sort | uniq -c | sort -rn | head -n 50; }; f"
 	who1m = "!f() { git log --format='%an' --since='1 month ago' $1 | sort | uniq -c | sort -rn | head -n50; }; f"
@@ -134,8 +133,10 @@
 [core]
 	autocrlf = input
 [merge]
-	tool = vimdiff
 	conflictstyle = diff3
+	branchdesc = true
+	log = true
+	tool = vimdiff
 [diff]
 	tool = vimdiff
 [difftool]

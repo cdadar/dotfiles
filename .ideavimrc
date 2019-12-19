@@ -28,7 +28,8 @@ set incsearch
 " 显示当前的模式
 set showmode
 " 共享系统粘贴板
-set clipboard=unnamed
+" set clipboard=unnamed
+set clipboard+=unnamed
 " set clipboard+=ideaput
 
 " set clipboard=ideaput

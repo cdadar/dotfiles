@@ -53,13 +53,13 @@ bindsym $mod+Shift+d exec --no-startup-id "rofi -show drun"
 # bindsym --release Shift+Print exec scrot -s -e 'mv $f /data/Pictures/'
 
 # 全屏截图
-bindsym --release Print exec "scrot -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png"
+bindsym --release Print exec "scrot -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M%s').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png"
 # 截取当前窗口
-bindsym --release $mod+Print exec "scrot -u -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png"
+bindsym --release $mod+Print exec "scrot -u -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png"
 # 鼠标选择区域
-bindsym --release $mod+Shift+Print exec "scrot -s -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png"
+bindsym --release $mod+Shift+Print exec "scrot -s -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').Png"
 
-set $up k
+Set $up k
 set $down j
 set $left h
 set $right l

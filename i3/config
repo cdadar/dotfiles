@@ -49,8 +49,15 @@ bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run,ssh -show 
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show drun"
 
 
-bindsym --release Print exec scrot -u -e 'mv $f ~/Images/'
-bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Images/'
+# bindsym --release Print exec scrot -u -e 'mv $f /data/Pictures/'
+# bindsym --release Shift+Print exec scrot -s -e 'mv $f /data/Pictures/'
+
+# 全屏截图
+bindsym --release Print exec "scrot -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png"
+# 截取当前窗口
+bindsym --release $mod+Print exec "scrot -u -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png"
+# 鼠标选择区域
+bindsym --release $mod+Shift+Print exec "scrot -s -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M').png"
 
 set $up k
 set $down j

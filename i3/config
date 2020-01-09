@@ -104,6 +104,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# Moving workspaces between screens
+bindsym $mod+p move workspace to output right
+
 # split in horizontal orientation
 bindsym $mod+comma split h
 

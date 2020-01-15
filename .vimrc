@@ -3,7 +3,11 @@
 "*****************************************************************************
 "" Vim-PLug core
 "*****************************************************************************
-let vimplug_exists=expand('~/.vim/autoload/plug.vim')
+if using_neovim
+    let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+else
+    let vimplug_exists =expand('~/.vim/autoload/plug.vim')
+endif
 
 let g:vim_bootstrap_langs = "c,go,haskell,html,javascript,lua,perl,php,python,ruby,rust,typescript"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim

@@ -1,3 +1,8 @@
+set encoding=utf-8
+
+let using_neovim = has('nvim')
+let using_vim = !using_neovim
+
 " vim-bootstrap 
 
 "*****************************************************************************
@@ -26,7 +31,11 @@ if !filereadable(vimplug_exists)
 endif
 
 " Required:
-call plug#begin(expand('~/.vim/plugged'))
+if using_neovim
+    call plug#begin("~/.config/nvim/plugged")
+else
+    call plug#begin("~/.vim/plugged")
+endif
 
 "*****************************************************************************
 "" Plug install packages

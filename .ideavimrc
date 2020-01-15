@@ -229,7 +229,6 @@ nnoremap \\hl  :<C-u>action LocalHistory.ShowHistory<CR>
 " Build
 nnoremap <S-F8> :<C-u>action CompileDirty<CR>
 nnoremap <C-F8> :<C-u>action StopBackgroundProcesses<CR>
-nnoremap <C-S-F8> :<C-u>action Clean<CR>
 nnoremap <leader>mci :<C-u>action MavenRunHelperCleanInstall<cr>
 
 

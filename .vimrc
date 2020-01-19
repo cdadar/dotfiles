@@ -15,7 +15,12 @@ else
 endif
 
 let g:vim_bootstrap_langs = "c,go,haskell,html,javascript,lua,perl,php,python,ruby,rust,typescript"
-let g:vim_bootstrap_editor = "vim"				" nvim or vim
+
+if using_neovim
+   let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+else
+   let g:vim_bootstrap_editor = "vim"				" nvim or vim
+endif
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -182,9 +187,15 @@ Plug 'ledger/vim-ledger'
 "*****************************************************************************
 "*****************************************************************************
 
-"" Include user's extra bundle
-if filereadable(expand("~/.vimrc.local.bundles"))
-  source ~/.vimrc.local.bundles
+if using_neovim
+  if filereadable(expand("~/.config/nvim/local_bundles.vim"))
+    source ~/.config/nvim/local_bundles.vim
+  endif
+else
+  "" Include user's extra bundle
+  if filereadable(expand("~/.vimrc.local.bundles"))
+    source ~/.vimrc.local.bundles
+  endif  
 endif
 
 call plug#end()
@@ -200,7 +211,10 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set ttyfast
+
+if using_vim
+  set ttyfast
+endif
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -234,7 +248,11 @@ else
 endif
 
 " session management
-let g:session_directory = "~/.vim/session"
+if using_neovim
+  let g:session_directory = "~/.config/nvim/session"
+else
+  let g:session_directory = "~/.vim/session"
+endif
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
@@ -268,22 +286,24 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-  
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
+
+  if using_vim
+    if $COLORTERM == 'gnome-terminal'
+      set term=gnome-256color
+    else
+      if $TERM == 'xterm'
+        set term=xterm-256color
+      endif
     endif
   endif
   
 endif
 
-
-if &term =~ '256color'
-  set t_ut=
+if using_vim
+  if &term =~ '256color'
+    set t_ut=
+  endif
 endif
-
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -750,10 +770,15 @@ let g:tex_conceal='abdmg'
 "*****************************************************************************
 
 "" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
+if using_neovim
+  if filereadable(expand("~/.config/nvim/local_init.vim"))
+    source ~/.config/nvim/local_init.vim
+  endif
+else
+  if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+  endif
 endif
-
 "*****************************************************************************
 "" Convenience variables
 "*****************************************************************************

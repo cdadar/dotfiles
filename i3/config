@@ -20,6 +20,33 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# shortcuts for Moc music player
+# the previous song
+bindsym XF86AudioPrev exec --no-startup-id mocp -r
+# the next song
+bindsym XF86AudioNext exec --no-startup-id mocp -f
+# toggle between play and pause
+bindsym XF86AudioPlay exec --no-startup-id mocp -G
+
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -38,8 +65,8 @@ floating_modifier $mod
 # Automaatci back-and-forth when switching to the current workspace
 workspace_auto_back_and_forth yes
 
-#bindsym $mod+e exec dolphin
-bindsym $mod+Control+t exec thunar
+bindsym $mod+Control+t exec dolphin
+#bindsym $mod+Control+t exec thunar
 
 bindsym $mod+t exec emacsclient -nc -a ""
 
@@ -53,11 +80,11 @@ bindsym $mod+Shift+d exec --no-startup-id "rofi -show drun"
 # bindsym --release Shift+Print exec scrot -s -e 'mv $f /data/Pictures/'
 
 # 全屏截图
-bindsym --release Print exec "scrot -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M%s').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png"
+bindsym --release Print exec "scrot -b -m ~/Pictures/screenshot_$(date +'%y%m%d%H%M%s').png && xclip -selection clipoard -t 'image/png' ~/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png"
 # 截取当前窗口
-bindsym --release $mod+Print exec "scrot -u -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png"
+bindsym --release $mod+Print exec "scrot -u -b -m ~/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png && xclip -selection clipoard -t 'image/png' ~/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png"
 # 鼠标选择区域
-bindsym --release $mod+Shift+Print exec "scrot -s -b -m /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png && xclip -selection clipoard -t 'image/png' /data/Pictures/screenshot_$(date +'%y%m%d%H%M%S').Png"
+bindsym --release $mod+Shift+Print exec "scrot -s -b -m ~/Pictures/screenshot_$(date +'%y%m%d%H%M%S').png && xclip -selection clipoard -t 'image/png' ~/Pictures/screenshot_$(date +'%y%m%d%H%M%S').Png"
 
 Set $up k
 set $down j
@@ -154,28 +181,28 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 
 # Assign URxvt terminals to workspace 2
@@ -267,20 +294,6 @@ mode "$mode_system" {
 bindsym $mod+c mode "$mode_system"
 ############################################################################################################
 
-#########################################################################################
-#                                   Volume Managment
-bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
-bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
-bindsym XF86AudioMute exec amixer sset Master toggle
-#########################################################################################
-
-# shortcuts for Moc music player
-# the previous song
-bindsym XF86AudioPrev exec --no-startup-id mocp -r
-# the next song
-bindsym XF86AudioNext exec --no-startup-id mocp -f
-# toggle between play and pause
-bindsym XF86AudioPlay exec --no-startup-id mocp -G
 
 
 

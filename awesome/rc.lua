@@ -322,7 +322,7 @@ awful.screen.connect_for_each_screen(function(s)
       set_wallpaper(s)
 
       -- Each screen has its own tag table.
-      local names = { "www", "develop",  "emacs", "console", "office","6", "7", "8", "9" }
+      local names = { "1", "2",  "3", "4", "5","6", "7", "8", "9" }
       local l = awful.layout.suit  -- Just to save some typing: use an alias.
       local layouts = { l.tile, l.floating, l.max, l.max,l.floating,
                         l.floating, l.tile.left, l.floating, l.floating }
@@ -556,9 +556,20 @@ globalkeys = awful.util.table.join(
       function ()
          awful.util.spawn("emacsclient -nc -a ''")
    end),
+
+   -- awful.key({ modkey,           }, "Tab",
+   --    function ()
+   --       awful.util.spawn("rofi -show window")
+   -- end),
+
+   awful.key({ modkey,           }, "d",
+      function ()
+         awful.util.spawn("rofi -combi-modi window,drun,run,ssh -show combi -modi combi")
+   end),
+   
    awful.key({ modkey,           }, "e",
       function ()
-         awful.util.spawn("thunar")
+         awful.util.spawn("dolphin")
    end),
    awful.key({ "Control", "Mod1" }, "Delete",
       function ()
@@ -807,7 +818,7 @@ autorunApps =
       "~/.nutstore/dist/bin/nutstore-pydaemon.py",
       -- "synapse"
       -- "nm-applet --sm-disable & ",
-      "albert"
+      -- "albert"
    }
 
 if autorun then

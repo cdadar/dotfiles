@@ -9,9 +9,5 @@ luna_pinyin_simp.schema.yaml
 symbols.yaml
 user.yaml
 weasel.yaml
-
 .vim/
-
 .directory
-
-.tmux/resurrect/

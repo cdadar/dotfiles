@@ -104,12 +104,6 @@ nnoremap <A-S-Down> :<C-u>action MoveLineDown<CR>
 
 
  " Navigate
-nnoremap <S-F2> :<C-u>action Back<CR>
-nnoremap <S-F3> :<C-u>action Forward<CR>
-nnoremap <C-F2> :<C-u>action JumpToLastChange<CR>
-nnoremap <C-F3> :<C-u>action JumpToNextChange<CR>
-nnoremap <A-F2> :<C-u>action GotoPreviousError<CR>
-nnoremap <A-F3> :<C-u>action GotoNextError<CR>
 nnoremap <C-S-F2> :<C-u>action PreviousOccurence<CR>
 nnoremap <C-S-F3> :<C-u>action NextOccurence<CR>
 nnoremap g; :<C-u>action JumpToLastChange<CR>

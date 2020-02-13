@@ -159,7 +159,7 @@ Xft.hinting:true
 Xft.hintstyle:hintslight
 
 URxvt.loginShell:true
-URxvt.inputMethod:fcitx
+URxvt.inputMethod:ibus
 URxvt.depth:32
 
 !!!滚屏设置

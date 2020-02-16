@@ -183,8 +183,17 @@ URxvt.borderLess:False
 
 URxvt.allow_bold:false
 
-URxvt.font:xft:Source Code Pro:antialias=True:pixelsize=11,xft:WenQuanYi Zen Hei:pixelsize=11
-URxvt.boldfont:xft:Source Code Pro:antialias=True:pixelsize=11,xft:WenQuanYi Zen Hei:pixelsize=11
+!!!字体
+#URxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true:hinting=true
+#URxvt*boldFont: xft:Bitstream Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+#URxvt*font: xft:Liberation Mono:pixelsize=13:antialias=true:hinting=true
+#URxvt*boldFont: xft:Liberation Mono:bold:pixelsize=13:antialias=true:hinting=true
+#URxvt*font: xft:terminus:pixelsize=15
+#URxvt*boldFont: xft:terminus:bold:pixelsize=15
+#URxvt*font:-*-courier-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
+#URxvt*boldFont:-*-courier-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
 
 !URxvt.inheritPixmap:false
 URxvt.transparent:false

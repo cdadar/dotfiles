@@ -180,10 +180,12 @@ URxvt.saveLines:100000
 
 !!!边框
 URxvt.borderLess:False
-
 URxvt.allow_bold:false
 
+
 !!!字体
+URxvt*letterSpace:-1
+URxvt*skipBuiltinGlyphs:true
 #URxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true:hinting=true
 #URxvt*boldFont: xft:Bitstream Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true

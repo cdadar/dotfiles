@@ -19,3 +19,6 @@
 [submodule ".tmux/plugins/tmux-colors-solarized"]
 	path = .tmux/plugins/tmux-colors-solarized
 	url = https://git::@github.com/seebi/tmux-colors-solarized
+[submodule ".tmux/plugins/tmux-logging"]
+	path = .tmux/plugins/tmux-logging
+	url = https://git::@github.com/tmux-plugins/tmux-logging

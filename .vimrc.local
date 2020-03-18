@@ -1,2 +1,5 @@
-"" Map leader to ,
+" Save a file as root (,W)
+noremap <leader>W :w !sudo
+
+"" Map leader to \s
 let mapleader=' '

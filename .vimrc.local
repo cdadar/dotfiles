@@ -1,5 +1,8 @@
 " Save a file as root (,W)
 noremap <leader>W :w !sudo
 
+"" Directories for swp files
+set nobackup
+
 "" Map leader to \s
 let mapleader=' '

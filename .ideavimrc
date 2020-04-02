@@ -248,3 +248,5 @@ nnoremap <C-F5>  :<C-u>action Refresh<CR>
 " SnoarLint
 noremap <Leader>sc <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
 noremap <Leader>sf <ESC>:action SonarLint.AnalyzeFiles<cr>
+noremap <Leader>sbc <ESC>:action SpotBugs.ActiveChangeListAction<cr>
+noremap <Leader>sbf <ESC>:action SpotBugs.CurrentFileAction<cr>

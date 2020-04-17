@@ -65,7 +65,7 @@ floating_modifier $mod
 # Automaatci back-and-forth when switching to the current workspace
 workspace_auto_back_and_forth yes
 
-bindsym $mod+Control+t exec dolphin
+bindsym $mod+Shift+Return exec urxvt -e ranger
 #bindsym $mod+Control+t exec thunar
 
 bindsym $mod+t exec emacsclient -nc -a ""

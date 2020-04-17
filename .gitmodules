@@ -22,3 +22,6 @@
 [submodule ".tmux/plugins/tmux-logging"]
 	path = .tmux/plugins/tmux-logging
 	url = https://git::@github.com/tmux-plugins/tmux-logging
+[submodule ".tmux/plugins/tmux-better-mouse-mode"]
+	path = .tmux/plugins/tmux-better-mouse-mode
+	url = https://git::@github.com/nhdaly/tmux-better-mouse-mode

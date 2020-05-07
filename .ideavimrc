@@ -17,6 +17,13 @@ set multiple-cursors
 " 启用 commentary
 " Commands: gcc, gc + motion, v_gc
 set commentary
+" Commands: gr, grr
+set ReplaceWithRegister
+
+" Additional text objects: aa, ia
+set argtextobj
+" Additional text objects: ae, ie
+set textobj-entire
 " 显示行号
 set nu
 " 显示相对行号

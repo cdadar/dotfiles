@@ -11,12 +11,12 @@ fi
 PATH=$PATH:$HOME/.local/bin:$HOME/bin=$PATH:/usr/local/bin
 
 # java
-export JAVA_HOME=$HOME/program/jdk1.8.0_73/
-export JRE_HOME=$HOME/program/jdk1.8.0_73/jre
-#export JAVA_HOME=$HOME/program/jdk1.7.0_79
-#export JRE_HOME=$HOME/program/jdk1.7.0_79jre
-export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
-export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+# export JAVA_HOME=$HOME/program/jdk1.8.0_73/
+# export JRE_HOME=$HOME/program/jdk1.8.0_73/jre
+# #export JAVA_HOME=$HOME/program/jdk1.7.0_79
+# #export JRE_HOME=$HOME/program/jdk1.7.0_79jre
+# export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+# export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 
 # ant
 export ANT_HOME=$HOME/source/ant/bootstrap
@@ -115,3 +115,8 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chens/.sdkman"
 [[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"
+
+export PATH=/snap/bin:$PATH
+
+
+export WINEARCH=win32

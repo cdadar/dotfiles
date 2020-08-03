@@ -56,7 +56,10 @@ HIST_STAMPS="yyyy-mm-dd"
 # plugins=(git z d zsh-autosuggestions web-search wd)
 plugins=(
     git
+    sudo
+    cp
     z
+    d
     vagrant
     zsh-autosuggestions
     zsh-syntax-highlighting

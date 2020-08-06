@@ -121,7 +121,3 @@ export PATH=/snap/bin:$PATH
 
 export WINEARCH=win32
 
-# ssh
-export SSH_KEY_PATH="$HOME/.ssh"
-ssh-add "$SSH_KEY_PATH/work_rsa"
-# unset SSH_ASKPASS

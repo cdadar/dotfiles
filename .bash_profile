@@ -67,6 +67,12 @@ export MALLOC_CHECK_=1
 # xrdb $HOME/.Xresources
 # [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
+# ssh
+export SSH_KEY_PATH="$HOME/.ssh"
+ssh-add "$SSH_KEY_PATH/work_rsa"
+# unset SSH_ASKPASS
+
+
 # locale
 if [[ $(tty) == /dev/tty* ]]; then
     setfont /usr/share/kbd/consolefonts/suse12x22.psfu.gz

@@ -117,7 +117,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-[ -f $HOME/.bash_profile ] && source  $HOME/.bash_profile
+[ -f $HOME/.bashrc ] && source  $HOME/.bashrc
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chens/.sdkman"

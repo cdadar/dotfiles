@@ -83,7 +83,3 @@ else
     export LANG="zh_CN.UTF-8"
 fi
 
-# ssh
-export SSH_KEY_PATH="$HOME/.ssh"
-ssh-add "$SSH_KEY_PATH/work_rsa"
-# unset SSH_ASKPASS

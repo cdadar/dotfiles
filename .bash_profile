@@ -1,9 +1,7 @@
 # .bash_profile
 
 # Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-fi
+[ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:

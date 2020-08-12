@@ -59,8 +59,9 @@ plugins=(
     sudo
     cp
     z
-    d
     vagrant
+    docker
+    docker-compose
     zsh-autosuggestions
     zsh-syntax-highlighting
     colored-man-pages

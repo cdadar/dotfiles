@@ -67,6 +67,7 @@ plugins=(
     colored-man-pages
     web-search
     wd
+    history
 )
 # User configuration
 

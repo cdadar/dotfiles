@@ -25,3 +25,6 @@
 [submodule ".tmux/plugins/tmux-better-mouse-mode"]
 	path = .tmux/plugins/tmux-better-mouse-mode
 	url = https://git::@github.com/nhdaly/tmux-better-mouse-mode
+[submodule ".tmux/plugins/tmux-current-pane-hostname"]
+	path = .tmux/plugins/tmux-current-pane-hostname
+	url = https://git::@github.com/soyuka/tmux-current-pane-hostname

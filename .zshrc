@@ -5,9 +5,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="theunraveler"
-#ZSH_THEME="agnoster"
-#ZSH_THEME="ys"
+# ZSH_THEME="theunraveler"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="ys"
 ZSH_THEME="robbyrussell"
 
 HIST_STAMPS="yyyy-mm-dd"
@@ -122,6 +122,6 @@ source $ZSH/oh-my-zsh.sh
 [ -f $HOME/.bashrc ] && source  $HOME/.bashrc
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chens/.sdkman"
 [[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"

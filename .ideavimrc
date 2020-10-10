@@ -49,6 +49,8 @@ set timeoutlen=1000
 
 set ideajoin
 
+set virtualedit=onemore
+
 noremap <C-O> <ESC>:action Back<cr>
 noremap <C-I> <ESC>:action Forward<cr>
 

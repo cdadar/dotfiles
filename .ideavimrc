@@ -42,14 +42,16 @@ set clipboard+=unnamed
 " set clipboard=ideaput
 " 搜索时智能匹配大小写
 set ignorecase smartcase
-" " IdeaVimExtension
-set keep-english-in-normal-and-restore-in-insert
+
 set timeout
 set timeoutlen=1000
 
 set ideajoin
 
 set virtualedit=onemore
+
+" " IdeaVimExtension
+set keep-english-in-normal-and-restore-in-insert
 
 noremap <C-O> <ESC>:action Back<cr>
 noremap <C-I> <ESC>:action Forward<cr>

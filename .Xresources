@@ -175,6 +175,12 @@ URxvt.keysym.C-equal:  font-size:reset
 ! fulscreen
 URxvt.keysym.F11: perl:fullscreen:switch
 
+! URxvt.keysym.M-h: ls -lhb --color=auto\n
+! URxvt.keysym.C-M-g: grep --color=auto -r --include \\*.
+! URxvt.keysym.C-M-p: ps aux|grep --color=auto ""
+! URxvt.keysym.C-M-w: find . -name ""
+! URxvt.keysym.C-M-n: netstat -tulpn|grep --color=auto ""
+
 !bell
 URxvt.urgentOnBell: True
 

@@ -1,12 +1,12 @@
 # 默认窗口无标题栏，16:9的窗口比例启动
-window:
-    decorations: "none"
-    dimensions:
-      columns: 120
-      lines: 30
+# window:
+#     decorations: "none"
+#     dimensions:
+#       columns: 120
+#       lines: 30
 
 # 背景半透明，方便抄代码
-background_opacity: 0.8
+background_opacity: 0.9
 
 # 实时重载配置文件，不用重启测试配置选项
 live_config_reload: true

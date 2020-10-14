@@ -85,10 +85,9 @@ do
 end
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "urxvt-256color"
 editor = os.getenv("EDITOR") or os.getenv("VISUAL") or "vi"
 editor_cmd = terminal .. " -e " .. editor
-
 
 -- Define default programs
 -- terminal = "x-terminal-emulator"
@@ -573,7 +572,7 @@ globalkeys = awful.util.table.join(
    end),
    awful.key({ "Control", "Mod1" }, "Delete",
       function ()
-         awful.util.spawn("xscreensaver-command --lock")
+         awful.util.spawn("light-locker-command --lock")
    end)
 
 )

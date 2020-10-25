@@ -78,6 +78,11 @@ plugins=(
 
 bindkey -e #emacs
 
+# load xterm config
+# xrdb $HOME/.Xresources
+# [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
+[ -f $HOME/.Xresources ] && xrdb -load $HOME/.Xresources
+
 # User specific aliases and functions
 
 if [[ $(tty) != /dev/tty* ]]; then
@@ -120,7 +125,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 [ -f $HOME/.bashrc ] && source  $HOME/.bashrc
-[ -f $HOME/.Xresources ] && xrdb -load $HOME/.Xresources
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chens/.sdkman"

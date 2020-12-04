@@ -67,8 +67,8 @@ export PATH=$PATH:$ANDROID_NAME/tools/bin
 
 
 # Android ndk
-# export ANDROID_NDK_HOME=$HOME/program/android-ndk
-# export PATH=$PATH:$ANDROID_NDK_HOME
+#export ANDROID_NDK_HOME=$HOME/program/android-ndk
+#export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
 
 
 #cabel Haskell package manager

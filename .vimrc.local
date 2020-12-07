@@ -28,3 +28,6 @@ endfunction
 
 " C-D生成注释
 map <expr> <C-D> InsertDox()
+
+
+" let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'

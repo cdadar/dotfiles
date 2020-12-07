@@ -2,3 +2,4 @@ Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ledger/vim-ledger'
 Plug 'vim-scripts/DoxygenToolkit.vim'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',  'for': ['c', 'cpp'] }

@@ -19,6 +19,10 @@ set multiple-cursors
 set commentary
 " Commands: gr, grr
 set ReplaceWithRegister
+" 启用 NERDTree
+set NERDTree
+
+nnoremap <leader>n :NERDTreeFocus<CR>
 
 " Additional text objects: aa, ia
 set argtextobj

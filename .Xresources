@@ -94,6 +94,30 @@ xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35
 !        <Key>Tab: string("\033")\n\
 
 
+
+! Atom One Light theme
+xterm*background: #f9f9f9
+xterm*foreground: #383a42
+xterm*cursorColor: #d0d0d0
+xterm*color0: #000000
+xterm*color1: #E45649
+xterm*color2: #50A14F
+xterm*color3: #986801
+xterm*color4: #4078F2
+xterm*color5: #A626A4
+xterm*color6: #0184BC
+xterm*color7: #A0A1A7
+xterm*color8: #5c6370
+xterm*color9: #e06c75
+xterm*color10: #50A14F
+xterm*color11: #986801
+xterm*color12: #4078F2
+xterm*color13: #A626A4
+xterm*color14: #0184BC
+xterm*color15: #ffffff
+
+
+
 ! --- xrxvt {{{1
 !------------------------------------------------------------------------------
 Xft.antialias:true
@@ -185,35 +209,27 @@ URxvt.keysym.F11: perl:fullscreen:switch
 URxvt.urgentOnBell: True
 
 
-!urxvt theme
-URxvt*background: #1b1b1b
-URxvt*foreground: #cccaca
-     
-!Black
-URxvt*color0: #222222
-URxvt*color8: #5b595a
-!Red
-URxvt*color1: #664742
-URxvt*color9: #664742
-!Green
-URxvt*color2: #A5AF86
-URxvt*color10: #A5AF86
-!Yellow
-URxvt*color3: #F7E7BD
-URxvt*color11: #F7E7BD
-!Blue
-URxvt*color4: #6e686f
-URxvt*color12: #6e686f
-!Magenta
-URxvt*color5: #966E6E
-URxvt*color13: #B09A91
-!Cyan
-URxvt*color6: #849492
-URxvt*color14: #849492
-!White
-URxvt*color7: #a49c9c
-URxvt*color15: #e9e6e6
 
+! Atom One Light theme
+urxvt*background: #f9f9f9
+urxvt*foreground: #383a42
+urxvt*cursorColor: #d0d0d0
+urxvt*color0: #000000
+urxvt*color1: #E45649
+urxvt*color2: #50A14F
+urxvt*color3: #986801
+urxvt*color4: #4078F2
+urxvt*color5: #A626A4
+urxvt*color6: #0184BC
+urxvt*color7: #A0A1A7
+urxvt*color8: #5c6370
+urxvt*color9: #e06c75
+urxvt*color10: #50A14F
+urxvt*color11: #986801
+urxvt*color12: #4078F2
+urxvt*color13: #A626A4
+urxvt*color14: #0184BC
+urxvt*color15: #ffffff
 
 ! --- xmessage {{{1
 ! -----------------------------------------------------------------------------

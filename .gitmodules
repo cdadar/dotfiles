@@ -16,9 +16,6 @@
 [submodule ".tmux/plugins/tmux-pain-control"]
 	path = .tmux/plugins/tmux-pain-control
 	url = https://git::@github.com/tmux-plugins/tmux-pain-control
-[submodule ".tmux/plugins/tmux-colors-solarized"]
-	path = .tmux/plugins/tmux-colors-solarized
-	url = https://git::@github.com/seebi/tmux-colors-solarized
 [submodule ".tmux/plugins/tmux-logging"]
 	path = .tmux/plugins/tmux-logging
 	url = https://git::@github.com/tmux-plugins/tmux-logging
@@ -28,6 +25,3 @@
 [submodule ".tmux/plugins/tmux-current-pane-hostname"]
 	path = .tmux/plugins/tmux-current-pane-hostname
 	url = https://git::@github.com/soyuka/tmux-current-pane-hostname
-[submodule ".tmux/plugins/tmux-themepack"]
-	path = .tmux/plugins/tmux-themepack
-	url = https://git::@github.com/jimeh/tmux-themepack

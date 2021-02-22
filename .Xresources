@@ -16,48 +16,44 @@ Xft.rgba: rgb
 !Xft.lcdfilter: lcddefault
 !Xft.embolden: true
 
-
-
 ! --- xterm {{{1
 ! -----------------------------------------------------------------------------
-
-
-xterm.loginShell: true
-xterm.scrollBar: false
+xterm*loginShell: true
+xterm*scrollBar: false
 
 ! Use screen/tmux scrollback instead:
-xterm.saveLines: 100
+xterm*saveLines: 100
 ! -- Allow utf8 in/out
-xterm.utf8: 2
-xterm.eightBitInput: true
-xtere.eightBitControl: false
-xterm.eightBitOutput: true
+xterm*utf8: 2
+xterm*eightBitInput: true
+xtere*eightBitControl: false
+xterm*eightBitOutput: true
 ! -- Enables True-Type rendering:
-xterm.renderFont: true
-xterm.faceName: source code pro
-xterm.faceNameDoublesize: Noto Serif SC
-xterm.wideChars: true
-xterm.wideFont: source code pro
+xterm*renderFont: true
+xterm*faceName: source code pro
+xterm*faceNameDoublesize: Noto Serif SC
+xterm*wideChars: true
+xterm*wideFont: source code pro
 ! -- Define the size increments used when changing font size
-xterm.faceSize: 10
-xterm.faceSize1: 6
-xterm.faceSize2: 8
-xterm.faceSize3: 12
-xterm.faceSize4: 16
-xterm.faceSize5: 20
-xterm.faceSize6: 24
+xterm*faceSize: 10
+xterm*faceSize1: 6
+xterm*faceSize2: 8
+xterm*faceSize3: 12
+xterm*faceSize4: 16
+xterm*faceSize5: 20
+xterm*faceSize6: 24
 ! -- Scroll multiple lines at a time for faster redrawing:
-xterm.jumpScroll: true
-xterm.multiScroll: true
+xterm*jumpScroll: true
+xterm*multiScroll: true
 ! -- trim whitespace from selection before copying
 
 
 
-xterm.trimSelection: true
+xterm*trimSelection: true
 ! -- Hold Shift to use CLIPBOARD instead of PRIMARY to copy or paste
 ! Change font size with ctrl-+/-/= (or mousewheel).
 ! Add a few alt- shortcuts for quick access to special characters
-xterm.vt100.Translations: #override \n\
+xterm*vt100.Translations: #override \n\
     ~Shift~Ctrl<Btn2Up>: insert-selection(PRIMARY, CUT_BUFFER0) \n\
     Shift~Ctrl<Btn2Up>: insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
     Ctrl <KeyPress> V: insert-selection(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\
@@ -84,35 +80,10 @@ xterm.vt100.Translations: #override \n\
     Meta ~Shift <Key> x: string("×") \n\
 !    Meta ~Shift <Key> d: string("ಠ")
 ! Matches URLs and emails and selects them on double-click
-xterm.charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
+xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
 ! map the tab key to escape in xterm (becase we can!)
 ! xterm.vt100.translations: #override\n\
 !        <Key>Tab: string("\033")\n\
-
-
-
-! Atom One Light theme
-! xterm.background: #f9f9f9
-! xterm.foreground: #383a42
-! xterm.cursorColor: #d0d0d0
-! xterm.color0: #000000
-! xterm.color1: #E45649
-! xterm.color2: #50A14F
-! xterm.color3: #986801
-! xterm.color4: #4078F2
-! xterm.color5: #A626A4
-! xterm.color6: #0184BC
-! xterm.color7: #A0A1A7
-! xterm.color8: #5c6370
-! xterm.color9: #e06c75
-! xterm.color10: #50A14F
-! xterm.color11: #986801
-! xterm.color12: #4078F2
-! xterm.color13: #A626A4
-! xterm.color14: #0184BC
-! xterm.color15: #ffffff
-
-
 
 ! --- xrxvt {{{1
 !------------------------------------------------------------------------------
@@ -128,8 +99,6 @@ URxvt.scrollstyle:rxvt
 URxvt.scrollTtyOutput:false
 URxvt.scrollWithBuffer:true
 URxvt.scrollTtyKeypress:true
-
-
 
 !!!光标闪烁
 URxvt.cursorBlink:True
@@ -198,26 +167,3 @@ URxvt.keysym.F11: perl:fullscreen:switch
 
 !bell
 URxvt.urgentOnBell: True
-
-
-
-! Atom One Light theme
-! urxvt.background: #f9f9f9
-! urxvt.foreground: #383a42
-! urxvt.cursorColor: #d0d0d0
-! urxvt.color0: #000000
-! urxvt.color1: #E45649
-! urxvt.color2: #50A14F
-! urxvt.color3: #986801
-! urxvt.color4: #4078F2
-! urxvt.color5: #A626A4
-! urxvt.color6: #0184BC
-! urxvt.color7: #A0A1A7
-! urxvt.color8: #5c6370
-! urxvt.color9: #e06c75
-! urxvt.color10: #50A14F
-! urxvt.color11: #986801
-! urxvt.color12: #4078F2
-! urxvt.color13: #A626A4
-! urxvt.color14: #0184BC
-! urxvt.color15: #ffffff

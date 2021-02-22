@@ -31,3 +31,6 @@ map <expr> <C-D> InsertDox()
 
 
 " let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+
+let base16colorspace=256  " Access colors present in 256 colorspace
+set termguicolors

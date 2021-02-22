@@ -28,3 +28,6 @@
 [submodule ".tmux/plugins/tmux-current-pane-hostname"]
 	path = .tmux/plugins/tmux-current-pane-hostname
 	url = https://git::@github.com/soyuka/tmux-current-pane-hostname
+[submodule ".tmux/plugins/tmux-themepack"]
+	path = .tmux/plugins/tmux-themepack
+	url = https://git::@github.com/jimeh/tmux-themepack

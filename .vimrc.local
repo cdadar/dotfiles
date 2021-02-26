@@ -34,3 +34,7 @@ map <expr> <C-D> InsertDox()
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 set termguicolors
+
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8

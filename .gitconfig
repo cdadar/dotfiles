@@ -132,6 +132,7 @@
 
 [core]
 	autocrlf = input
+	quotepath = false
 [merge]
 	conflictstyle = diff3
 	branchdesc = true

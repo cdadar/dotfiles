@@ -76,9 +76,9 @@ stow更好的方法，请在 issue 中告诉我，谢谢～
 *** zsh
  : stow -t $HOME zsh -D
 *** vim
-: stow -t $HOME vim  -D --ignore=^[^\.]*.vimrc
+: stow -t $HOME vim  -D --ignore=^[^\.]+\..*vim.*
 *** ideavimrc
-: stow -t $HOME ideavimrc -D --ignore=_ideavimrc
+: stow -t $HOME ideavimrc -D --ignore=_ideavimrc\|idea_actionlist
 *** git
 : stow -t $HOME git -D
 *** tmux

@@ -1,14 +1,12 @@
 *  dotfiles
+require =stow=
 
-vim tmux tern git
-** xrandr
-
-查看当前屏幕
-: xrandr --current
-
-
-设置屏幕位置
-: xrandr --output VGA1 --left-of HDMI1 --auto
+** bash
+: stow -t $HOME bash --no-folding -D
+** vim
+: stow -t $HOME vim --no-folding -D
+** git
+: stow -t $HOME git --no-folding -D
 
 ** tmux
 
@@ -27,6 +25,15 @@ need xclip
 ** awesome
 
 : ln <path>/dotfiles/awesome $HOME/.config/awesome
+
+** xrandr
+
+查看当前屏幕
+: xrandr --current
+
+
+设置屏幕位置
+: xrandr --output VGA1 --left-of HDMI1 --auto
 
 ** 代办
 *** TODO install to shell

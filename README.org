@@ -74,7 +74,7 @@ stow更好的方法，请在 issue 中告诉我，谢谢～
 *** bash
  : stow -t $HOME bash --no-folding -D
 *** zsh
- : stow -t $HOME zsh --no-folding -D
+ : stow -t $HOME zsh -D
 *** vim
 : stow -t $HOME vim --no-folding -D --ignore=^[^\.]*.vimrc
 *** ideavimrc

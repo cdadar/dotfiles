@@ -72,25 +72,25 @@ stow更好的方法，请在 issue 中告诉我，谢谢～
 更多信息请参见 [[https://www.gnu.org/software/stow/manual/stow.html][GNU Stow 手册页]]
 
 *** bash
- : stow -t $HOME bash --no-folding -D
+ : stow -t $HOME bash -D
 *** zsh
  : stow -t $HOME zsh -D
 *** vim
-: stow -t $HOME vim --no-folding -D --ignore=^[^\.]*.vimrc
+: stow -t $HOME vim  -D --ignore=^[^\.]*.vimrc
 *** ideavimrc
-: stow -t $HOME ideavimrc --no-folding -D --ignore=_ideavimrc
+: stow -t $HOME ideavimrc -D --ignore=_ideavimrc
 *** git
-: stow -t $HOME git --no-folding -D
+: stow -t $HOME git -D
 *** tmux
 : stow -t $HOME tmux -D
 need xclip
 : tmux show-options -g -s set-clipboard
 *** nodejs
-: stow -t $HOME nodejs --no-folding -D
+: stow -t $HOME nodejs -D
 *** ctags
-: stow -t $HOME ctags --no-folding -D
+: stow -t $HOME ctags -D
 *** Xresources
-: stow -t $HOME Xresources -D --no-folding
+: stow -t $HOME Xresources -D
 *** mpv
 : stow -t $HOME/ mpv -D
 *** i3

@@ -93,6 +93,8 @@ need xclip
 : stow -t $HOME Xresources -D
 *** mpv
 : stow -t $HOME/ mpv -D
+*** base16-shell
+: stow -t $HOME base16-shell -D
 *** i3
 : stow -t $HOME/ i3 -D
 *** awesome

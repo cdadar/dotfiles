@@ -1,30 +1,30 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
+	url = git://github.com/tmux-plugins/tpm.git
 [submodule "tmux/.tmux/plugins/tmux-yank"]
 	path = tmux/.tmux/plugins/tmux-yank
-	url = https://git::@github.com/tmux-plugins/tmux-yank
+	url = git://github.com/tmux-plugins/tmux-yank
 [submodule "tmux/.tmux/plugins/tmux-sensible"]
 	path = tmux/.tmux/plugins/tmux-sensible
-	url = https://git::@github.com/tmux-plugins/tmux-sensible
+	url = git://github.com/tmux-plugins/tmux-sensible
 [submodule "tmux/.tmux/plugins/tmux-resurrect"]
 	path = tmux/.tmux/plugins/tmux-resurrect
-	url = https://git::@github.com/tmux-plugins/tmux-resurrect
+	url = git://github.com/tmux-plugins/tmux-resurrect
 [submodule "tmux/.tmux/plugins/tmux-prefix-highlight"]
 	path = tmux/.tmux/plugins/tmux-prefix-highlight
-	url = https://git::@github.com/tmux-plugins/tmux-prefix-highlight
+	url = git://github.com/tmux-plugins/tmux-prefix-highlight
 [submodule "tmux/.tmux/plugins/tmux-pain-control"]
 	path = tmux/.tmux/plugins/tmux-pain-control
-	url = https://git::@github.com/tmux-plugins/tmux-pain-control
+	url = git://github.com/tmux-plugins/tmux-pain-control
 [submodule "tmux/.tmux/plugins/tmux-logging"]
 	path = tmux/.tmux/plugins/tmux-logging
-	url = https://git::@github.com/tmux-plugins/tmux-logging
+	url = git://github.com/tmux-plugins/tmux-logging
 [submodule "tmux/.tmux/plugins/tmux-better-mouse-mode"]
 	path = tmux/.tmux/plugins/tmux-better-mouse-mode
-	url = https://git::@github.com/nhdaly/tmux-better-mouse-mode
+	url = git://github.com/nhdaly/tmux-better-mouse-mode
 [submodule "tmux/.tmux/plugins/tmux-current-pane-hostname"]
 	path = tmux/.tmux/plugins/tmux-current-pane-hostname
-	url = https://git::@github.com/soyuka/tmux-current-pane-hostname
+	url = git://github.com/soyuka/tmux-current-pane-hostname
 [submodule "zsh/.oh-my-zsh"]
 	path = zsh/.oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git

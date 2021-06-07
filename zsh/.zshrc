@@ -81,7 +81,9 @@ bindkey -e #emacs
 # load xterm config
 # xrdb $HOME/.Xresources
 # [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
-[ -f $HOME/.Xresources ] && xrdb -load $HOME/.Xresources
+if [[ $(tty) != /dev/tty* ]]; then
+    [ -f $HOME/.Xresources ] && xrdb -load $HOME/.Xresources
+fi
 
 # User specific aliases and functions
 

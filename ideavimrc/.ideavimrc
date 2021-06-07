@@ -183,6 +183,8 @@ nnoremap <Leader>r <ESC>:action ReplaceInPath<cr>
 nnoremap g/ <ESC>:action FindInPath<cr>
 " find
 nnoremap / <ESC>:action Find<cr>
+" (vim自带的搜索)
+nnoremap <Leader>/ /
 
 " Edit
 vnoremap < <gv

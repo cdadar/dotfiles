@@ -35,7 +35,6 @@ zinit wait lucid for \
       OMZP::colored-man-pages \
       OMZP::cp \
       OMZP::extract \
-      OMZP::fancy-ctrl-z \
       OMZP::git \
       OMZP::sudo
 

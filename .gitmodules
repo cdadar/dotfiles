@@ -22,9 +22,6 @@
 [submodule "tmux/.tmux/plugins/tmux-current-pane-hostname"]
 	path = tmux/.tmux/plugins/tmux-current-pane-hostname
 	url = git://github.com/soyuka/tmux-current-pane-hostname
-[submodule "zsh/.oh-my-zsh"]
-	path = zsh/.oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule "base16-shell/.config/base16-shell"]
 	path = base16-shell/.config/base16-shell
 	url = git://github.com/chriskempson/base16-shell.git

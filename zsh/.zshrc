@@ -140,6 +140,10 @@ elif [[ $OSTYPE == linux* ]]; then
     fi
 fi
 
+# use oh-my-zsh theme
+zinit snippet OMZT::robbyrussell.zsh-theme
+ZSH_THEME="robbyrussell"
+
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 

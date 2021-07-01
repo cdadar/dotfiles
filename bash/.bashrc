@@ -52,18 +52,18 @@ export NODE_PATH=$NODE_HOME/lib/node_modules
 # export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
 
 # Android_SDK
-export ANDROID_SDK=$HOME/program/android-sdk-linux
+#export ANDROID_SDK=$HOME/program/android-sdk-linux
 
 # Android ndk
-export ANDROID_NDK_HOME=$HOME/program/android-ndk
-export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
+#export ANDROID_NDK_HOME=$HOME/program/android-ndk
+#export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
 
 
 #cabel Haskell package manager
-export PATH=$HOME/.cabal/bin:$PATH
+#export PATH=$HOME/.cabal/bin:$PATH
 
 #lisp roswell
-export PATH=$HOME/.roswell/bin:$PATH
+#export PATH=$HOME/.roswell/bin:$PATH
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
@@ -97,21 +97,21 @@ export GOPROXY=https://goproxy.io
 
 
 # cask
-export PATH="$HOME/.cask/bin:$PATH"
+# export PATH="$HOME/.cask/bin:$PATH"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
-    # added by Nix installer
-    . $HOME/.nix-profile/etc/profile.d/nix.sh;
-fi
+# if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+#     # added by Nix installer
+#     . $HOME/.nix-profile/etc/profile.d/nix.sh;
+# fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/chens/.sdkman"
-[[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="/home/chens/.sdkman"
+# [[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"
 
 export PATH=/snap/bin:$PATH
 

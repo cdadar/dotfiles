@@ -1,0 +1,13 @@
+[Unit]
+Description=Emacs text editor
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+
+[Service]
+Type=forking
+ExecStart=emacs -Q --daemon --eval "(setq startup-now t)" -l "/home/chens/.emacs.d/init.el" --eval "(progn (require 'server) (server-start))"
+ExecStop=emacsclient --eval "(kill-emacs)"
+Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

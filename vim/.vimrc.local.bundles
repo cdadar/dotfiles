@@ -5,3 +5,9 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',  'for': ['c', 'cpp'] }
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'Chiel92/vim-autoformat'
+
+" javascript
+"" javascript bundle
+Plug 'isRuslan/vim-es6'
+Plug 'mxw/vim-jsx'

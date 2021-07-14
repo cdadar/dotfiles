@@ -44,7 +44,7 @@ set clipboard+=unnamed
 
 " set clipboard=ideaput
 " 搜索时智能匹配大小写
-set ignorecase smartcase
+" set ignorecase smartcase
 
 set timeout
 set timeoutlen=1000

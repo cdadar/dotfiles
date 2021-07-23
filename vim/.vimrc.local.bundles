@@ -6,6 +6,7 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'Chiel92/vim-autoformat'
+Plug 'preservim/vimux'
 
 " javascript
 "" javascript bundle

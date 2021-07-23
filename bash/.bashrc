@@ -115,7 +115,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH=/snap/bin:$PATH
 
-
 export WINEARCH=win32
 
 # Base16 Shell

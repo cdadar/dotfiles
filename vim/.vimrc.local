@@ -38,3 +38,22 @@ set termguicolors
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
+
+" auto-formatter
+function! ESlintFormatter()
+    let l:npm_bin = ''
+    let l:eslint = 'eslint'
+    if executable('npm')
+        let l:npm_bin = split(system('npm bin'), '\n')[0]
+    endif
+    if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+        let l:eslint = l:npm_bin . '/eslint'
+    endif
+    let g:formatdef_eslint = '"SRC=eslint-temp-${RANDOM}.js; cat - >$SRC; ' . l:eslint . ' --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
+endfunction
+autocmd BufReadPre *.vue let b:javascript_lib_use_vue = 1
+
+"autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
+autocmd FileType javascript :call ESlintFormatter()
+let g:formatters_javascript = ['eslint']

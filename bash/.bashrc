@@ -81,7 +81,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-source /usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper
 
 
 # php composer

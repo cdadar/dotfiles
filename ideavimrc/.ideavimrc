@@ -1,9 +1,22 @@
-" M->cmd, A->option, C->control
-" M->Win, A-> alt, C-> ctrl
-" <ESC> - escape, <BS> - backspace, <cr> - return
+" :actionlist可以查询所有命令
+" 基本思路
+" w 比如全屏、分屏
+" g 跳转
+" z 比如打开最近修改的文件那种了
+" q 关闭标签
+" e 运行/调试
+" r 重构
+" t 任务
 
-" leader
-let mapleader = ' '
+set showmode
+set number
+set relativenumber
+set clipboard=unnamed
+set scrolloff=3
+set history=1000
+
+" 指定专属键为空格
+let mapleader = " "
 
 set easymotion
 
@@ -23,182 +36,140 @@ set NERDTree
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 
-" Additional text objects: aa, ia
-set argtextobj
-" Additional text objects: ae, ie
-set textobj-entire
-" 显示行号
-set nu
-" 显示相对行号
-" set rnu
-" 高亮搜索
-set hlsearch
-" 自动定位到输入中的字符串，不需要回车搜索
-set incsearch
-" 显示当前的模式
-set showmode
-" 共享系统粘贴板
-" set clipboard=unnamed
-set clipboard+=unnamed
-" set clipboard+=ideaput
+" source ~/.vimrc
+noremap <Leader>r <ESC>:source ~/.ideavimrc<cr>
 
-" set clipboard=ideaput
-" 搜索时智能匹配大小写
-" set ignorecase smartcase
+" 退出插入模式 有了capsLock增强，这两个都没有必要了
+" inoremap jk <Esc>l
+" cnoremap jk <c-c>
+" 退出选择模式
+" vnoremap v <Esc>
 
-set timeout
-set timeoutlen=1000
+" 删除时不替换剪贴板内容，而是保存在p寄存器中
+nnoremap c "pc
+vnoremap c "pc
+nnoremap cc "pc
+vnoremap cc "pc
+" vnoremap c "pc
+" nnoremap d "pd
+" vnoremap d "pd
+" nnoremap <del> "pdl
+" vnoremap <del> "pd
+" inoremap <del> <right><bs>
 
-set ideajoin
+" 搜索使用idea的
+nnoremap / :action Find<CR>
 
-set virtualedit=onemore
+" surrounding标签处理
+" nnoremap / :action surrounding<CR>
 
-" " IdeaVimExtension
-set keep-english-in-normal-and-restore-in-insert
-
-noremap <C-O> <ESC>:action Back<cr>
-noremap <C-I> <ESC>:action Forward<cr>
-
-" System/Global
-inoremap <c-a> <c-o>^
-inoremap <c-e> <c-o>$
-inoremap <c-f> <Right>
-inoremap <c-b> <Left>
-inoremap <M-b> <C-o>b
-inoremap <M-f> <C-o>w
-inoremap <c-n> <Down>
-inoremap <c-p> <Up>
-inoremap <c-d> <Del>
-inoremap <C-w> <Esc>dbcl
-inoremap <C-u> <Esc>d0cl
-inoremap <C-k> <Esc><Right>C
-inoremap <C-d> <Esc><Right>s
-inoremap <M-d> <C-o>de
-
-nnoremap <c-c> i
-nnoremap <c-a> ^
-nnoremap <cr> :action EditorStartNewLine<cr>
-
-
-" Basic
-nnoremap \\r :source ~/.ideavimrc<CR>
-noremap x "_x
-noremap ,d "_d
-noremap ,D "_D
-nnoremap ,p :<C-u>action $Paste<CR>
-inoremap <c-v> <Esc>:action $Paste<cr>
-
-
-" Move
-nnoremap s :<C-u>action AceAction<CR>
-"nnoremap / :<C-u>action Find<CR>
 nnoremap <C-o> :<C-u>action Back<CR>
 nnoremap <C-i> :<C-u>action Forward<CR>
-nnoremap <C-S-o> <C-o>
-nnoremap <C-S-i> <C-i>
-nnoremap [m :<C-u>action MethodUp<CR>
-nnoremap ]m :<C-u>action MethodDown<CR>
-nnoremap [[ :<C-u>action MethodUp<CR>
-nnoremap ]] :<C-u>action MethodDown<CR>
-nnoremap [c :<C-u>action VcsShowPrevChangeMarker<CR>
-nnoremap ]c :<C-u>action VcsShowNextChangeMarker<CR>
-nnoremap [e :<C-u>action GotoPreviousError<CR>
-nnoremap ]e :<C-u>action GotoNextError<CR>
-nnoremap [b :<C-u>action GotoPreviousBookmark<cr>
-nnoremap ]b :<C-u>action GotoNextBookmark<cr>
-
-nnoremap <C-Up> :<C-u>action MethodUp<CR>
-nnoremap <C-Down> :<C-u>action MethodDown<CR>
-nnoremap <C-S-Up> :<C-u>action VcsShowPrevChangeMarker<CR>
-nnoremap <C-S-Down> :<C-u>action VcsShowNextChangeMarker<CR>
-nnoremap <A-Up> :<C-u>action MethodUp<CR>
-nnoremap <A-Down> :<C-u>action MethodDown<CR>
-nnoremap <A-S-Up> :<C-u>action MoveLineUp<CR>
-nnoremap <A-S-Down> :<C-u>action MoveLineDown<CR>
 
 
- " Navigate
-nnoremap <C-S-F2> :<C-u>action PreviousOccurence<CR>
-nnoremap <C-S-F3> :<C-u>action NextOccurence<CR>
-nnoremap g; :<C-u>action JumpToLastChange<CR>
-nnoremap g, :<C-u>action JumpToNextChange<CR>
+" 搜索文件相关
+nnoremap <leader>zc :action GotoClass<CR>
+nnoremap <leader>za :action GotoAction<CR>
+nnoremap <leader>zs :action GotoSymbol<CR>
+nnoremap <leader>zh :action RecentChangedFiles<CR>
+nnoremap <leader>zf :action GotoFile<CR>
+nnoremap <leader>zd :action ActivateDebugToolWindow<CR>
+nnoremap <leader>zr :action ActivateRunToolWindow<CR>
+nnoremap <leader>zS :action ShelvedChangesToolbar<CR>
+nnoremap <leader>zt :action ActivateTODOToolWindow<CR>
+nnoremap <leader>zv :action ActivateVersionControlToolWindow<CR>
+nnoremap <leader>zb :action ShowBookmarks<CR>
+nnoremap <leader>zp :action ActivateProjectToolWindow<CR>
 
+" 关闭当前标签页
+nnoremap <leader>qq :q<CR>
+nnoremap <leader>qa :action CloseAllEditors<CR>
+nnoremap <leader>qu :action CloseAllUnmodifiedEditors<CR>
+nnoremap <leader>qo :action CloseAllEditorsButActive<CR>
 
-" Tab
-nnoremap <F4>      :<C-u>action EditSource<CR>
-nnoremap <A-F4>    :q<CR>
-nnoremap <S-F4>    :<C-u>action ReopenClosedTab<CR>
-nnoremap <C-S-F4>  :<C-u>action CloseAllEditorsButActive<CR>
-nnoremap <C-S-T>   :<C-u>action ReopenClosedTab<CR>
-nnoremap <Leader>q :<C-u>action CloseContent<CR>
-nnoremap <F2>      :<C-u>action PreviousTab<CR>
-nnoremap <A-Left>  :<C-u>action PreviousTab<CR>
-nnoremap <A-H>     :<C-u>action PreviousTab<CR>
-nnoremap <F3>      :<C-u>action NextTab<CR>
-nnoremap <A-Right> :<C-u>action NextTab<CR>
-nnoremap <A-L>     :<C-u>action NextTab<CR>
+" 代码跳转相关
+" 不用leader的话g没有任何意义，所以必须要加leader
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>gi :action GotoImplementation<CR>
+nnoremap <leader>gI :action ImplementMethods<CR>
+nnoremap <leader>gf :action FileStructurePopup<CR>
+nnoremap <leader>gs :action GotoSuperMethod<CR>
+nnoremap <leader>gc :action EditorContextInfo<CR>
+nnoremap <leader>gu :action FindUsages<CR>
+nnoremap <leader>gt :action GotoTypeDeclaration<CR>
+nnoremap <leader>gT :action GotoTest<CR>
+nnoremap <leader>gn g*
+nnoremap <leader>gp g#
 
-" Goto
-nnoremap K :<C-u>action QuickJavaDoc<CR>
-nnoremap gK :<C-u>action GotoDeclaration<CR>
-nnoremap gk :<C-u>action GotoTypeDeclaration<CR>
-nnoremap gi :<C-u>action GotoImplementation<CR>
-nnoremap gI :<C-u>action ImplementMethods<CR>
-nnoremap gs :<C-u>action GotoSuperMethod<CR>
-nnoremap gt :<C-u>action GotoTest<CR>
+" Hierarchy
+nnoremap <C-H> :action TypeHierarchy<CR>
+nnoremap <C-A-H> :action CallHierarchy<CR>
+nnoremap <C-S-H> :action MethodHierarchy<CR>
 
-nnoremap ghc :<C-u>action CallHierarchy<cr>
-nnoremap ght :<C-u>action TypeHierarchy<cr>
-nnoremap ghm :<C-u>action MethodHierarchy<cr>
+" 括号跳转
+" nnoremap <leader>[ %
+" nnoremap <leader>] %
+nnoremap <leader>[ :action EditorCodeBlockStart<CR>
+nnoremap <leader>{ :action EditorCodeBlockStartWithSelection<CR>
+nnoremap <leader>] :action EditorCodeBlockEnd<CR>
+nnoremap <leader>} :action EditorCodeBlockEndWithSelection<CR>
 
-nnoremap <C-k> :<C-u>action ShowUsages<CR>
+" 窗口管理相关
+nnoremap <leader>wf :action HideAllWindows<CR>
+nnoremap <leader>wF :action ToggleFullScreen<CR>
+nnoremap <leader>wm <C-w>o
+nnoremap <leader>w- <C-w>s
+nnoremap <leader>w/ <C-w>v
+nnoremap <leader>wd :q<CR>
+nnoremap <leader>wq :q<CR>
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wl <C-w>l
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wn <C-w>n
+nnoremap <leader>wp <C-w>p
 
-" Goto file
-nnoremap <Leader>gs :<C-u>action GotoSymbol<CR>
-nnoremap <Leader>gr :<C-u>action GotoRelated<CR>
+" 运行相关
+nnoremap <leader>eb :action ChooseRunConfiguration<CR>
+nnoremap <leader>ec :action CompileDirty<CR>
+nnoremap <leader>ed :action ChooseDebugConfiguration<CR>
+nnoremap <leader>eD :action DebugClass<CR>
+nnoremap <leader>er :action Run<CR>
+nnoremap <leader>eR :action RunClass<CR>
 
-" Search
-nnoremap <Leader>e  :<C-u>action SearchEverywhere<CR>
-nnoremap <Leader>p  :<C-u>action RecentFiles<CR>
-nnoremap <Leader>a  :<C-u>action GotoAction<CR>
-nnoremap <Leader>u  :<C-u>action FindUsages<CR>
-nnoremap <A-F7>     :<C-u>action FindUsages<CR>
+" 书签
+nnoremap <leader>mm :action ToggleBookmarkWithMnemonic<CR>
 
-" Find files/class
-nnoremap <Leader>;  :<C-u>action GotoFile<CR>
-nnoremap <Leader>o  :<C-u>action FileStructurePopup<CR>
-nnoremap <Leader>gc :<C-u>action GotoClass<CR>
-nnoremap <Leader>gs :<C-u>action GotoSymbol<CR>
-nnoremap <Leader>gt :<C-u>action ActivateTerminalToolWindow<CR>
-nnoremap <Leader>h  :<C-u>action CallHierarchy<CR>
+" 数字增减
+nnoremap <leader>ni :action osmedile.intellij.stringmanip.IncrementAction<CR>
+nnoremap <leader>nI :action osmedile.intellij.stringmanip.DuplicateAndIncrementAction<CR>
+nnoremap <leader>nd :action osmedile.intellij.stringmanip.DecrementAction<CR>
+nnoremap <leader>nD :action osmedile.intellij.stringmanip.DuplicateAndDecrementAction<CR>
 
-" Find word
-nnoremap <Leader>F  :<C-u>action Find<CR>
-nnoremap <Leader>f  :<C-u>action FindInPath<CR>
-" Replace word
-nnoremap <Leader>R <ESC>:action Replace<cr>
-nnoremap <Leader>r <ESC>:action ReplaceInPath<cr>
+" AceJump集成
+nnoremap <leader>sj :action AceAction<CR>
+nnoremap <leader>sJ :action AceTargetAction<CR>
+nnoremap <leader>sg :action AceLineAction<CR>
 
-" global find
-nnoremap g/ <ESC>:action FindInPath<cr>
-" find
-nnoremap / <ESC>:action Find<cr>
-" (vim自带的搜索)
-nnoremap <Leader>/ /
+" code代码修改相关
+nnoremap <leader>js :action SurroundWith<CR>
+nnoremap <leader>jp :action SmartSplit<CR>
+nnoremap <leader>jt :action SurroundWithLiveTemplate<CR>
+nnoremap <leader>j= :action FormatElement<CR>
+nnoremap <leader>j+ :action ReformatCode<CR>
 
-" Edit
-vnoremap < <gv
-vnoremap > >gv
-nnoremap <Leader>c<Leader> :<C-u>action CommentByLineComment<CR>
-nnoremap <Leader>=  :<C-u>action ReformatCode<CR>
-nnoremap <C-S-=> :<C-u>action ReformatCode<CR>
-nnoremap <C-S--> :<C-u>action RearrangeCode<cr>
-nnoremap <Leader>- :<C-u>action RearrangeCode<cr>
-nnoremap <C-S-U> :<C-u>action EditorToggleCase<CR>
-
-" Select
-nnoremap + :<C-u>action EditorSelectWord<CR>
-nnoremap - :<C-u>action EditorUnSelectWord<CR>
+" 逗号处理git
+nnoremap ,ga :action Git.Add<CR>
+nnoremap ,gb :action Git.Branches<CR>
+nnoremap ,gc :action Git.CreateNewBranch<CR>
+nnoremap ,gm :action Gitlab.Create.Merge.Request<CR>
+nnoremap ,gh :action LocalHistory.ShowHistory<CR>
+nnoremap ,gp :action Git.CompareWithBranch<CR>
+nnoremap ,gr :action Git.Revert<CR>
+nnoremap ,gs :action Git.Stash<CR>
+nnoremap ,gS :action Git.Unstash<CR>
+nnoremap ,gu :action Vcs.UpdateProject<CR>
+nnoremap ,gz :action Vcs.RollbackChangedLines<CR>
 
 " Refactor
 nnoremap ,rm  :<C-u>action ExtractMethod<CR>
@@ -212,58 +183,38 @@ nnoremap ,rd :<C-u>action MemberPushDown<CR>
 nnoremap ,rc :<C-u>action IntroduceConstant<CR>
 nnoremap ,rv :<C-u>action IntroduceVariable<CR>
 
-" Generate
-nnoremap ,g, :<C-u>action Generate<CR>
-nnoremap ,gn :<C-u>action NewClass<CR>
-nnoremap ,go :<C-u>action OverrideMethods<CR>
-nnoremap ,gc :<C-u>action GenerateConstructor<CR>
-nnoremap ,gg :<C-u>action GenerateGetter<CR>
-nnoremap ,gs :<C-u>action GenerateSetter<CR>
-nnoremap ,ga :<C-u>action GenerateGetterAndSetter<CR>
-nnoremap ,ge :<C-u>action GenerateEquals<CR>
-nnoremap ,gt :<C-u>action GenerateTestMethod<CR>
-nnoremap <C-F7> :<C-u>action Generate<CR>
+" general
+nnoremap ;g, :<C-u>action Generate<CR>
+nnoremap ;gn :<C-u>action NewClass<CR>
+nnoremap ;go :<C-u>action OverrideMethods<CR>
+nnoremap ;gc :<C-u>action GenerateConstructor<CR>
+nnoremap ;gg :<C-u>action GenerateGetter<CR>
+nnoremap ;gs :<C-u>action GenerateSetter<CR>
+nnoremap ;ga :<C-u>action GenerateGetterAndSetter<CR>
+nnoremap ;ge :<C-u>action GenerateEquals<CR>
+nnoremap ;gt :<C-u>action GenerateTestMethod<CR>
 
+" task
+nnoremap ,tn :action tasks.goto<CR>
+nnoremap ,tb :action tasks.switch<CR>
+nnoremap ,te :action tasks.edit<CR>
+nnoremap ,tm :action tasks.edit<CR>
+nnoremap ,tc :action tasks.close<CR>
+nnoremap ,tx :action tasks.close<CR>
 
-" Git
-nnoremap \\gm :<C-u>action Vcs.QuickListPopupAction<CR>
-nnoremap \\gc :<C-u>action CheckinProject<CR>
-nnoremap \\gp :<C-u>action Vcs.Push<CR>
-nnoremap \\gu :<C-u>action Vcs.UpdateProject<CR>
+" String插件操作
+" 弹出插件相关，String插件选项太多了，而且S很难打
+nnoremap ,m :action osmedile.intellij.stringmanip.PopupChoiceAction<CR>
+vnoremap ,m :action osmedile.intellij.stringmanip.PopupChoiceAction<CR>
 
-" History
-nnoremap \\h  :<C-u>action RecentChanges<CR>
-nnoremap \\hl  :<C-u>action LocalHistory.ShowHistory<CR>
-
-
-" Build
-nnoremap <S-F8> :<C-u>action CompileDirty<CR>
-nnoremap <C-F8> :<C-u>action StopBackgroundProcesses<CR>
-nnoremap <C-F9> :<C-u>action CompileDirty<CR>
-nnoremap <leader>mci :<C-u>action MavenRunHelperCleanInstall<cr>
-
-
-" Debug
-nnoremap <S-A-F9> :<C-u>action ChooseDebugConfiguration<CR>
-" nnoremap <C-F9>   :<C-u>action DebugClass<CR>
-nnoremap <S-F9>   :<C-u>action Debug<CR>
-
-" Run
-nnoremap <S-A-F10> :<C-u>action ChooseRunConfiguration<CR>
-nnoremap <C-F10>   :<C-u>action RunClass<CR>
-nnoremap <S-F10>   :<C-u>action Run<CR>
-
-" Debugger
-nnoremap <Leader>b  :<C-u>action ToggleLineBreakpoint<CR>
-
-" Refresh
-nnoremap <F5>  :<C-u>action Synchronize<CR>
-nnoremap <S-F5>  :<C-u>action ReformatCode<CR>
-nnoremap <C-F5>  :<C-u>action Refresh<CR>
-
-
-" SnoarLint
-noremap <Leader>sc <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
-noremap <Leader>sf <ESC>:action SonarLint.AnalyzeFiles<cr>
-noremap <Leader>sbc <ESC>:action SpotBugs.ActiveChangeListAction<cr>
-noremap <Leader>sbf <ESC>:action SpotBugs.CurrentFileAction<cr>
+nnoremap J gt
+nnoremap K gT
+nnoremap H ^
+nnoremap L $
+nnoremap T zt
+nnoremap M zz
+" nnoremap D zb
+" nnoremap u :action $Undo<CR>
+" nnoremap U :action $Redo<CR>
+nnoremap U :action EditorPageUp<CR>
+nnoremap D :action EditorPageDown<CR>

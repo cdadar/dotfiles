@@ -1,0 +1,269 @@
+" M->cmd, A->option, C->control
+" M->Win, A-> alt, C-> ctrl
+" <ESC> - escape, <BS> - backspace, <cr> - return
+
+" leader
+let mapleader = ' '
+
+set easymotion
+
+" 启用vim surround功能
+" Commands: ys, cs, ds, S
+set surround
+" 启用multi cursor
+" Commands: <A-n>, <A-x>, <A-p>, g<A-n>
+set multiple-cursors
+" 启用 commentary
+" Commands: gcc, gc + motion, v_gc
+set commentary
+" Commands: gr, grr
+set ReplaceWithRegister
+" 启用 NERDTree
+set NERDTree
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+
+" Additional text objects: aa, ia
+set argtextobj
+" Additional text objects: ae, ie
+set textobj-entire
+" 显示行号
+set nu
+" 显示相对行号
+" set rnu
+" 高亮搜索
+set hlsearch
+" 自动定位到输入中的字符串，不需要回车搜索
+set incsearch
+" 显示当前的模式
+set showmode
+" 共享系统粘贴板
+" set clipboard=unnamed
+set clipboard+=unnamed
+" set clipboard+=ideaput
+
+" set clipboard=ideaput
+" 搜索时智能匹配大小写
+" set ignorecase smartcase
+
+set timeout
+set timeoutlen=1000
+
+set ideajoin
+
+set virtualedit=onemore
+
+" " IdeaVimExtension
+set keep-english-in-normal-and-restore-in-insert
+
+noremap <C-O> <ESC>:action Back<cr>
+noremap <C-I> <ESC>:action Forward<cr>
+
+" System/Global
+inoremap <c-a> <c-o>^
+inoremap <c-e> <c-o>$
+inoremap <c-f> <Right>
+inoremap <c-b> <Left>
+inoremap <M-b> <C-o>b
+inoremap <M-f> <C-o>w
+inoremap <c-n> <Down>
+inoremap <c-p> <Up>
+inoremap <c-d> <Del>
+inoremap <C-w> <Esc>dbcl
+inoremap <C-u> <Esc>d0cl
+inoremap <C-k> <Esc><Right>C
+inoremap <C-d> <Esc><Right>s
+inoremap <M-d> <C-o>de
+
+nnoremap <c-c> i
+nnoremap <c-a> ^
+nnoremap <cr> :action EditorStartNewLine<cr>
+
+
+" Basic
+nnoremap \\r :source ~/.ideavimrc<CR>
+noremap x "_x
+noremap ,d "_d
+noremap ,D "_D
+nnoremap ,p :<C-u>action $Paste<CR>
+inoremap <c-v> <Esc>:action $Paste<cr>
+
+
+" Move
+nnoremap s :<C-u>action AceAction<CR>
+"nnoremap / :<C-u>action Find<CR>
+nnoremap <C-o> :<C-u>action Back<CR>
+nnoremap <C-i> :<C-u>action Forward<CR>
+nnoremap <C-S-o> <C-o>
+nnoremap <C-S-i> <C-i>
+nnoremap [m :<C-u>action MethodUp<CR>
+nnoremap ]m :<C-u>action MethodDown<CR>
+nnoremap [[ :<C-u>action MethodUp<CR>
+nnoremap ]] :<C-u>action MethodDown<CR>
+nnoremap [c :<C-u>action VcsShowPrevChangeMarker<CR>
+nnoremap ]c :<C-u>action VcsShowNextChangeMarker<CR>
+nnoremap [e :<C-u>action GotoPreviousError<CR>
+nnoremap ]e :<C-u>action GotoNextError<CR>
+nnoremap [b :<C-u>action GotoPreviousBookmark<cr>
+nnoremap ]b :<C-u>action GotoNextBookmark<cr>
+
+nnoremap <C-Up> :<C-u>action MethodUp<CR>
+nnoremap <C-Down> :<C-u>action MethodDown<CR>
+nnoremap <C-S-Up> :<C-u>action VcsShowPrevChangeMarker<CR>
+nnoremap <C-S-Down> :<C-u>action VcsShowNextChangeMarker<CR>
+nnoremap <A-Up> :<C-u>action MethodUp<CR>
+nnoremap <A-Down> :<C-u>action MethodDown<CR>
+nnoremap <A-S-Up> :<C-u>action MoveLineUp<CR>
+nnoremap <A-S-Down> :<C-u>action MoveLineDown<CR>
+
+
+ " Navigate
+nnoremap <C-S-F2> :<C-u>action PreviousOccurence<CR>
+nnoremap <C-S-F3> :<C-u>action NextOccurence<CR>
+nnoremap g; :<C-u>action JumpToLastChange<CR>
+nnoremap g, :<C-u>action JumpToNextChange<CR>
+
+
+" Tab
+nnoremap <F4>      :<C-u>action EditSource<CR>
+nnoremap <A-F4>    :q<CR>
+nnoremap <S-F4>    :<C-u>action ReopenClosedTab<CR>
+nnoremap <C-S-F4>  :<C-u>action CloseAllEditorsButActive<CR>
+nnoremap <C-S-T>   :<C-u>action ReopenClosedTab<CR>
+nnoremap <Leader>q :<C-u>action CloseContent<CR>
+nnoremap <F2>      :<C-u>action PreviousTab<CR>
+nnoremap <A-Left>  :<C-u>action PreviousTab<CR>
+nnoremap <A-H>     :<C-u>action PreviousTab<CR>
+nnoremap <F3>      :<C-u>action NextTab<CR>
+nnoremap <A-Right> :<C-u>action NextTab<CR>
+nnoremap <A-L>     :<C-u>action NextTab<CR>
+
+" Goto
+nnoremap K :<C-u>action QuickJavaDoc<CR>
+nnoremap gK :<C-u>action GotoDeclaration<CR>
+nnoremap gk :<C-u>action GotoTypeDeclaration<CR>
+nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap gI :<C-u>action ImplementMethods<CR>
+nnoremap gs :<C-u>action GotoSuperMethod<CR>
+nnoremap gt :<C-u>action GotoTest<CR>
+
+nnoremap ghc :<C-u>action CallHierarchy<cr>
+nnoremap ght :<C-u>action TypeHierarchy<cr>
+nnoremap ghm :<C-u>action MethodHierarchy<cr>
+
+nnoremap <C-k> :<C-u>action ShowUsages<CR>
+
+" Goto file
+nnoremap <Leader>gs :<C-u>action GotoSymbol<CR>
+nnoremap <Leader>gr :<C-u>action GotoRelated<CR>
+
+" Search
+nnoremap <Leader>e  :<C-u>action SearchEverywhere<CR>
+nnoremap <Leader>p  :<C-u>action RecentFiles<CR>
+nnoremap <Leader>a  :<C-u>action GotoAction<CR>
+nnoremap <Leader>u  :<C-u>action FindUsages<CR>
+nnoremap <A-F7>     :<C-u>action FindUsages<CR>
+
+" Find files/class
+nnoremap <Leader>;  :<C-u>action GotoFile<CR>
+nnoremap <Leader>o  :<C-u>action FileStructurePopup<CR>
+nnoremap <Leader>gc :<C-u>action GotoClass<CR>
+nnoremap <Leader>gs :<C-u>action GotoSymbol<CR>
+nnoremap <Leader>gt :<C-u>action ActivateTerminalToolWindow<CR>
+nnoremap <Leader>h  :<C-u>action CallHierarchy<CR>
+
+" Find word
+nnoremap <Leader>F  :<C-u>action Find<CR>
+nnoremap <Leader>f  :<C-u>action FindInPath<CR>
+" Replace word
+nnoremap <Leader>R <ESC>:action Replace<cr>
+nnoremap <Leader>r <ESC>:action ReplaceInPath<cr>
+
+" global find
+nnoremap g/ <ESC>:action FindInPath<cr>
+" find
+nnoremap / <ESC>:action Find<cr>
+" (vim自带的搜索)
+nnoremap <Leader>/ /
+
+" Edit
+vnoremap < <gv
+vnoremap > >gv
+nnoremap <Leader>c<Leader> :<C-u>action CommentByLineComment<CR>
+nnoremap <Leader>=  :<C-u>action ReformatCode<CR>
+nnoremap <C-S-=> :<C-u>action ReformatCode<CR>
+nnoremap <C-S--> :<C-u>action RearrangeCode<cr>
+nnoremap <Leader>- :<C-u>action RearrangeCode<cr>
+nnoremap <C-S-U> :<C-u>action EditorToggleCase<CR>
+
+" Select
+nnoremap + :<C-u>action EditorSelectWord<CR>
+nnoremap - :<C-u>action EditorUnSelectWord<CR>
+
+" Refactor
+nnoremap ,rm  :<C-u>action ExtractMethod<CR>
+nnoremap ,ri  :<C-u>action Inline<CR>
+nnoremap ,rD  :<C-u>action DelegateMethods<CR>
+nnoremap ,rn  :<C-u>action RenameElement<CR>
+nnoremap ,rs :<C-u>action ChangeSignature<CR>
+nnoremap ,rt :<C-u>action ChangeTypeSignature<CR>
+nnoremap ,ru :<C-u>action MembersPullUp<CR>
+nnoremap ,rd :<C-u>action MemberPushDown<CR>
+nnoremap ,rc :<C-u>action IntroduceConstant<CR>
+nnoremap ,rv :<C-u>action IntroduceVariable<CR>
+
+" Generate
+nnoremap ,g, :<C-u>action Generate<CR>
+nnoremap ,gn :<C-u>action NewClass<CR>
+nnoremap ,go :<C-u>action OverrideMethods<CR>
+nnoremap ,gc :<C-u>action GenerateConstructor<CR>
+nnoremap ,gg :<C-u>action GenerateGetter<CR>
+nnoremap ,gs :<C-u>action GenerateSetter<CR>
+nnoremap ,ga :<C-u>action GenerateGetterAndSetter<CR>
+nnoremap ,ge :<C-u>action GenerateEquals<CR>
+nnoremap ,gt :<C-u>action GenerateTestMethod<CR>
+nnoremap <C-F7> :<C-u>action Generate<CR>
+
+
+" Git
+nnoremap \\gm :<C-u>action Vcs.QuickListPopupAction<CR>
+nnoremap \\gc :<C-u>action CheckinProject<CR>
+nnoremap \\gp :<C-u>action Vcs.Push<CR>
+nnoremap \\gu :<C-u>action Vcs.UpdateProject<CR>
+
+" History
+nnoremap \\h  :<C-u>action RecentChanges<CR>
+nnoremap \\hl  :<C-u>action LocalHistory.ShowHistory<CR>
+
+
+" Build
+nnoremap <S-F8> :<C-u>action CompileDirty<CR>
+nnoremap <C-F8> :<C-u>action StopBackgroundProcesses<CR>
+nnoremap <C-F9> :<C-u>action CompileDirty<CR>
+nnoremap <leader>mci :<C-u>action MavenRunHelperCleanInstall<cr>
+
+
+" Debug
+nnoremap <S-A-F9> :<C-u>action ChooseDebugConfiguration<CR>
+" nnoremap <C-F9>   :<C-u>action DebugClass<CR>
+nnoremap <S-F9>   :<C-u>action Debug<CR>
+
+" Run
+nnoremap <S-A-F10> :<C-u>action ChooseRunConfiguration<CR>
+nnoremap <C-F10>   :<C-u>action RunClass<CR>
+nnoremap <S-F10>   :<C-u>action Run<CR>
+
+" Debugger
+nnoremap <Leader>b  :<C-u>action ToggleLineBreakpoint<CR>
+
+" Refresh
+nnoremap <F5>  :<C-u>action Synchronize<CR>
+nnoremap <S-F5>  :<C-u>action ReformatCode<CR>
+nnoremap <C-F5>  :<C-u>action Refresh<CR>
+
+
+" SnoarLint
+noremap <Leader>sc <ESC>:action SonarLint.AnalyzeChangedFiles<cr>
+noremap <Leader>sf <ESC>:action SonarLint.AnalyzeFiles<cr>
+noremap <Leader>sbc <ESC>:action SpotBugs.ActiveChangeListAction<cr>
+noremap <Leader>sbf <ESC>:action SpotBugs.CurrentFileAction<cr>

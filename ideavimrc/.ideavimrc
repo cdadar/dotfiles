@@ -48,8 +48,6 @@ noremap <Leader>r <ESC>:source ~/.ideavimrc<cr>
 " 删除时不替换剪贴板内容，而是保存在p寄存器中
 nnoremap c "pc
 vnoremap c "pc
-nnoremap cc "pc
-vnoremap cc "pc
 " vnoremap c "pc
 " nnoremap d "pd
 " vnoremap d "pd
@@ -201,6 +199,11 @@ nnoremap ,te :action tasks.edit<CR>
 nnoremap ,tm :action tasks.edit<CR>
 nnoremap ,tc :action tasks.close<CR>
 nnoremap ,tx :action tasks.close<CR>
+
+
+" view mode
+nnoremap ,vz :action ToggleZenMode<CR>
+
 
 " String插件操作
 " 弹出插件相关，String插件选项太多了，而且S很难打

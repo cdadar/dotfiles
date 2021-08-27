@@ -57,3 +57,7 @@ autocmd BufReadPre *.vue let b:javascript_lib_use_vue = 1
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
 autocmd FileType javascript :call ESlintFormatter()
 let g:formatters_javascript = ['eslint']
+
+
+
+colorscheme dracula

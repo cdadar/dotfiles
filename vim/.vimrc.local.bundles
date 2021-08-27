@@ -12,3 +12,4 @@ Plug 'preservim/vimux'
 "" javascript bundle
 Plug 'isRuslan/vim-es6'
 Plug 'mxw/vim-jsx'
+Plug 'dracula/vim', { 'as': 'dracula' }

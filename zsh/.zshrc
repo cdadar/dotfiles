@@ -62,6 +62,10 @@ zinit light sei40kr/zsh-fast-alias-tips
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
+# zinit ice pick"async.zsh" src"dracula.zsh-theme"
+# zinit light dracula/zsh
+
+
 #
 # Utilities
 #

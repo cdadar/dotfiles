@@ -20,6 +20,9 @@ let mapleader = " "
 
 set easymotion
 " 启动 sneak
+" Type s and two chars to start sneaking in forward direction
+" Type S and two chars to start sneaking in backward direction
+" Type ; or , to proceed with sneaking just as if you were using f or t commands
 set sneak
 " 启用vim surround功能
 " Commands: ys, cs, ds, S

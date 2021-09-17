@@ -1,4 +1,5 @@
 Plug 'tpope/vim-surround'
+Plug 'justinmk/vim-sneak'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ledger/vim-ledger'
 Plug 'vim-scripts/DoxygenToolkit.vim'

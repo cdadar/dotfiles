@@ -79,13 +79,13 @@ zinit light tj/git-extras
 zinit as"null" wait lucid from"gh-r" for \
       atload"alias ls='exa --group-directories-first'; alias la='ls -laFh'" cp"**/exa.1 -> $ZPFX/share/man/man1" mv"**/autocomplete/exa.zsh -> $ZINIT[COMPLETIONS_DIR]/_exa" sbin"**/exa" ogham/exa \
       cp"**/bat.1 -> $ZPFX/share/man/man1" mv"**/autocomplete/bat.zsh -> $ZINIT[COMPLETIONS_DIR]/_bat" sbin"**/bat" @sharkdp/bat \
-      cp"**/fd.1 -> $ZPFX/share/man/man1" mv"**/autocomplete/_fd -> $ZINIT[COMPLETIONS_DIR]" sbin"**/fd" @sharkdp/fd \
-      cp"**/doc/rg.1 -> $ZPFX/share/man/man1" mv"**/complete/_rg -> $ZINIT[COMPLETIONS_DIR]" sbin"**/rg" BurntSushi/ripgrep \
-      atload"alias ps=procs" sbin"**/procs" dalance/procs
+      # cp"**/fd.1 -> $ZPFX/share/man/man1" mv"**/autocomplete/_fd -> $ZINIT[COMPLETIONS_DIR]" sbin"**/fd" @sharkdp/fd \
+      # cp"**/doc/rg.1 -> $ZPFX/share/man/man1" mv"**/complete/_rg -> $ZINIT[COMPLETIONS_DIR]" sbin"**/rg" BurntSushi/ripgrep \
+      # atload"alias ps=procs" sbin"**/procs" dalance/procs
 
 # FZF
-zinit ice id-as"fzf-bin" as"program" wait lucid from"gh-r" sbin"fzf"
-zinit light junegunn/fzf
+# zinit ice id-as"fzf-bin" as"program" wait lucid from"gh-r" sbin"fzf"
+# zinit light junegunn/fzf
 
 zinit ice wait lucid depth"1" as"null" sbin"bin/fzf-tmux" \
       cp"man/man.1/fzf* -> $ZPFX/share/man/man1" atpull'%atclone' \

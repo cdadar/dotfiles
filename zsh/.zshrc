@@ -187,7 +187,7 @@ alias rte="$EDITOR -e '(let ((last-nonmenu-event nil) (kill-emacs-query-function
 # xrdb $HOME/.Xresources
 # [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 if [[ $(tty) != /dev/tty* ]]; then
-    [ -f $HOME/.Xresources ] && xrdb -load $HOME/.Xresources
+    [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 fi
 
 # User specific aliases and functions
@@ -210,7 +210,7 @@ fi
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-[ -f $HOME/.bashrc ] && source  $HOME/.bashrc
+[[ -f $HOME/.bashrc ]] && source  $HOME/.bashrc
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chens/.sdkman"

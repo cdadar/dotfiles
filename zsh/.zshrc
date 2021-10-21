@@ -192,20 +192,20 @@ fi
 
 # User specific aliases and functions
 
-if [[ $(tty) != /dev/tty* ]]; then
-  tmux_init()
-  {
-      tmux new-session -s "chen" -d -n "local"    # 开启一个会话
-      tmux attach
-  }
+# if [[ $(tty) != /dev/tty* ]]; then
+#   tmux_init()
+#   {
+#       tmux new-session -s "chen" -d -n "local"    # 开启一个会话
+#       tmux attach
+#   }
 
-  # 判断是否已有开启的tmux会话，没有则开启
-  if which tmux 2>&1 >/dev/null; then
-      test -z "$TMUX" && (tmux attach || tmux_init)
-  fi
+#   # 判断是否已有开启的tmux会话，没有则开启
+#   if which tmux 2>&1 >/dev/null; then
+#       test -z "$TMUX" && (tmux attach || tmux_init)
+#   fi
 
-  PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-fi
+#   PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+# fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

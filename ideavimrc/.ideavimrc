@@ -61,6 +61,11 @@ vnoremap c "pc
 
 " 搜索使用idea的
 nnoremap / :action Find<CR>
+vnoremap / :action Find<CR>
+
+nnoremap <leader>/ :action Replace<CR>
+vnoremap <leader>/ :action Replace<CR>
+
 
 " surrounding标签处理
 " nnoremap / :action surrounding<CR>

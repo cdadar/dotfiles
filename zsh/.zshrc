@@ -65,6 +65,18 @@ zinit light sindresorhus/pure
 # zinit ice pick"async.zsh" src"dracula.zsh-theme"
 # zinit light dracula/zsh
 
+# add it into your .zshrc
+zinit ice pick'init.zsh'
+zinit light laggardkernel/zsh-tmux
+
+# global setting
+NO_AUTO_TMUX=1 # enabled by default
+
+# setting for local terminal only
+zstyle ':prezto:module:tmux:auto-start' local 'yes' # default 'yes'
+
+# setting for remote terminal only
+zstyle ':prezto:module:tmux:auto-start' remote 'yes' # default 'no'
 
 #
 # Utilities

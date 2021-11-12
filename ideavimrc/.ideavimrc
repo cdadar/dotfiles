@@ -212,6 +212,7 @@ nnoremap ,tx :action tasks.close<CR>
 
 " view mode
 nnoremap ,vz :action ToggleZenMode<CR>
+nnoremap ,vp :action TogglePresentationMode<CR>
 
 
 " String插件操作

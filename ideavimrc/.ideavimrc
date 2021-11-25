@@ -194,6 +194,7 @@ nnoremap ,rv :<C-u>action IntroduceVariable<CR>
 nnoremap ;g, :<C-u>action Generate<CR>
 nnoremap ;gn :<C-u>action NewClass<CR>
 nnoremap ;go :<C-u>action OverrideMethods<CR>
+nnoremap ;gi :<C-u>action ImplementMethods<CR>
 nnoremap ;gc :<C-u>action GenerateConstructor<CR>
 nnoremap ;gg :<C-u>action GenerateGetter<CR>
 nnoremap ;gs :<C-u>action GenerateSetter<CR>

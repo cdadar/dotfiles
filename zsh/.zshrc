@@ -67,6 +67,7 @@ plugins=(
     fzf-tab
     zsh-tmux
     colored-man-pages
+    suse
     web-search
     wd
     history

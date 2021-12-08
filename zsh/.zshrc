@@ -1,122 +1,213 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# Two regular plugins loaded without investigating.
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma-continuum/zinit.git "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+            print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="theunraveler"
-# ZSH_THEME="agnoster"
-# ZSH_THEME="ys"
-ZSH_THEME="robbyrussell"
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-HIST_STAMPS="yyyy-mm-dd"
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+### End of Zinit's installer chunk
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# Oh My Zsh
+zinit for \
+      OMZL::correction.zsh \
+      OMZL::directories.zsh \
+      OMZL::history.zsh \
+      OMZL::key-bindings.zsh \
+      OMZL::theme-and-appearance.zsh \
+      OMZP::common-aliases
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+zinit wait lucid for \
+      OMZP::colored-man-pages \
+      OMZP::cp \
+      OMZP::extract \
+      OMZP::git \
+      OMZP::sudo
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+zinit light-mode for \
+      zsh-users/zsh-autosuggestions
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+zinit wait lucid light-mode for \
+      zsh-users/zsh-history-substring-search \
+      hlissner/zsh-autopair \
+      agkozak/zsh-z
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# Completion enhancements
+zinit ice wait lucid atload"zicompinit; zicdreplay" blockf
+zinit light zsh-users/zsh-completions
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+zinit ice wait lucid atinit"zicompinit; zicdreplay"
+zinit light zdharma-continuum/fast-syntax-highlighting
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+zinit ice wait lucid atinit"zicompinit; zicdreplay"
+zinit light zdharma-continuum/history-search-multi-word
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+zinit ice wait lucid from'gh-r' as'program'
+zinit light sei40kr/fast-alias-tips-bin
+zinit ice wait lucid depth"1"
+zinit light sei40kr/zsh-fast-alias-tips
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+# Load the pure theme, with zsh-async library that's bundled with it.
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# zinit ice pick"async.zsh" src"dracula.zsh-theme"
+# zinit light dracula/zsh
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(git z d zsh-autosuggestions web-search wd)
-plugins=(
-    git
-    sudo
-    cp
-    z
-    vagrant
-    docker
-    docker-compose
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    fzf-tab
-    zsh-tmux
-    colored-man-pages
-    suse
-    web-search
-    wd
-    history
-)
-# User configuration
+# add it into your .zshrc
+zinit ice pick'init.zsh'
+zinit light laggardkernel/zsh-tmux
 
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+# global setting
+NO_AUTO_TMUX=0 # enabled by default
 
-bindkey -e #emacs
+#
+# Utilities
+#
+
+# Scripts that are built at install (there's single default make target, "install",
+# and it constructs scripts by `cat'ing a few files). The make'' ice could also be:
+# `make"install PREFIX=$ZPFX"`, if "install" wouldn't be the only, default target.
+zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+zinit light tj/git-extras
+
+# FZF
+# zinit ice id-as"fzf-bin" as"program" wait lucid from"gh-r" sbin"fzf"
+# zinit light junegunn/fzf
+
+zinit ice wait lucid depth"1" as"null" sbin"bin/fzf-tmux" \
+      cp"man/man.1/fzf* -> $ZPFX/share/man/man1" atpull'%atclone' \
+      src'shell/key-bindings.zsh'
+zinit light junegunn/fzf
+
+zinit ice wait lucid atload"zicompinit; zicdreplay" blockf
+zinit light Aloxaf/fzf-tab
+
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w -w'
+zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':fzf-tab:complete:(cd|ls|exa|bat|cat|emacs|nano|vi|vim):*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
+       '[[ $group == "[process ID]" ]] &&
+        if [[ $OSTYPE == darwin* ]]; then
+           ps -p $word -o comm="" -w -w
+        elif [[ $OSTYPE == linux* ]]; then
+           ps --pid=$word -o cmd --no-headers -w -w
+        fi'
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags '--preview-window=down:3:wrap'
+
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --hidden --files || find ."
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} || cat {} || tree -NC {}) 2> /dev/null | head -200'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
+export FZF_ALT_C_OPTS="--preview 'tree -NC {} | head -200'"
+
+# For GNU ls (the binaries can be gls, gdircolors, e.g. on OS X when installing the
+# coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
+zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
+zinit light trapd00r/LS_COLORS
+
+# OS bundles
+if [[ $OSTYPE == darwin* ]]; then
+    zinit snippet PZTM::osx
+    if (( $+commands[brew] )); then
+        alias bu='brew update && brew upgrade'
+        alias bcu='brew cu --all --yes --cleanup'
+        alias bua='bu && bcu'
+    fi
+elif [[ $OSTYPE == linux* ]]; then
+    if (( $+commands[apt-get] )); then
+        zinit snippet OMZP::ubuntu
+        alias agua='aguu -y && agar -y && aga -y'
+        alias kclean+='sudo aptitude remove -P "?and(~i~nlinux-(ima|hea),\
+                                ?not(?or(~n`uname -r | cut -d'\''-'\'' -f-2`,\
+                                ~nlinux-generic,\
+                                ~n(linux-(virtual|headers-virtual|headers-generic|image-virtual|image-generic|image-`dpkg --print-architecture`)))))"'
+    elif (( $+commands[pacman] )); then
+        zinit snippet OMZP::archlinux
+    elif (( $+commands[zypper] )); then
+        zinit snippet OMZP::suse
+    fi
+fi
+
+# use oh-my-zsh theme
+# zinit snippet OMZT::robbyrussell.zsh-theme
+# ZSH_THEME="robbyrussell"
+
+# Local customizations, e.g. theme, plugins, aliases, etc.
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
+#
+# Aliases
+#
+
+# Unalias the original fd in oh-my-zsh
+# alias fd >/dev/null && unalias fd
+
+# General
+alias zshconf="$EDITOR $HOME/.zshrc; $EDITOR $HOME/.zshrc.local"
+alias h='history'
+alias c='clear'
+
+alias gtr='git tag -d $(git tag) && git fetch --tags' # Refresh local tags from remote
+
+(( $+commands[bat] )) && alias cat='bat -p --wrap character'
+(( $+commands[htop] )) && alias top='htop'
+
+if [[ $OSTYPE == darwin* ]]; then
+    (( $+commands[gls] )) && alias ls='gls --color=tty --group-directories-first'
+else
+    ((! $+commands[exa] )) && alias ls='ls --color=tty --group-directories-first'
+fi
+
+# Emacs
+alias me="emacs -Q -l ~/.emacs.d/init-mini.el" # mini emacs
+alias mte="emacs -Q -nw -l ~/.emacs.d/init-mini.el" # mini terminal emacs
+alias e="$EDITOR -n"
+alias ec="$EDITOR -n -c"
+alias ef="$EDITOR -c"
+alias te="$EDITOR -a '' -nw"
+alias rte="$EDITOR -e '(let ((last-nonmenu-event nil) (kill-emacs-query-functions nil)) (save-buffers-kill-emacs t))' && te"
 
 # load xterm config
 # xrdb $HOME/.Xresources
 # [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 if [[ $(tty) != /dev/tty* ]]; then
-    [ -f $HOME/.Xresources ] && xrdb -load $HOME/.Xresources
+    [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 fi
 
 # User specific aliases and functions
 
-source $ZSH/oh-my-zsh.sh
+# if [[ $(tty) != /dev/tty* ]]; then
+#   tmux_init()
+#   {
+#       tmux new-session -s "chen" -d -n "local"    # 开启一个会话
+#       tmux attach
+#   }
+
+#   # 判断是否已有开启的tmux会话，没有则开启
+#   if which tmux 2>&1 >/dev/null; then
+#       test -z "$TMUX" && (tmux attach || tmux_init)
+#   fi
+
+#   PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+# fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-[ -f $HOME/.bashrc ] && source  $HOME/.bashrc
+[[ -f $HOME/.bashrc ]] && source  $HOME/.bashrc
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chens/.sdkman"
 [[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"
+
 setopt nonomatch

@@ -43,10 +43,8 @@ zinit ice wait lucid atload"zicompinit; zicdreplay" blockf
 zinit light zsh-users/zsh-completions
 
 zinit ice wait lucid atinit"zicompinit; zicdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-zinit ice wait lucid atinit"zicompinit; zicdreplay"
-zinit light zdharma-continuum/history-search-multi-word
+zinit light zdharma-continuum/fast-syntax-highlighting \
+            zdharma-continuum/history-search-multi-word
 
 zinit ice wait lucid from'gh-r' as'program'
 zinit light sei40kr/fast-alias-tips-bin

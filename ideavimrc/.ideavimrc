@@ -79,6 +79,7 @@ nnoremap <leader>zc :action GotoClass<CR>
 nnoremap <leader>za :action GotoAction<CR>
 nnoremap <leader>zs :action GotoSymbol<CR>
 nnoremap <leader>zh :action RecentChangedFiles<CR>
+nnoremap <leader>zz :action SearchEverywhere<CR>
 nnoremap <leader>zf :action GotoFile<CR>
 nnoremap <leader>zd :action ActivateDebugToolWindow<CR>
 nnoremap <leader>zr :action ActivateRunToolWindow<CR>

@@ -38,6 +38,8 @@ set ReplaceWithRegister
 " 启用 NERDTree
 set NERDTree
 
+set keep-english-in-normal-and-restore-in-insert
+
 nnoremap <leader>n :NERDTreeFocus<CR>
 
 " source ~/.vimrc

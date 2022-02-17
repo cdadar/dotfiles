@@ -200,6 +200,7 @@ nnoremap ;go :<C-u>action OverrideMethods<CR>
 nnoremap ;gi :<C-u>action ImplementMethods<CR>
 nnoremap ;gc :<C-u>action GenerateConstructor<CR>
 nnoremap ;gg :<C-u>action GenerateGetter<CR>
+nnoremap ;gS :<C-u>action GenerateToString<CR>
 nnoremap ;gs :<C-u>action GenerateSetter<CR>
 nnoremap ;ga :<C-u>action GenerateGetterAndSetter<CR>
 nnoremap ;ge :<C-u>action GenerateEquals<CR>

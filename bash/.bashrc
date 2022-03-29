@@ -88,7 +88,7 @@ source /usr/bin/virtualenvwrapper
 export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 # go
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 # Enable the go modules feature
 export GO111MODULE=on

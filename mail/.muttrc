@@ -43,7 +43,7 @@ set move = ask-yes
 set date_format = "%m/%d/%t"
 
 
-mailboxes +inbox +lovey-dovey +happy-kangaroos
+mailboxes +inbox +apple +emacs-devel +facebook +fedora +github/notifications +github/purcell/emacs.d +JetBranins +Junk +kde +Later +linkedin +Notes +nintendo +opensuse +playstation +spdbccc +taotao +vim-dev
 
 subscribe opensuse-factory@opensuse.org  opensuse-project@opensuse.org  chinese@lists.fedoraproject.org
 

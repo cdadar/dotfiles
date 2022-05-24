@@ -1,19 +1,19 @@
-" vim-bootstrap 2020-12-07 06:33:17
+" vim-bootstrap 2022-05-24 02:08:42
 
 "*****************************************************************************
 "" Vim-Plug core
 "*****************************************************************************
-let vimplug_exists=expand('~/./autoload/plug.vim')
+let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 if has('win32')&&!has('win64')
   let curl_exists=expand('C:\Windows\Sysnative\curl.exe')
 else
   let curl_exists=expand('curl')
 endif
 
-let g:vim_bootstrap_langs = "c,go,haskell,html,javascript,lisp,lua,perl,php,python,ruby,rust,typescript"
+let g:vim_bootstrap_langs = "c,elixir,elm,erlang,go,haskell,html,javascript,lisp,lua,ocaml,perl,php,python,ruby,rust,scala,typescript"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
 let g:vim_bootstrap_theme = "molokai"
-let g:vim_bootstrap_frams = "vuejs"
+let g:vim_bootstrap_frams = "svelte,vuejs"
 
 if !filereadable(vimplug_exists)
   if !executable(curl_exists)
@@ -29,7 +29,7 @@ if !filereadable(vimplug_exists)
 endif
 
 " Required:
-call plug#begin(expand('~/./plugged'))
+call plug#begin(expand('~/.vim/plugged'))
 
 "*****************************************************************************
 "" Plug install packages
@@ -81,6 +81,20 @@ Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
 
 
+" elixir
+Plug 'elixir-lang/vim-elixir'
+Plug 'carlosgaldino/elixir-snippets'
+
+
+" elm
+"" Elm Bundle
+Plug 'elmcast/elm-vim'
+
+
+" erlang
+Plug 'jimenezrick/vimerl'
+
+
 " go
 "" Go Lang Bundle
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
@@ -115,6 +129,11 @@ Plug 'vim-scripts/slimv.vim'
 "" Lua Bundle
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-lua-inspect'
+
+
+" ocaml
+"" OCaml Bundle
+Plug 'def-lkb/ocp-indent-vim'
 
 
 " perl
@@ -163,6 +182,19 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 
+" scala
+if has('python')
+    " sbt-vim
+    Plug 'ktvoelker/sbt-vim'
+endif
+" vim-scala
+Plug 'derekwyatt/vim-scala'
+
+
+" svelte
+Plug 'leafOfTree/vim-svelte-plugin'
+
+
 " typescript
 Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -178,8 +210,8 @@ Plug 'leafOfTree/vim-vue-plugin'
 "*****************************************************************************
 
 "" Include user's extra bundle
-if filereadable(expand("~/.rc.local.bundles"))
-  source ~/.rc.local.bundles
+if filereadable(expand("~/.vimrc.local.bundles"))
+  source ~/.vimrc.local.bundles
 endif
 
 call plug#end()
@@ -227,7 +259,7 @@ else
 endif
 
 " session management
-let g:session_directory = "~/./session"
+let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
@@ -242,6 +274,12 @@ set number
 let no_buffers_menu=1
 colorscheme molokai
 
+
+" Better command line completion 
+set wildmenu
+
+" mouse support
+set mouse=a
 
 set mousemodel=popup
 set t_Co=256
@@ -258,7 +296,7 @@ else
 
   " IndentLine
   let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
+  let g:indentLine_concealcursor = ''
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
@@ -332,13 +370,13 @@ cnoreabbrev Qall qall
 
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeIgnore=['node_modules','\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
@@ -409,13 +447,13 @@ noremap <Leader>v :<C-u>vsplit<CR>
 
 "" Git
 noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
+noremap <Leader>gc :Git commit --verbose<CR>
+noremap <Leader>gsh :Git push<CR>
+noremap <Leader>gll :Git pull<CR>
+noremap <Leader>gs :Git<CR>
+noremap <Leader>gb :Git blame<CR>
+noremap <Leader>gd :Gvdiffsplit<CR>
+noremap <Leader>gr :GRemove<CR>
 
 " session management
 nnoremap <leader>so :OpenSession<Space>
@@ -533,6 +571,20 @@ autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 
 
+" elixir
+
+
+" elm
+" elm-vim
+let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
+
+
+" erlang
+let erlang_folding = 1
+let erlang_show_errors = 1
+
+
 " go
 " vim-go
 " run :GoBuild or :GoTestCompile based on the go file
@@ -629,6 +681,16 @@ augroup END
 " lua
 
 
+" ocaml
+" Add Merlin to rtp
+let g:opamshare = substitute(system('opam var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+" ale
+:call extend(g:ale_linters, {
+    \'ocaml': ['merlin'], })
+
+
 " perl
 
 
@@ -642,9 +704,9 @@ nmap <Leader>mm :call phpactor#ContextMenu()<CR>
 nmap <Leader>nn :call phpactor#Navigate()<CR>
 " Goto definition of class or class member under the cursor
 nmap <Leader>oo :call phpactor#GotoDefinition()<CR>
-nmap <Leader>oh :call phpactor#GotoDefinitionHsplit()<CR>
-nmap <Leader>ov :call phpactor#GotoDefinitionVsplit()<CR>
-nmap <Leader>ot :call phpactor#GotoDefinitionTab()<CR>
+nmap <Leader>oh :call phpactor#GotoDefinition('hsplit')<CR>
+nmap <Leader>ov :call phpactor#GotoDefinition('vsplit')<CR>
+nmap <Leader>ot :call phpactor#GotoDefinition('tabnew')<CR>
 " Show brief information about the symbol under the cursor
 nmap <Leader>K :call phpactor#Hover()<CR>
 " Transform the classes in the current file
@@ -745,9 +807,16 @@ au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 
+" scala
+
+
 " typescript
 let g:yats_host_keyword = 1
 
+
+
+" svelte
+let g:vim_svelte_plugin_load_full_syntax = 1
 
 
 " vuejs
@@ -761,8 +830,8 @@ let g:vim_vue_plugin_load_full_syntax = 1
 "*****************************************************************************
 
 "" Include user's local vim config
-if filereadable(expand("~/.rc.local"))
-  source ~/.rc.local
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
 endif
 
 "*****************************************************************************

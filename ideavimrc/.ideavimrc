@@ -72,9 +72,6 @@ vnoremap <leader>/ :action Replace<CR>
 " surrounding标签处理
 " nnoremap / :action surrounding<CR>
 
-nnoremap <C-o> :<C-u>action Back<CR>
-nnoremap <C-i> :<C-u>action Forward<CR>
-
 
 " 搜索文件相关
 nnoremap <leader>zc :action GotoClass<CR>

@@ -144,3 +144,5 @@
 	prompt = false
 [github]
 	user = cdadar
+[http]
+	version = HTTP/1.1

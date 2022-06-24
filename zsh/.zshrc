@@ -31,7 +31,8 @@ zinit wait lucid for \
       OMZP::sudo
 
 zinit light-mode for \
-      zsh-users/zsh-autosuggestions
+      zsh-users/zsh-autosuggestions \
+      zdharma-continuum/history-search-multi-word
 
 zinit wait lucid light-mode for \
       zsh-users/zsh-history-substring-search \

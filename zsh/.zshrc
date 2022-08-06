@@ -1,16 +1,29 @@
-# Two regular plugins loaded without investigating.
+# copy https://github.com/seagle0128/dotfiles/blob/master/.zshrc
+
+# Zsh configuration
+
+# vars
+EMACSD=$HOME/.emacs.d
+
 ### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit.git "$HOME/.zinit/bin" && \
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone --depth=1 https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
             print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode depth"1" for \
+      zdharma-continuum/zinit-annex-as-monitor \
+      zdharma-continuum/zinit-annex-bin-gem-node \
+      zdharma-continuum/zinit-annex-patch-dl
 
 ### End of Zinit's installer chunk
 
@@ -20,79 +33,116 @@ zinit for \
       OMZL::directories.zsh \
       OMZL::history.zsh \
       OMZL::key-bindings.zsh \
-      OMZL::theme-and-appearance.zsh \
-      OMZP::common-aliases
+      OMZL::theme-and-appearance.zsh
 
 zinit wait lucid for \
+      OMZP::common-aliases \
       OMZP::colored-man-pages \
       OMZP::cp \
       OMZP::extract \
+      OMZP::fancy-ctrl-z \
       OMZP::git \
       OMZP::sudo
 
-zinit light-mode for \
-      zsh-users/zsh-autosuggestions \
-      zdharma-continuum/history-search-multi-word
+# Completion enhancements
+zinit wait lucid depth"1" for \
+      atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
+      blockf \
+      zsh-users/zsh-completions \
+      atload"!_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions
 
-zinit wait lucid light-mode for \
+zinit wait lucid light-mode depth"1" for \
       zsh-users/zsh-history-substring-search \
       hlissner/zsh-autopair \
       agkozak/zsh-z
 
-# Completion enhancements
-zinit ice wait lucid atload"zicompinit; zicdreplay" blockf
-zinit light zsh-users/zsh-completions
-
-zinit ice wait lucid atinit"zicompinit; zicdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-zinit ice wait lucid from'gh-r' as'program'
-zinit light sei40kr/fast-alias-tips-bin
-zinit ice wait lucid depth"1"
-zinit light sei40kr/zsh-fast-alias-tips
-
-# Load the pure theme, with zsh-async library that's bundled with it.
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
-
-# zinit ice pick"async.zsh" src"dracula.zsh-theme"
-# zinit light dracula/zsh
-
-# add it into your .zshrc
-zinit ice pick'init.zsh'
-zinit light laggardkernel/zsh-tmux
-
-# global setting
-NO_AUTO_TMUX=0 # enabled by default
+if [[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]; then
+    zinit ice wait lucid from"gh-r" as"program"
+    zinit light sei40kr/fast-alias-tips-bin
+    zinit ice wait lucid depth"1"
+    zinit light sei40kr/zsh-fast-alias-tips
+fi
 
 #
 # Utilities
 #
 
-# Scripts that are built at install (there's single default make target, "install",
-# and it constructs scripts by `cat'ing a few files). The make'' ice could also be:
-# `make"install PREFIX=$ZPFX"`, if "install" wouldn't be the only, default target.
-zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+# Git extras
+zinit ice wait lucid as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX"
 zinit light tj/git-extras
 
-# FZF
-# zinit ice id-as"fzf-bin" as"program" wait lucid from"gh-r" sbin"fzf"
-# zinit light junegunn/fzf
+# Lazygit
+zinit ice wait lucid as"program" from"gh-r" sbin atload"alias lg=lazygit"
+zinit light jesseduffield/lazygit
 
-zinit ice wait lucid depth"1" as"null" sbin"bin/fzf-tmux" \
-      cp"man/man.1/fzf* -> $ZPFX/share/man/man1" atpull'%atclone' \
-      src'shell/key-bindings.zsh'
+# Prettify ls
+if (( $+commands[gls] )); then
+    alias ls='gls --color=tty --group-directories-first'
+else
+    alias ls='ls --color=tty --group-directories-first'
+fi
+
+# Homebrew completion
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    autoload -Uz compinit
+    compinit
+fi
+
+# Modern Unix commands
+# See https://github.com/ibraheemdev/modern-unix
+zinit wait lucid as"null" from"gh-r" for \
+      atload"alias ls='exa --color=auto --group-directories-first'; alias la='ls -laFh'" cp"**/exa.1 -> $ZPFX/share/man/man1" mv"**/exa.zsh -> $ZINIT[COMPLETIONS_DIR]/_exa" sbin"**/exa" if'[[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]' ogham/exa \
+      atload"alias cat='bat -p --wrap character'" mv"**/bat.1 -> $ZPFX/share/man/man1" cp"**/autocomplete/bat.zsh -> $ZINIT[COMPLETIONS_DIR]/_bat" sbin"**/bat" @sharkdp/bat \
+      mv"**/fd.1 -> $ZPFX/share/man/man1" cp"**/autocomplete/_fd -> $ZINIT[COMPLETIONS_DIR]" sbin"**/fd" @sharkdp/fd \
+      mv"**/hyperfine.1 -> $ZPFX/share/man/man1" cp"**/autocomplete/_hyperfine -> $ZINIT[COMPLETIONS_DIR]" sbin"**/hyperfine" @sharkdp/hyperfine \
+      cp"**/completion/_btm -> $ZINIT[COMPLETIONS_DIR]" atload"alias top=btm" sbin ClementTsang/bottom \
+      atload"alias help=cheat" mv"cheat* -> cheat" sbin cheat/cheat \
+      atload"alias diff=delta" sbin"**/delta" dandavison/delta \
+      atload"unalias duf; alias df=duf" bpick"*(.zip|tar.gz)" sbin muesli/duf \
+      atload"alias du=dust" sbin"**/dust" bootandy/dust \
+      atload"alias ping=gping" sbin orf/gping \
+      bpick"*.zip" sbin if'[[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]' dalance/procs
+
+# NOTE: DO NOT use sbin/fbin and lucid since it's incompatible with magit-todos
+zinit ice as"program" from"gh-r"
+zinit light microsoft/ripgrep-prebuilt
+
+zinit ice wait lucid as"null" from"gh-r" cp"**/doc/rg.1 -> $ZPFX/share/man/man1" mv"**/complete/_rg -> $ZINIT[COMPLETIONS_DIR]"
+zinit light BurntSushi/ripgrep
+
+# For GNU ls (the binaries can be gls, gdircolors, e.g. on OS X when installing the
+# coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
+# (( $+commands[gdircolors] )) && alias dircolors=gdircolors
+# zinit ice depth="1" atclone"dircolors -b LS_COLORS > clrs.zsh" \
+    #       atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    #       atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+# zinit light trapd00r/LS_COLORS
+
+# FZF: fuzzy finder
+zinit ice wait lucid from"gh-r" nocompile src'key-bindings.zsh' sbin \
+      dl'https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh -> $ZPFX/completions/_fzf_completion;
+         https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh -> key-bindings.zsh;
+         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf-tmux.1 -> $ZPFX/share/man/man1/fzf-tmux.1;
+         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1 -> $ZPFX/share/man/man1/fzf.1'
 zinit light junegunn/fzf
 
-zinit ice wait lucid atload"zicompinit; zicdreplay" blockf
+zinit ice wait lucid depth"1" atload"zicompinit; zicdreplay" blockf
 zinit light Aloxaf/fzf-tab
+
+zstyle ':fzf-tab:*' switch-group ',' '.'
 
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:complete:*:options' sort false
+zstyle ':fzf-tab:complete:(cd|ls|exa|bat|cat|emacs|nano|vi|vim):*' fzf-preview 'exa -1 --color=always $realpath 2>/dev/null|| ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
+           fzf-preview 'echo ${(P)word}'
+
+# Preivew `kill` and `ps` commands
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w -w'
-zstyle ':fzf-tab:*' switch-group ',' '.'
-zstyle ':fzf-tab:complete:(cd|ls|exa|bat|cat|emacs|nano|vi|vim):*' fzf-preview 'exa -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
        '[[ $group == "[process ID]" ]] &&
         if [[ $OSTYPE == darwin* ]]; then

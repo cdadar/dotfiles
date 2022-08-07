@@ -58,6 +58,9 @@ zinit wait lucid light-mode depth"1" for \
       hlissner/zsh-autopair \
       agkozak/zsh-z
 
+zinit ice pick'init.zsh'
+zinit light laggardkernel/zsh-tmux
+
 if [[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]; then
     zinit ice wait lucid from"gh-r" as"program"
     zinit light sei40kr/fast-alias-tips-bin
@@ -96,7 +99,6 @@ fi
 zinit wait lucid as"null" from"gh-r" for \
       atload"alias ls='exa --color=auto --group-directories-first'; alias la='ls -laFh'" cp"**/exa.1 -> $ZPFX/share/man/man1" mv"**/exa.zsh -> $ZINIT[COMPLETIONS_DIR]/_exa" sbin"**/exa" if'[[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]' ogham/exa \
       atload"alias cat='bat -p --wrap character'" mv"**/bat.1 -> $ZPFX/share/man/man1" cp"**/autocomplete/bat.zsh -> $ZINIT[COMPLETIONS_DIR]/_bat" sbin"**/bat" @sharkdp/bat \
-      mv"**/fd.1 -> $ZPFX/share/man/man1" cp"**/autocomplete/_fd -> $ZINIT[COMPLETIONS_DIR]" sbin"**/fd" @sharkdp/fd \
       mv"**/hyperfine.1 -> $ZPFX/share/man/man1" cp"**/autocomplete/_hyperfine -> $ZINIT[COMPLETIONS_DIR]" sbin"**/hyperfine" @sharkdp/hyperfine \
       cp"**/completion/_btm -> $ZINIT[COMPLETIONS_DIR]" atload"alias top=btm" sbin ClementTsang/bottom \
       atload"alias help=cheat" mv"cheat* -> cheat" sbin cheat/cheat \
@@ -106,13 +108,6 @@ zinit wait lucid as"null" from"gh-r" for \
       atload"alias ping=gping" sbin orf/gping \
       bpick"*.zip" sbin if'[[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]' dalance/procs
 
-# NOTE: DO NOT use sbin/fbin and lucid since it's incompatible with magit-todos
-zinit ice as"program" from"gh-r"
-zinit light microsoft/ripgrep-prebuilt
-
-zinit ice wait lucid as"null" from"gh-r" cp"**/doc/rg.1 -> $ZPFX/share/man/man1" mv"**/complete/_rg -> $ZINIT[COMPLETIONS_DIR]"
-zinit light BurntSushi/ripgrep
-
 # For GNU ls (the binaries can be gls, gdircolors, e.g. on OS X when installing the
 # coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
 # (( $+commands[gdircolors] )) && alias dircolors=gdircolors
@@ -120,14 +115,6 @@ zinit light BurntSushi/ripgrep
     #       atpull'%atclone' pick"clrs.zsh" nocompile'!' \
     #       atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 # zinit light trapd00r/LS_COLORS
-
-# FZF: fuzzy finder
-zinit ice wait lucid from"gh-r" nocompile src'key-bindings.zsh' sbin \
-      dl'https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh -> $ZPFX/completions/_fzf_completion;
-         https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh -> key-bindings.zsh;
-         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf-tmux.1 -> $ZPFX/share/man/man1/fzf-tmux.1;
-         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1 -> $ZPFX/share/man/man1/fzf.1'
-zinit light junegunn/fzf
 
 zinit ice wait lucid depth"1" atload"zicompinit; zicdreplay" blockf
 zinit light Aloxaf/fzf-tab

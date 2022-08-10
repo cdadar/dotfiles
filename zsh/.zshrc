@@ -177,6 +177,9 @@ fi
 # zinit snippet OMZT::robbyrussell.zsh-theme
 # ZSH_THEME="robbyrussell"
 
+zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
+zinit light sindresorhus/pure
+
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 

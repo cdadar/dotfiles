@@ -233,3 +233,6 @@ nnoremap M zz
 " nnoremap U :action $Redo<CR>
 nnoremap U :action EditorPageUp<CR>
 nnoremap D :action EditorPageDown<CR>
+
+nnoremap <C-o> :<C-u>action Back<CR>
+nnoremap <C-i> :<C-u>action Forward<CR>

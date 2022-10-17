@@ -87,20 +87,6 @@ else
     alias ls='ls --color=tty --group-directories-first'
 fi
 
-# Modern Unix commands
-# See https://github.com/ibraheemdev/modern-unix
-zinit wait lucid as"null" from"gh-r" for \
-      atload"alias ls='exa --color=auto --group-directories-first'; alias la='ls -laFh'" cp"**/exa.1 -> $ZPFX/share/man/man1" mv"**/exa.zsh -> $ZINIT[COMPLETIONS_DIR]/_exa" sbin"**/exa" if'[[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]' ogham/exa \
-      atload"alias cat='bat -p --wrap character'" mv"**/bat.1 -> $ZPFX/share/man/man1" cp"**/autocomplete/bat.zsh -> $ZINIT[COMPLETIONS_DIR]/_bat" sbin"**/bat" @sharkdp/bat \
-      mv"**/hyperfine.1 -> $ZPFX/share/man/man1" cp"**/autocomplete/_hyperfine -> $ZINIT[COMPLETIONS_DIR]" sbin"**/hyperfine" @sharkdp/hyperfine \
-      cp"**/completion/_btm -> $ZINIT[COMPLETIONS_DIR]" atload"alias top=btm" sbin ClementTsang/bottom \
-      atload"alias help=cheat" mv"cheat* -> cheat" sbin cheat/cheat \
-      atload"alias diff=delta" sbin"**/delta" dandavison/delta \
-      atload"unalias duf; alias df=duf" bpick"*(.zip|tar.gz)" sbin muesli/duf \
-      atload"alias du=dust" sbin"**/dust" bootandy/dust \
-      atload"alias ping=gping" sbin orf/gping \
-      bpick"*.zip" sbin if'[[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]' dalance/procs
-
 # For GNU ls (the binaries can be gls, gdircolors, e.g. on OS X when installing the
 # coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
 # (( $+commands[gdircolors] )) && alias dircolors=gdircolors

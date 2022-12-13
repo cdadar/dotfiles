@@ -17,16 +17,16 @@ let g:DoxygenToolkit_compactOneLineDoc = "yes"
 
 " 注释生成
 function! InsertDox()
-	"return "\:".getline('.')
-	" 空行C-D生成文件注释
-	if getline('.') =~ '^\s*$'
-		return "\:DoxAuthor\<CR>"
-	else 
-	" 非空行C-D生成函数注释
-		return "\:Dox\<CR>\<ESC>"
+        "return "\:".getline('.')
+        " 空行 C-D 生成文件注释
+        if getline('.') =~ '^\s*$'
+                return "\:DoxAuthor\<CR>"
+        else
+        " 非空行 C-D 生成函数注释
+                return "\:Dox\<CR>\<ESC>"
 endfunction
 
-" C-D生成注释
+" C-D 生成注释
 map <expr> <C-D> InsertDox()
 
 
@@ -54,3 +54,6 @@ autocmd BufReadPre *.vue let b:javascript_lib_use_vue = 1
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
 autocmd FileType javascript :call ESlintFormatter()
 let g:formatters_javascript = ['eslint']
+
+
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

@@ -9,7 +9,7 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 
 
 
-let g:DoxygenToolkit_authorName="cdadar, gunbanmi@gmail.com" 
+let g:DoxygenToolkit_authorName="chens, chens@fangde.com"
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 let g:DoxygenToolkit_versionString=""

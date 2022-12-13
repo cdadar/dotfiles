@@ -102,6 +102,9 @@ export GOPROXY=https://goproxy.io
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# flutter
+export PATH="$PATH:$HOME/program/flutter/bin"
+
 
 # nix
 # if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then

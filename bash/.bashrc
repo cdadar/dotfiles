@@ -116,7 +116,7 @@ export GOPROXY=https://goproxy.cn,direct
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # flutter
-export PATH="$PATH:$HOME/program/flutter/bin"
+export PATH="$PATH:/data/program/flutter/bin"
 
 
 # nix

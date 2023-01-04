@@ -58,8 +58,8 @@ zinit wait lucid light-mode depth"1" for \
       hlissner/zsh-autopair \
       agkozak/zsh-z
 
-# zinit ice pick'init.zsh'
-# zinit light laggardkernel/zsh-tmux
+zinit ice pick'init.zsh'
+zinit light laggardkernel/zsh-tmux
 
 if [[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]; then
     zinit ice wait lucid from"gh-r" as"program"
@@ -197,9 +197,9 @@ alias rte="$EDITOR -e '(let ((last-nonmenu-event nil) (kill-emacs-query-function
 # load xterm config
 # xrdb $HOME/.Xresources
 # [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
-if [[ $(tty) != /dev/tty* ]]; then
-    [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-fi
+# if [[ $(tty) != /dev/tty* ]]; then
+#     [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+# fi
 
 # User specific aliases and functions
 

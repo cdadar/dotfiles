@@ -128,6 +128,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         
 export TERM=xterm-color
 
-if [[ $(tty) != /dev/tty* ]]; then
-    [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-fi
+# if [[ $(tty) != /dev/tty* ]]; then
+#     [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+# fi

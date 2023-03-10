@@ -210,7 +210,7 @@ alias rte="$EDITOR -e '(let ((last-nonmenu-event nil) (kill-emacs-query-function
 #       tmux attach
 #   }
 
-#   # 判断是否已有开启的tmux会话，没有则开启
+#   # 判断是否已有开启的 tmux 会话，没有则开启
 #   if which tmux 2>&1 >/dev/null; then
 #       test -z "$TMUX" && (tmux attach || tmux_init)
 #   fi

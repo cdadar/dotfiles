@@ -102,6 +102,7 @@ set matchit
 
 
 set keep-english-in-normal-and-restore-in-insert
+let context_aware=1
 " source ~/.vimrc
 noremap <Leader>R <ESC>:source ~/.ideavimrc<cr>
 

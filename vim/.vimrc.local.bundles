@@ -14,3 +14,5 @@ Plug 'preservim/vimux'
 "Plug 'isRuslan/vim-es6'
 "Plug 'mxw/vim-jsx'
 Plug 'unblevable/quick-scope'       " Plug
+
+Plug 'wakatime/vim-wakatime'

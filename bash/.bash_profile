@@ -59,8 +59,8 @@ export MALLOC_CHECK_=1
 # export HTTP_PROXY_REQUEST_FULLURI=0
 # export HTTPS_PROXY_REQUEST_FULLURI=0
 
-# export HTTP_PROXY=http://127.0.0.1:8118
-# export HTTPS_PROXY=https://127.0.0.1:8118
+export HTTP_PROXY=http://127.0.0.1:8118
+export HTTPS_PROXY=https://127.0.0.1:8118
 
 # export LANG=zh_CN.UTF-8
 
@@ -86,6 +86,6 @@ ssh-add "$SSH_KEY_PATH/work_rsa"
 # fi
 
 
-export LC_ALL="en_US.UTF-8"
-export LANGUAGE="en_US.UTF-8"
+# export LC_ALL="en_US.UTF-8"
+# export LANGUAGE="en_US.UTF-8"
 export LANG="en_US.UTF-8"

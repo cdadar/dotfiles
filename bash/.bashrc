@@ -52,11 +52,11 @@ export NODE_PATH=$NODE_HOME/lib/node_modules
 # export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
 
 # Android_SDK
-#export ANDROID_SDK=$HOME/program/android-sdk-linux
+export ANDROID_SDK=$HOME/program/android-sdk
 
 # Android ndk
-#export ANDROID_NDK_HOME=$HOME/program/android-ndk
-#export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
+# export ANDROID_NDK_HOME=$HOME/program/android-ndk
+# export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
 
 
 #cabel Haskell package manager

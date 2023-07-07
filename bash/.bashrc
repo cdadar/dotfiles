@@ -118,7 +118,7 @@ export PATH="$PATH:$HOME/program/flutter/bin"
 
 export PATH=/snap/bin:$PATH
 
-# export WINEARCH=win32
+export WINEARCH=win64
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"

@@ -93,7 +93,8 @@ export PATH=$PATH:$GOPATH/bin
 # Enable the go modules feature
 export GO111MODULE=on
 # Set the GOPROXY environment variable
-export GOPROXY=https://goproxy.io
+# export GOPROXY=https://goproxy.io
+export GOPROXY=https://mirrors.aliyun.com/goproxy
 
 
 # cask

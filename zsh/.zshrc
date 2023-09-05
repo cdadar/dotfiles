@@ -228,3 +228,5 @@ export SDKMAN_DIR="/home/chens/.sdkman"
 [[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"
 
 setopt nonomatch
+
+alias gf=gf

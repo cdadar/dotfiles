@@ -1,4 +1,4 @@
-" vim-bootstrap 2022-05-24 02:08:42
+" vim-bootstrap 2023-09-05 03:28:06
 
 "*****************************************************************************
 "" Vim-Plug core
@@ -48,7 +48,7 @@ Plug 'majutsushi/tagbar'
 Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
-Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'tpope/vim-rhubarb' " required by fugitive to :GBrowse
 Plug 'tomasr/molokai'
 
 
@@ -560,7 +560,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 "" Open current line on GitHub
-nnoremap <Leader>o :.Gbrowse<CR>
+nnoremap <Leader>o :.GBrowse<CR>
 
 "*****************************************************************************
 "" Custom configs

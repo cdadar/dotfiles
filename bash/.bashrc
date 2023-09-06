@@ -126,8 +126,10 @@ export PATH=/snap/bin:$PATH
 
 export WINEARCH=win64
 export WINEPREFIX=~/.wine64
+# export WINEARCH=win32
+# export WINEPREFIX=~/.wine
 
-# Base16 Shell
+# base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \

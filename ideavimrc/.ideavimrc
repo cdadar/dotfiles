@@ -100,6 +100,10 @@ packadd matchit
 Plug 'chrisbra/matchit'
 set matchit
 
+set which-key
+set notimeout
+set timeoutlen=5000
+
 
 set keep-english-in-normal-and-restore-in-insert
 let context_aware=1

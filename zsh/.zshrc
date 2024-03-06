@@ -44,6 +44,7 @@ zinit wait lucid for \
       OMZP::git \
       OMZP::sudo
 
+
 # Completion enhancements
 zinit wait lucid depth"1" for \
       atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -228,3 +229,5 @@ export SDKMAN_DIR="/home/chens/.sdkman"
 [[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"
 
 setopt nonomatch
+
+alias gf=gf

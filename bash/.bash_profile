@@ -19,6 +19,7 @@ alias emc='emacsclient -nc -a ""'  #启动emacs图形界面
 
 alias wm_test='Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome'
 
+unalias gf
 alias gf='~/.go/bin/gf '
 
 # steam no runtime

@@ -4,6 +4,7 @@
 
 # vars
 EMACSD=$HOME/.emacs.d
+DOTFILES=$HOME/private/dotfiles
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -56,8 +57,7 @@ zinit wait lucid depth"1" for \
 
 zinit wait lucid light-mode depth"1" for \
       zsh-users/zsh-history-substring-search \
-      hlissner/zsh-autopair \
-      agkozak/zsh-z
+      hlissner/zsh-autopair
 
 zinit ice pick'init.zsh'
 zinit light laggardkernel/zsh-tmux
@@ -73,6 +73,15 @@ fi
 # Utilities
 #
 
+# Z
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+    export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index --bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=45% --info=inline --layout=reverse --tabstop=1 --exit-0 --select-1 --preview '(eza --tree --icons --level 3 --color=always --group-directories-first {2} || tree -NC {2} || ls --color=always --group-directories-first {2}) 2>/dev/null | head -200'"
+else
+    zinit ice wait lucid depth"1"
+    zinit light agkozak/zsh-z
+fi
+
 # Git extras
 zinit ice wait lucid as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX"
 zinit light tj/git-extras
@@ -87,6 +96,33 @@ if (( $+commands[gls] )); then
 else
     alias ls='ls --color=tty --group-directories-first'
 fi
+
+# Homebrew completion
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    autoload -Uz compinit
+    compinit
+fi
+
+# FZF: fuzzy finderls
+if [[ $OSTYPE == darwin* ]]; then
+    FZF="/usr/local/opt/fzf/shell/"
+elif (( $+commands[apt-get] )); then
+    FZF="/usr/share/doc/fzf/examples/"
+else
+    FZF="/usr/share/fzf/"
+fi
+
+if [[ -f "$FZF/completion.zsh" ]]; then
+    source "$FZF/completion.zsh"
+fi
+
+if [[ -f "$FZF/key-bindings.zsh" ]]; then
+    source "$FZF/key-bindings.zsh"
+fi
+
+zinit ice wait lucid depth"1"
+zinit light wfxr/forgit
 
 # For GNU ls (the binaries can be gls, gdircolors, e.g. on OS X when installing the
 # coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
@@ -119,11 +155,37 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
         fi'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags '--preview-window=down:3:wrap'
 
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --hidden --files || find ."
+# Preivew `git` commands
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+           'git diff $word | delta'
+zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+           'git log --color=always $word'
+zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
+           'git help $word | bat -plman --color=always'
+zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+           'case "$group" in
+        "commit tag") git show --color=always $word ;;
+        *) git show --color=always $word | delta ;;
+        esac'
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+           'case "$group" in
+        "modified file") git diff $word | delta ;;
+        "recent commit object name") git show --color=always $word | delta ;;
+        *) git log --color=always $word ;;
+        esac'
+
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} || cat {} || tree -NC {}) 2> /dev/null | head -200'"
+export FZF_DEFAULT_OPTS='--height 40% --border'
+export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} || cat {} || tree -NC {}) 2>/dev/null | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
-export FZF_ALT_C_OPTS="--preview 'tree -NC {} | head -200'"
+export FZF_ALT_C_OPTS="--preview '(eza --tree --icons --level 3 --color=always --group-directories-first {} || tree -NC {} || ls --color=always --group-directories-first {}) 2>/dev/null | head -200'"
+
+
+
+
+
 
 # For GNU ls (the binaries can be gls, gdircolors, e.g. on OS X when installing the
 # coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
@@ -175,6 +237,29 @@ alias zshconf="$EDITOR $HOME/.zshrc; $EDITOR $HOME/.zshrc.local"
 alias h='history'
 alias c='clear'
 
+# Modern Unix commands
+# See https://github.com/ibraheemdev/modern-unix
+if (( $+commands[eza] )); then
+    alias ls='eza --color=auto --icons --group-directories-first'
+    alias l='ls -lhF'
+    alias la='ls -lhAF'
+    alias tree='ls --tree'
+elif (( $+commands[exa] )); then
+    alias ls='exa --color=auto --icons --group-directories-first'
+    alias la='ls -lahF'
+    alias tree='ls --tree'
+fi
+(( $+commands[bat] )) && alias cat='bat -p --wrap character'
+(( $+commands[fd] )) && alias find=fd
+(( $+commands[btm] )) && alias top=btm
+(( $+commands[rg] )) && alias grep=rg
+(( $+commands[tldr] )) && alias help=tldr
+(( $+commands[delta] )) && alias diff=delta
+(( $+commands[duf] )) && alias df=duf
+(( $+commands[dust] )) && alias du=dust
+(( $+commands[hyperfine] )) && alias benchmark=hyperfine
+(( $+commands[gping] )) && alias ping=gping
+
 alias gtr='git tag -d $(git tag) && git fetch --tags' # Refresh local tags from remote
 
 (( $+commands[bat] )) && alias cat='bat -p --wrap character'
@@ -186,6 +271,8 @@ else
     ((! $+commands[exa] )) && alias ls='ls --color=tty --group-directories-first'
 fi
 
+
+
 # Emacs
 alias me="emacs -Q -l ~/.emacs.d/init-mini.el" # mini emacs
 alias mte="emacs -Q -nw -l ~/.emacs.d/init-mini.el" # mini terminal emacs
@@ -194,6 +281,40 @@ alias ec="$EDITOR -n -c"
 alias ef="$EDITOR -c"
 alias te="$EDITOR -a '' -nw"
 alias rte="$EDITOR -e '(let ((last-nonmenu-event nil) (kill-emacs-query-functions nil)) (save-buffers-kill-emacs t))' && te"
+
+# Upgrade
+alias upgrade_repo='git pull --rebase --stat origin master'
+alias upgrade_dotfiles='cd $DOTFILES && upgrade_repo; cd - >/dev/null'
+alias upgrade_emacs='emacs -Q --batch -L "$EMACSD/lisp/" -l "init-package.el" \
+                           --eval "(progn (package-initialize) (update-config-and-packages t t))"'
+alias upgrade_omt='cd $HOME/.tmux && upgrade_repo; cd - >/dev/null'
+alias upgrade_zinit='zinit self-update && zinit update -a -p && zinit compinit'
+alias upgrade_env='upgrade_dotfiles; sh $DOTFILES/install.sh'
+
+(( $+commands[cargo] )) && alias upgrade_cargo='cargo install-update -a' # cargo install cargo-update
+(( $+commands[gem] )) && alias upgrade_gem='gem update && gem cleanup'
+(( $+commands[go] )) && alias upgrade_go='GO111MODULE=on && $DOTFILES/install_go.sh'
+(( $+commands[npm] )) && alias upgrade_npm='for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2); do npm -g install "$package"; done'
+(( $+commands[pip] )) && alias upgrade_pip="pip list --outdated --format=json | python -c '
+import json
+import sys
+
+for item in json.loads(sys.stdin.read()):
+    print(\"=\".join([item[\"name\"], item[\"latest_version\"]]))
+' | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
+(( $+commands[brew] )) && alias upgrade_brew='brew update'; alias upgrade_brew_cask='$DOTFILES/install_brew_cask.sh'
+
+# Proxy
+PROXY=http://127.0.0.1:8118         # ss:1088, vr:8001
+SOCK_PROXY=socks5://127.0.0.1:1080  # ss:1086, vr:1081
+NO_PROXY=10.*.*.*,192.168.*.*,*.local,localhost,127.0.0.1
+alias showproxy='echo "proxy=$http_proxy"'
+alias setproxy='export http_proxy=$PROXY; export https_proxy=$PROXY; export no_proxy=$NO_PROXY; showproxy'
+alias unsetproxy='export http_proxy=; export https_proxy=; export all_proxy=; export no_proxy=; showproxy'
+alias toggleproxy='if [ -n "$http_proxy" ]; then unsetproxy; else setproxy; fi'
+alias set_sock_proxy='export http_proxy=$SOCK_PROXY; export https_proxy=$SOCK_PROXY; all_proxy=$SOCK_PROXY; export no_proxy=$NO_PROXY; showproxy'
+alias unset_sock_proxy=unsetproxy
+alias toggle_sock_proxy='if [ -n "$http_proxy" ]; then unset_sock_proxy; else set_sock_proxy; fi'
 
 # load xterm config
 # xrdb $HOME/.Xresources
@@ -229,5 +350,3 @@ export SDKMAN_DIR="/home/chens/.sdkman"
 [[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"
 
 setopt nonomatch
-
-alias gf=gf

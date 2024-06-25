@@ -305,8 +305,8 @@ for item in json.loads(sys.stdin.read()):
 (( $+commands[brew] )) && alias upgrade_brew='brew update'; alias upgrade_brew_cask='$DOTFILES/install_brew_cask.sh'
 
 # Proxy
-PROXY=http://127.0.0.1:8118         # ss:1088, vr:8001
-SOCK_PROXY=socks5://127.0.0.1:1080  # ss:1086, vr:1081
+PROXY=http://127.0.0.1:7890         # ss:1088, vr:8001
+SOCK_PROXY=socks5://127.0.0.1:7890  # ss:1086, vr:1081
 NO_PROXY=10.*.*.*,192.168.*.*,*.local,localhost,127.0.0.1
 alias showproxy='echo "proxy=$http_proxy"'
 alias setproxy='export http_proxy=$PROXY; export https_proxy=$PROXY; export no_proxy=$NO_PROXY; showproxy'

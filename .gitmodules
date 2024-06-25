@@ -28,3 +28,6 @@
 [submodule "tmux/.tmux/plugins/tmux-pain-control"]
 	path = tmux/.tmux/plugins/tmux-pain-control
 	url = git@github.com:tmux-plugins/tmux-pain-control.git
+[submodule "tmux/.tmux/plugins/tmux-copycat"]
+	path = tmux/.tmux/plugins/tmux-copycat
+	url = git@github.com:tmux-plugins/tmux-copycat.git

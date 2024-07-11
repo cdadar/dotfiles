@@ -62,8 +62,8 @@ export MALLOC_CHECK_=1
 # export HTTP_PROXY_REQUEST_FULLURI=0
 # export HTTPS_PROXY_REQUEST_FULLURI=0
 
-# export HTTP_PROXY=http://127.0.0.1:8118
-# export HTTPS_PROXY=https://127.0.0.1:8118
+# export HTTP_PROXY=http://127.0.0.1:7890
+# export HTTPS_PROXY=https://127.0.0.1:7890
 
 # export LANG=zh_CN.UTF-8
 

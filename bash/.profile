@@ -29,3 +29,5 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE="ibus"
 export XMODIFIERS="@im=ibus"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

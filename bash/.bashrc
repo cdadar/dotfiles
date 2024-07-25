@@ -43,6 +43,13 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin=$PATH:/usr/local/bin
 #lwqq
 #export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 # node
 export NODE_HOME=/usr/local
 export PATH=$PATH:$NODE_HOME/bin
@@ -141,6 +148,3 @@ export TERM=xterm-color
 #     [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 # fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -26,6 +26,6 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 #    echo
 #fi
 
-export GTK_IM_MODULE="ibus"
-export QT_IM_MODULE="ibus"
-export XMODIFIERS="@im=ibus"
+export GTK_IM_MODULE="fcitx5"
+export QT_IM_MODULE="fcitx5"
+export XMODIFIERS="@im=fcitx5"

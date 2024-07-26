@@ -305,8 +305,8 @@ for item in json.loads(sys.stdin.read()):
 (( $+commands[brew] )) && alias upgrade_brew='brew update'; alias upgrade_brew_cask='$DOTFILES/install_brew_cask.sh'
 
 # Proxy
-PROXY=http://127.0.0.1:7890         # ss:1088, vr:8001
-SOCK_PROXY=socks5://127.0.0.1:7890  # ss:1086, vr:1081
+PROXY=http://127.0.0.1:8118         # ss:1088, vr:8001
+SOCK_PROXY=socks5://127.0.0.1:1080  # ss:1086, vr:1081
 NO_PROXY=10.*.*.*,192.168.*.*,*.local,localhost,127.0.0.1
 alias showproxy='echo "proxy=$http_proxy"'
 alias setproxy='export http_proxy=$PROXY; export https_proxy=$PROXY; export no_proxy=$NO_PROXY; showproxy'
@@ -352,3 +352,9 @@ export SDKMAN_DIR="/home/chens/.sdkman"
 setopt nonomatch
 
 alias gf=gf
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

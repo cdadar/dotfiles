@@ -307,6 +307,7 @@ nnoremap D :action EditorPageDown<CR>
 nnoremap <C-o> :<C-u>action Back<CR>
 nnoremap <C-i> :<C-u>action Forward<CR>
 
+" https://github.com/JetBrains/ideavim/blob/master/doc/sethandler.md
 sethandler <C-C> all:ide
 sethandler <C-D> all:ide
 sethandler <C-X> all:ide

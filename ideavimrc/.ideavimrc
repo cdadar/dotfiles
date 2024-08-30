@@ -306,3 +306,15 @@ nnoremap D :action EditorPageDown<CR>
 
 nnoremap <C-o> :<C-u>action Back<CR>
 nnoremap <C-i> :<C-u>action Forward<CR>
+
+sethandler <C-C> all:ide
+sethandler <C-D> all:ide
+sethandler <C-X> all:ide
+sethandler <C-V> all:ide
+sethandler <C-W> all:ide
+sethandler <C-E> all:ide
+sethandler <C-T> all:ide
+sethandler <C-K> all:ide
+sethandler <C-\> all:ide
+sethandler <C-A> n:vim i-x:ide
+

@@ -15,7 +15,7 @@ Requirements: `tmux` version 1.9 (or higher), `git`, `bash`.
 Clone TPM:
 
 ```bash
-$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 Put this at the bottom of `~/.tmux.conf` (`$XDG_CONFIG_HOME/tmux/tmux.conf`
@@ -28,6 +28,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'github_username/plugin_name#branch'
 # set -g @plugin 'git@github.com:user/plugin'
 # set -g @plugin 'git@bitbucket.com:user/plugin'
 
@@ -39,7 +40,7 @@ Reload TMUX environment so TPM is sourced:
 
 ```bash
 # type this in terminal if tmux is already running
-$ tmux source ~/.tmux.conf
+tmux source ~/.tmux.conf
 ```
 
 That's it!
@@ -92,7 +93,7 @@ Run tests with:
 
 ```bash
 # within project directory
-$ ./run_tests
+./run_tests
 ```
 
 ### License

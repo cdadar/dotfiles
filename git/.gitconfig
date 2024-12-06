@@ -1,3 +1,6 @@
+[includeIf "gitdir:/home/chens/workspace/"]
+	path = /home/chens/workspace/.gitconfig
+
 [user]
 	email = gunbanmi@gmail.com
 	name = cdadar

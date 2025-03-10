@@ -60,10 +60,13 @@ export NODE_PATH=$NODE_HOME/lib/node_modules
 
 # Android_SDK
 export ANDROID_SDK=$HOME/program/android-sdk
+export PATH=$PATH:$ANDROID_SDK/tools
+export PATH=$PATH:$ANDROID_SDK/tools/bin
+export PATH=$PATH:$ANDROID_SDK/platform-tools
 
 # Android ndk
 # export ANDROID_NDK_HOME=$HOME/program/android-ndk
-# export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools:$PATH:$ANDROID_NDK_HOME
+# export PATH=$PATH:$ANDROID_NDK_HOME
 
 
 #cabel Haskell package manager
@@ -150,3 +153,7 @@ export TERM=xterm-color
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 . "$HOME/.cargo/env"
+
+[ -n "$PS1" ] && \
+    [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && \
+    source "$HOME/.sdkman/bin/sdkman-init.sh"

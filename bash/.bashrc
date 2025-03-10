@@ -154,6 +154,4 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 . "$HOME/.cargo/env"
 
-[ -n "$PS1" ] && \
-    [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && \
-    source "$HOME/.sdkman/bin/sdkman-init.sh"
+[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"

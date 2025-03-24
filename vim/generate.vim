@@ -1,5 +1,4 @@
-
-" vim-bootstrap 2023-09-05 03:28:06
+" vim-bootstrap 2025-03-24 09:26:52
 
 "*****************************************************************************
 "" Vim-Plug core
@@ -13,7 +12,7 @@ endif
 
 let g:vim_bootstrap_langs = "c,elixir,elm,erlang,go,haskell,html,javascript,lisp,lua,ocaml,perl,php,python,ruby,rust,scala,typescript"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
-let g:vim_bootstrap_theme = "molokai"
+let g:vim_bootstrap_theme = "dracula"
 let g:vim_bootstrap_frams = "svelte,vuejs"
 
 if !filereadable(vimplug_exists)
@@ -50,7 +49,7 @@ Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :GBrowse
-Plug 'tomasr/molokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 
 if isdirectory('/usr/local/opt/fzf')
@@ -273,7 +272,8 @@ set ruler
 set number
 
 let no_buffers_menu=1
-colorscheme molokai
+let g:dracula_colorterm = 0
+colorscheme dracula
 
 
 " Better command line completion 

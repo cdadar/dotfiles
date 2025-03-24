@@ -59,10 +59,12 @@ export NODE_PATH=$NODE_HOME/lib/node_modules
 # export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
 
 # Android_SDK
-export ANDROID_SDK=$HOME/program/android-sdk
-export PATH=$PATH:$ANDROID_SDK/tools
-export PATH=$PATH:$ANDROID_SDK/tools/bin
-export PATH=$PATH:$ANDROID_SDK/platform-tools
+export ANDROID_NAME=$HOME/program/android-sdk
+export PATH=$PATH:$ANDROID_NAME/platform-tools
+export PATH=$PATH:$ANDROID_NAME/emulator
+export PATH=$PATH:$ANDROID_NAME/tools
+export PATH=$PATH:$ANDROID_NAME/tools/bin
+
 
 # Android ndk
 # export ANDROID_NDK_HOME=$HOME/program/android-ndk
@@ -144,7 +146,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         source "$BASE16_SHELL/profile_helper.sh"
-        
+
 export TERM=xterm-color
 
 # if [[ $(tty) != /dev/tty* ]]; then

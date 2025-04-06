@@ -116,6 +116,9 @@ need xclip
  设置屏幕位置
  : xrandr --output VGA1 --left-of HDMI1 --auto
 
+*** rofi
+: stow -t $HOME/ awesome -D
+
 *** X11
 
-: stow -t $HOME/ X11 -D
+: stow -t $HOME X11 -D

@@ -316,5 +316,6 @@ sethandler <C-E> all:ide
 sethandler <C-T> all:ide
 sethandler <C-K> all:ide
 sethandler <C-\> all:ide
+sethandler <C-S> all:ide
 sethandler <C-A> n:vim i-x:ide
 

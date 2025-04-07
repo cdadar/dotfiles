@@ -117,7 +117,7 @@ need xclip
  : xrandr --output VGA1 --left-of HDMI1 --auto
 
 *** rofi
-: stow -t $HOME/ awesome -D
+: stow -t $HOME/ rofi -D
 
 *** X11
 

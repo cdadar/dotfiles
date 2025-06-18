@@ -122,3 +122,7 @@ need xclip
 *** X11
 
 : stow -t $HOME X11 -D
+
+
+*** environment
+: stow -t $HOME/ environment -D

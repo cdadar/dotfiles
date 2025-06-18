@@ -332,8 +332,6 @@ fi
 # Git
 alias gtr='git tag -d $(git tag) && git fetch --tags' # Refresh local tags from remote
 
-
-
 # Emacs
 alias me="emacs -Q -l ~/.emacs.d/init-mini.el" # mini emacs
 alias mte="emacs -Q -nw -l ~/.emacs.d/init-mini.el" # mini terminal emacs

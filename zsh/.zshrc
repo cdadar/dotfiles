@@ -314,7 +314,7 @@ elif (( $+commands[exa] )); then
     alias tree='ls --tree'
 fi
 (( $+commands[bat] )) && alias cat='bat -p --wrap character'
-(( $+commands[fd] )) && alias find=fd
+# (( $+commands[fd] )) && alias find=fd
 if (( $+commands[btop] )); then
     alias top=btop
 elif (( $+commands[btm] )); then

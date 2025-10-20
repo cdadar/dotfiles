@@ -8,7 +8,12 @@ fi
 
 # User specific environment and startup programs
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin=$PATH:/usr/local/bin
+PATH="$PATH:$HOME/.local/bin:$HOME/bin"
+
+PATH="$PATH:/usr/local/bin"
+
+#jetbrains 
+PATH="$PATH:$HOME/.local/share/Jetbrains/scripts"
 
 # java
 # export JAVA_HOME=$HOME/program/jdk1.8.0_73/
@@ -88,12 +93,12 @@ eval "$(rbenv init -)"
 export PATH=$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.rbenv/shims/:$PATH
 
 # python virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
+#export WORKON_HOME=$HOME/.virtualenvs
 # export PROJECT_HOME=$HOME/workspace
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-source /usr/bin/virtualenvwrapper
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+#export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
+#export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+#source /usr/bin/virtualenvwrapper
 
 
 # php composer

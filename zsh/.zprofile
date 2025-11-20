@@ -1,4 +1,3 @@
-[ -f $HOME/.bash_profile ] && source  $HOME/.bash_profile
 # User specific environment and startup programs
 
 #PATH="$PATH:$HOME/.local/bin:$HOME/bin"
@@ -46,19 +45,19 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # node
-export NODE_HOME=/usr/local
-export PATH=$PATH:$NODE_HOME/bin
-export NODE_PATH=$NODE_HOME/lib/node_modules
+# export NODE_HOME=/usr/local
+# export PATH=$PATH:$NODE_HOME/bin
+# export NODE_PATH=$NODE_HOME/lib/node_modules
 
 # yarn
 # export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
 
 # Android_SDK
-export ANDROID_NAME=$HOME/program/android-sdk
-export PATH=$PATH:$ANDROID_NAME/platform-tools
-export PATH=$PATH:$ANDROID_NAME/emulator
-export PATH=$PATH:$ANDROID_NAME/tools
-export PATH=$PATH:$ANDROID_NAME/tools/bin
+# export ANDROID_NAME=$HOME/program/android-sdk
+# export PATH=$PATH:$ANDROID_NAME/platform-tools
+# export PATH=$PATH:$ANDROID_NAME/emulator
+# export PATH=$PATH:$ANDROID_NAME/tools
+# export PATH=$PATH:$ANDROID_NAME/tools/bin
 
 
 # Android ndk
@@ -92,7 +91,7 @@ export PATH=$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.rbenv/shims/:$PATH
 
 
 # php composer
-export PATH=$PATH:$HOME/.config/composer/vendor/bin
+# export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 # go
 export GOPATH=$HOME/.go

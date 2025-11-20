@@ -417,7 +417,7 @@ alias toggle_sock_proxy='if [ -n "$http_proxy" ]; then unset_sock_proxy; else se
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-[[ -f $HOME/.bashrc ]] && source  $HOME/.bashrc
+# [[ -f $HOME/.bashrc ]] && source  $HOME/.bashrc
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chens/.sdkman"

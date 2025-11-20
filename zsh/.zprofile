@@ -1,3 +1,4 @@
+[ -f $HOME/.bash_profile ] && source  $HOME/.bash_profile
 # User specific environment and startup programs
 
 #PATH="$PATH:$HOME/.local/bin:$HOME/bin"
@@ -251,6 +252,27 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Added by Toolbox App
 export PATH="$PATH:/Users/chens/Library/Application Support/JetBrains/Toolbox/scripts"
+
+# Added by Toolbox App
+export PATH="$PATH:/usr/local/bin"
+
+
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$PATH:/usr/local/bin"
+
+export PATH="/Library/PostgreSQL/15/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 
 eval "$(/opt/homebrew/bin/brew shellenv)"

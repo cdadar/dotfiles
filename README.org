@@ -72,25 +72,25 @@ stow更好的方法，请在 issue 中告诉我，谢谢～
 更多信息请参见 [[https://www.gnu.org/software/stow/manual/stow.html][GNU Stow 手册页]]
 
 *** bash
- : stow -t $HOME bash -D
+ : stow -t $HOME bash -D --adopt
 *** zsh
- : stow -t $HOME zsh -D
+ : stow -t $HOME zsh -D --adopt
 *** vim
-: stow -t $HOME vim  -D --ignore=^[^\.]+\..*vim.*
+: stow -t $HOME vim  -D --ignore=^[^\.]+\..*vim.* --adopt
 *** ideavimrc
-: stow -t $HOME ideavimrc -D --ignore=_ideavimrc\|idea_actionlist
+: stow -t $HOME ideavimrc -D --ignore=_ideavimrc\|idea_actionlist --adopt
 *** git
-: stow -t $HOME git -D
+: stow -t $HOME git -D --adopt
 *** tmux
-: stow -t $HOME tmux -D
+: stow -t $HOME tmux -D --adopt
 need xclip
 : tmux show-options -g -s set-clipboard
 *** nodejs
-: stow -t $HOME nodejs -D
+: stow -t $HOME nodejs -D --adopt
 *** ctags
-: stow -t $HOME ctags -D
+: stow -t $HOME ctags -D --adopt
 *** Xresources
-: stow -t $HOME Xresources -D
+: stow -t $HOME Xresources -D 
 *** mpv
 : stow -t $HOME/ mpv -D
 *** base16-shell

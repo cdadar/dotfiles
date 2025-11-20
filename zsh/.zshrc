@@ -116,6 +116,7 @@ if type brew &>/dev/null; then
     compinit
 fi
 
+
 # FZF: fuzzy finderls
 if [[ $OSTYPE == darwin* ]]; then
     FZF="/usr/local/opt/fzf/shell/"
@@ -317,7 +318,6 @@ elif (( $+commands[exa] )); then
     alias tree='ls --tree'
 fi
 (( $+commands[bat] )) && alias cat='bat -p --wrap character'
-# (( $+commands[fd] )) && alias find=fd
 if (( $+commands[btop] )); then
     alias top=btop
 elif (( $+commands[btm] )); then
@@ -334,6 +334,8 @@ fi
 
 # Git
 alias gtr='git tag -d $(git tag) && git fetch --tags' # Refresh local tags from remote
+
+
 
 # Emacs
 alias me="emacs -Q -l ~/.emacs.d/init-mini.el" # mini emacs
@@ -374,8 +376,8 @@ for item in json.loads(sys.stdin.read()):
 (( $+commands[brew] )) && alias upgrade_brew='brew update'; alias upgrade_brew_cask='$DOTFILES/install_brew_cask.sh'
 
 # Proxy
-PROXY=http://127.0.0.1:8118         # ss:1088, vr:8001
-SOCK_PROXY=socks5://127.0.0.1:1080  # ss:1086, vr:1081
+PROXY=http://127.0.0.1:6152        # ss:1088, vr:8001
+SOCK_PROXY=socks5://127.0.0.1:6153  # ss:1086, vr:1081
 NO_PROXY=10.*.*.*,192.168.*.*,*.local,localhost,127.0.0.1
 alias showproxy='echo "proxy=$http_proxy"'
 alias setproxy='export http_proxy=$PROXY; export https_proxy=$PROXY; export no_proxy=$NO_PROXY; showproxy'
@@ -419,7 +421,7 @@ alias toggle_sock_proxy='if [ -n "$http_proxy" ]; then unset_sock_proxy; else se
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chens/.sdkman"
-[[ -s "/home/chens/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chens/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/apple/.sdkman/bin/sdkman-init.sh"
 
 setopt nonomatch
 
@@ -428,7 +430,3 @@ alias gf=gf
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-export PATH="$PATH:$HOME/.local/bin"

@@ -53,11 +53,11 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
 
 # Android_SDK
-# export ANDROID_NAME=$HOME/program/android-sdk
-# export PATH=$PATH:$ANDROID_NAME/platform-tools
-# export PATH=$PATH:$ANDROID_NAME/emulator
-# export PATH=$PATH:$ANDROID_NAME/tools
-# export PATH=$PATH:$ANDROID_NAME/tools/bin
+export ANDROID_NAME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_NAME/platform-tools
+export PATH=$PATH:$ANDROID_NAME/emulator
+export PATH=$PATH:$ANDROID_NAME/tools
+export PATH=$PATH:$ANDROID_NAME/tools/bin
 
 
 # Android ndk
@@ -274,5 +274,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

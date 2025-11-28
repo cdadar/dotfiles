@@ -1,4 +1,4 @@
-" vim-bootstrap 2025-03-24 09:26:52
+" vim-bootstrap 2025-11-28 07:18:57
 
 "*****************************************************************************
 "" Vim-Plug core
@@ -12,7 +12,7 @@ endif
 
 let g:vim_bootstrap_langs = "c,elixir,elm,erlang,go,haskell,html,javascript,lisp,lua,ocaml,perl,php,python,ruby,rust,scala,typescript"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
-let g:vim_bootstrap_theme = "dracula"
+let g:vim_bootstrap_theme = "molokai"
 let g:vim_bootstrap_frams = "svelte,vuejs"
 
 if !filereadable(vimplug_exists)
@@ -49,7 +49,7 @@ Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :GBrowse
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tomasr/molokai'
 
 
 if isdirectory('/usr/local/opt/fzf')
@@ -206,6 +206,33 @@ Plug 'leafOfTree/vim-vue-plugin'
 
 
 
+
+"*****************************************************************************
+"" Additional Plugins (Advanced)
+"*****************************************************************************
+
+" fzf - Fuzzy finder for files, buffers, and more
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+
+let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_preview_window = 'right:60%'
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \ }
+
+
+" vim-easymotion - Vim motions on speed!
+Plug 'easymotion/vim-easymotion'
+
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+
 "*****************************************************************************
 "*****************************************************************************
 
@@ -272,11 +299,10 @@ set ruler
 set number
 
 let no_buffers_menu=1
-let g:dracula_colorterm = 0
-colorscheme dracula
+colorscheme molokai
 
 
-" Better command line completion 
+" Better command line completion
 set wildmenu
 
 " mouse support

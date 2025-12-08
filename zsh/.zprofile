@@ -268,9 +268,9 @@ export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 
 # eval "$(/opt/homebrew/bin/brew shellenv)"

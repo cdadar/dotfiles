@@ -1,4 +1,4 @@
-# copy https://github.com/seagle0128/dotfiles/blob/master/.zshrc
+# copy https://github.com/seagle0128/dotfiles/blob/master/shell/.zshrc
 
 # Zsh configuration
 

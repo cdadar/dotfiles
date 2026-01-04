@@ -59,15 +59,11 @@ zinit wait lucid light-mode depth"1" for \
       hlissner/zsh-autopair
 
 
+#
+# tmux
+#
 zinit ice pick'init.zsh'
 zinit light laggardkernel/zsh-tmux
-
-if [[ $OSTYPE != linux* && $CPUTYPE != aarch* ]]; then
-    zinit ice wait lucid from"gh-r" as"program"
-    zinit light sei40kr/fast-alias-tips-bin
-    zinit ice wait lucid depth"1"
-    zinit light sei40kr/zsh-fast-alias-tips
-fi
 
 #
 # Utilities

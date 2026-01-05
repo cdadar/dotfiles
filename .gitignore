@@ -17,3 +17,5 @@ mpv/mpv_sub-delay.json
 mpv_sub-delay.json
 
 *.swp
+
+.DS_Store

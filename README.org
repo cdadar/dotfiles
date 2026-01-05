@@ -89,8 +89,10 @@ need xclip
 : stow -t $HOME nodejs -D --adopt
 *** ctags
 : stow -t $HOME ctags -D --adopt
+*** tar
+: stow -t $HOME tar -D --adopt
 *** Xresources
-: stow -t $HOME Xresources -D 
+: stow -t $HOME Xresources -D
 *** mpv
 : stow -t $HOME/ mpv -D
 *** base16-shell

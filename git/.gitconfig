@@ -1,8 +1,5 @@
-[includeIf "gitdir:/home/chens/workspace/"]
-	path = /home/chens/workspace/.gitconfig
-
 [user]
-	email = chens@vcchina.com
+	email = cs@cang.com
 	name = chens
 [push]
 	default = simple
@@ -136,6 +133,7 @@
 [core]
 	autocrlf = input
 	quotepath = false
+	excludesfile = /Users/chens/.gitignore_global
 [merge]
 	conflictstyle = diff3
 	branchdesc = true
@@ -154,3 +152,4 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+

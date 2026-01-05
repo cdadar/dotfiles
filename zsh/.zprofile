@@ -58,6 +58,7 @@ export PATH=$PATH:$ANDROID_NAME/platform-tools
 export PATH=$PATH:$ANDROID_NAME/emulator
 export PATH=$PATH:$ANDROID_NAME/tools
 export PATH=$PATH:$ANDROID_NAME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 
 # Android ndk

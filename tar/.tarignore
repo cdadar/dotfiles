@@ -1,0 +1,83 @@
+# OSX
+#
+.DS_Store
+
+# Xcode
+bundle/
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+# CocoaPods
+/ios/Pods/
+# Android/IntelliJ
+build-cache/
+bin/
+.idea
+.gradle
+.project
+local.properties
+*.iml
+.classpath
+*.li
+*/app/staging/
+*.prefs
+output.json
+*.apk
+output-metadata.json
+# node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+# fastlane
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+# Bundle artifact
+*.jsbundle
+*.bundle.map
+# Hermes
+/android/app/build/generated/assets/react/*/hermes.android.bundle
+/android/app/build/generated/res/react/*/raw/hermes.android.bundle
+/android/app/build/generated/sourcemaps/react/*/hermes.android.bundle.map
+/android/app/src/*/assets/hermes.android.bundle
+/android/app/src/*/assets/hermes.android.bundle.map
+# Metro
+.metro-health-check*
+# vscode
+/.vscode/.react
+/.vscode/settings.json
+# android bundle build
+/android/app/src/main/assets/index.bundle
+# testing
+/coverage
+/android/app/.cxx/*
+*.class
+target
+.umi
+.umi-*
+dist
+build-cache

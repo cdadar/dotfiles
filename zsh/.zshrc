@@ -345,3 +345,6 @@ alias toggleproxy='if [ -n "$http_proxy" ]; then unsetproxy; else setproxy; fi'
 
 export LC_ALL=en_US.UTF-8 
 export LANG=en_US.UTF-8
+
+# opencode
+export PATH=/Users/chens/.opencode/bin:$PATH

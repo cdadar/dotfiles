@@ -308,6 +308,7 @@ nnoremap <C-o> :<C-u>action Back<CR>
 nnoremap <C-i> :<C-u>action Forward<CR>
 
 sethandler <C-C> all:ide
+sethandler <C-R> all:ide
 sethandler <C-D> all:ide
 sethandler <C-X> all:ide
 sethandler <C-V> all:ide

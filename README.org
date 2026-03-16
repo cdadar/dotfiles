@@ -95,6 +95,8 @@ need xclip
 : stow -t $HOME Xresources -D
 *** mpv
 : stow -t $HOME/ mpv -D
+*** ghostty
+: stow -t $HOME/ ghostty -D
 *** base16-shell
 : stow -t $HOME base16-shell -D
 *** i3

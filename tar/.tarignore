@@ -81,6 +81,5 @@ target
 .umi-*
 dist
 build-cache
-
-
 .next
+.venv

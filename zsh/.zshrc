@@ -2,6 +2,13 @@
 
 # Zsh configuration
 
+# path 
+
+# opencode
+export PATH=/Users/chens/.opencode/bin:$PATH
+
+export PATH="$HOME/.local/bin:$PATH"
+
 # vars
 DOTFILES=$HOME/workspace/private/dotfiles/
 EMACSD=$HOME/.emacs.d
@@ -348,3 +355,5 @@ export LANG=en_US.UTF-8
 
 # opencode
 export PATH=/Users/chens/.opencode/bin:$PATH
+
+alias gf=gf

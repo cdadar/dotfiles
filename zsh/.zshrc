@@ -51,6 +51,12 @@ zinit wait lucid for \
       OMZP::git \
       OMZP::sudo
 
+# Homebrew completion
+if (( $+commands[brew] )); then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+
 # Completion enhancements
 zinit wait lucid depth"1" for \
       atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -92,9 +98,13 @@ else
 fi
 
 # Git extras
-zinit ice wait lucid depth"1" as"program" pick"$ZPFX/bin/git-*" \
-      src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" \
-      if'(( $+commands[make] ))'
+zinit ice wait lucid depth"1" as"program" \
+  pick"bin/git-*" \
+  src"etc/git-extras-completion.zsh" \
+  make'SKIP_CONFLICT_CHECK=1 PREFIX=$ZPFX install' \
+  atclone'export SKIP_CONFLICT_CHECK=1' \
+  atpull'%atclone' \
+  if'(( $+commands[make] ))'
 zinit light tj/git-extras
 
 # Prettify ls
@@ -104,12 +114,6 @@ else
     alias ls='ls --color=tty --group-directories-first'
 fi
 
-# Homebrew completion
-if (( $+commands[brew] )); then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-    autoload -Uz compinit
-    compinit
-fi
 
 # FZF: fuzzy finder
 if (( $+commands[brew] )); then
@@ -350,10 +354,3 @@ alias toggleproxy='if [ -n "$http_proxy" ]; then unsetproxy; else setproxy; fi'
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
 
-export LC_ALL=en_US.UTF-8 
-export LANG=en_US.UTF-8
-
-# opencode
-export PATH=/Users/chens/.opencode/bin:$PATH
-
-alias gf=gf

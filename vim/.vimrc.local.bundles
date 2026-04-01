@@ -16,22 +16,3 @@ Plug 'preservim/vimux'
 Plug 'unblevable/quick-scope'       " Plug
 
 Plug 'wakatime/vim-wakatime'
-
-
-
-" 依赖项
-Plug 'nvim-lua/plenary.nvim'
-Plug 'MunifTanjim/nui.nvim'
-Plug 'MeanderingProgrammer/render-markdown.nvim'
-
-" 可选依赖项
-Plug 'hrsh7th/nvim-cmp'
-Plug 'nvim-tree/nvim-web-devicons' "或 Plug 'echasnovski/mini.icons'
-Plug 'HakonHarnes/img-clip.nvim'
-Plug 'zbirenbaum/copilot.lua'
-
-" Yay，如果您想从源代码构建，请传递 source=true
-Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
-autocmd! User avante.nvim lua << EOF
-require('avante').setup()
-EOF

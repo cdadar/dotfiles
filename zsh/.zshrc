@@ -1,3 +1,10 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("/Users/chens/.zsh/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 # copy https://github.com/seagle0128/dotfiles/blob/master/shell/.zshrc
 
 # Zsh configuration

@@ -9,12 +9,7 @@ compinit
 
 # Zsh configuration
 
-# path 
 
-# opencode
-export PATH=/Users/chens/.opencode/bin:$PATH
-
-export PATH="$HOME/.local/bin:$PATH"
 
 # vars
 DOTFILES=$HOME/workspace/private/dotfiles/
@@ -359,5 +354,3 @@ alias toggleproxy='if [ -n "$http_proxy" ]; then unsetproxy; else setproxy; fi'
 
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
-
-

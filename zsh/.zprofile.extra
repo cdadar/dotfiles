@@ -1,0 +1,198 @@
+# =========================================
+# .zprofile.extra
+# 历史/可选环境配置（默认不启用）
+# 通过环境变量开关控制
+# =========================================
+
+# =========================
+# Java
+# =========================
+if [[ "$USE_JAVA" == "1" ]]; then
+  export JAVA_HOME="$HOME/program/jdk1.8.0_73"
+  export PATH="$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH"
+fi
+
+# =========================
+# Grails
+# =========================
+if [[ "$USE_GRAILS" == "1" ]]; then
+  export GRAILS_HOME="$HOME/program/grails"
+  export PATH="$GRAILS_HOME/bin:$PATH"
+fi
+
+# =========================
+# Ant
+# =========================
+if [[ "$USE_ANT" == "1" ]]; then
+  export ANT_HOME="$HOME/source/ant/bootstrap"
+  export PATH="$ANT_HOME/bin:$PATH"
+fi
+
+# =========================
+# Maven
+# =========================
+if [[ "$USE_MAVEN" == "1" ]]; then
+  export MAVEN_HOME="$HOME/program/maven"
+  export M2_HOME="$MAVEN_HOME"
+  export PATH="$MAVEN_HOME/bin:$PATH"
+fi
+
+# =========================
+# ActiveMQ
+# =========================
+if [[ "$USE_ACTIVEMQ" == "1" ]]; then
+  export ACTIVEMQ_HOME="$HOME/program/apache-activemq"
+  export PATH="$ACTIVEMQ_HOME/bin:$PATH"
+fi
+
+# =========================
+# Gradle
+# =========================
+if [[ "$USE_GRADLE" == "1" ]]; then
+  export GRADLE_HOME="$HOME/program/gradle"
+  export PATH="$GRADLE_HOME/bin:$PATH"
+fi
+
+# =========================
+# Node（传统方式，不建议与 Volta/NVM 混用）
+# =========================
+if [[ "$USE_NODE_LEGACY" == "1" ]]; then
+  export NODE_HOME="/usr/local"
+  export PATH="$NODE_HOME/bin:$PATH"
+  export NODE_PATH="$NODE_HOME/lib/node_modules"
+fi
+
+# =========================
+# Yarn（旧版 global）
+# =========================
+if [[ "$USE_YARN_GLOBAL" == "1" ]]; then
+  export PATH="$PATH:$(yarn global bin):$HOME/.config/yarn/global/node_modules/.bin"
+fi
+
+# =========================
+# NVM（⚠️ 与 Volta 冲突）
+# =========================
+if [[ "$USE_NVM" == "1" ]]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+fi
+
+# =========================
+# Nix
+# =========================
+if [[ "$USE_NIX" == "1" ]]; then
+  if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+  fi
+fi
+
+# =========================
+# Cabal（Haskell）
+# =========================
+if [[ "$USE_CABAL" == "1" ]]; then
+  export PATH="$HOME/.cabal/bin:$PATH"
+fi
+
+# =========================
+# Roswell（Lisp）
+# =========================
+if [[ "$USE_ROSWELL" == "1" ]]; then
+  export PATH="$HOME/.roswell/bin:$PATH"
+fi
+
+# =========================
+# Rust
+# =========================
+if [[ "$USE_RUST" == "1" ]]; then
+  [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+fi
+
+# =========================
+# Flutter
+# =========================
+if [[ "$USE_FLUTTER" == "1" ]]; then
+  export PATH="$PATH:$HOME/program/flutter/bin"
+fi
+
+# =========================
+# PHP Composer
+# =========================
+if [[ "$USE_COMPOSER" == "1" ]]; then
+  export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+fi
+
+# =========================
+# Python virtualenvwrapper
+# =========================
+if [[ "$USE_VENVWRAPPER" == "1" ]]; then
+  export WORKON_HOME="$HOME/.virtualenvs"
+  export PROJECT_HOME="$HOME/workspace"
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
+  source /usr/bin/virtualenvwrapper
+fi
+
+# =========================
+# pyenv（如果以后用）
+# =========================
+if [[ "$USE_PYENV" == "1" ]]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
+# =========================
+# Wine
+# =========================
+if [[ "$USE_WINE" == "1" ]]; then
+  export WINEARCH=win64
+  export WINEPREFIX="$HOME/.wine64"
+fi
+
+# =========================
+# 代理（示例）
+# =========================
+if [[ "$USE_PROXY" == "1" ]]; then
+  export HTTP_PROXY=http://127.0.0.1:7890
+  export HTTPS_PROXY=http://127.0.0.1:7890
+fi
+
+# =========================
+# 终端颜色 / Xresources
+# =========================
+if [[ "$USE_XTERM" == "1" ]]; then
+  export TERM=xterm-256color
+  [[ -f "$HOME/.Xresources" ]] && xrdb -merge "$HOME/.Xresources"
+fi
+
+# =========================
+# Steam runtime
+# =========================
+if [[ "$USE_STEAM" == "1" ]]; then
+  export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
+fi
+
+# =========================
+# SSH Agent（高级用法，可选）
+# =========================
+if [[ "$USE_SSH_AGENT" == "1" ]]; then
+  SSH_ENV="$HOME/.ssh/environment"
+
+  function start_agent {
+    echo "Initializing new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+  }
+
+  if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+      start_agent
+    }
+  else
+    start_agent
+  fi
+fi

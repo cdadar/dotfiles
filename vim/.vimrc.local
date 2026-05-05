@@ -57,3 +57,6 @@ let g:formatters_javascript = ['eslint']
 
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
+set rtp+=/opt/homebrew/opt/fzf

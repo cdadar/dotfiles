@@ -102,3 +102,4 @@ export ALTERNATE_EDITOR=vim
 alias sudo="sudo "
 alias em='emacsclient -t -a ""'
 alias emc='emacsclient -nc -a ""'
+export PATH="/opt/homebrew/sbin:$PATH"

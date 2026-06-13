@@ -103,3 +103,6 @@ alias sudo="sudo "
 alias em='emacsclient -t -a ""'
 alias emc='emacsclient -nc -a ""'
 export PATH="/opt/homebrew/sbin:$PATH"
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+export PATH="$HOME/.local/bin:$PATH"

@@ -356,3 +356,6 @@ alias toggleproxy='if [ -n "$http_proxy" ]; then unsetproxy; else setproxy; fi'
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
 alias gf=gf
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+export PATH="$HOME/.local/bin:$PATH"

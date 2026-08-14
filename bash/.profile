@@ -33,6 +33,3 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 . "$HOME/.cargo/env"
 
 export PATH=$PATH:~/.local/bin
-
-
-

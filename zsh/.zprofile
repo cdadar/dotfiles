@@ -20,6 +20,8 @@ path=(
   $HOME/.rbenv/shims
   $HOME/.rbenv/bin
   $HOME/.go/bin
+  $HOME/Library/GOSDK/go1.25.8/bin
+
 
   /usr/local/opt/postgresql@15/bin
   /Library/PostgreSQL/15/bin

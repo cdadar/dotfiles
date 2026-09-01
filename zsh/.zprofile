@@ -20,8 +20,8 @@ path=(
   $HOME/.rbenv/shims
   $HOME/.rbenv/bin
   $HOME/.go/bin
-  $HOME/Library/GOSDK/go1.25.8/bin
-
+  $HOME/Library/go/sdk/go1.25.9/bin
+  $HOME/Library/go/sdk/go1.15.15/bin
 
   /usr/local/opt/postgresql@15/bin
   /Library/PostgreSQL/15/bin
@@ -104,7 +104,12 @@ export ALTERNATE_EDITOR=vim
 alias sudo="sudo "
 alias em='emacsclient -t -a ""'
 alias emc='emacsclient -nc -a ""'
+
+# Apple Silicon brew（跨机器保留）
 export PATH="/opt/homebrew/sbin:$PATH"
 
 # Hermes Agent — ensure ~/.local/bin is on PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+# Pi
+export PATH="/Users/chens/.volta/bin:$PATH"

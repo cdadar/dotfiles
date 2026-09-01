@@ -56,9 +56,6 @@ export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
 # 终端颜色
 # export TERM=xterm-256color
 
-# 错误检查
-export MALLOC_CHECK_=1
-
 # export HTTP_PROXY_REQUEST_FULLURI=0
 # export HTTPS_PROXY_REQUEST_FULLURI=0
 
@@ -102,3 +99,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/chens/.local/bin:$PATH"

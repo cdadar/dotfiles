@@ -1,0 +1,12 @@
+# Homebrew bundle 清单（macOS 工具链）
+# 由 ~/.zshrc 的 _bootstrap_brew_tools 按需安装；upgrade_brew 走 brew bundle --global
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "eza"
+brew "bat"
+brew "git-delta"
+brew "zoxide"
+brew "lazygit"
+brew "atuin"
+brew "tldr"

@@ -15,13 +15,19 @@ typeset -U path PATH
 # 手动定义优先级（从高到低）
 path=(
   $HOME/.opencode/bin
-  $HOME/.local/bin
-  $HOME/.volta/bin
+  $HOME/.local/bin            # Antigravity CLI
+  $HOME/.volta/bin            # volta (Node) / Pi
   $HOME/.rbenv/shims
   $HOME/.rbenv/bin
   $HOME/.go/bin
   $HOME/Library/go/sdk/go1.25.9/bin
   $HOME/Library/go/sdk/go1.15.15/bin
+  $HOME/Library/Android/sdk/platform-tools
+  $HOME/Library/Android/sdk/emulator
+  $HOME/Library/Android/sdk/tools
+  $HOME/Library/Android/sdk/tools/bin
+  $HOME/Library/Android/sdk/cmdline-tools/latest/bin
+  "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
   /usr/local/opt/postgresql@15/bin
   /Library/PostgreSQL/15/bin
@@ -63,17 +69,11 @@ export GOPROXY=https://goproxy.cn,direct
 # ========================
 
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export PATH="$PATH:$ANDROID_HOME/emulator"
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="$PATH:$ANDROID_HOME/tools/bin"
-export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+# Android / JetBrains 路径已并入上方 path 数组
 
 # ========================
 # JetBrains Toolbox
 # ========================
-
-export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
 # ========================
 # SDKMAN
@@ -107,9 +107,3 @@ alias emc='emacsclient -nc -a ""'
 
 # Apple Silicon brew（跨机器保留）
 export PATH="/opt/homebrew/sbin:$PATH"
-
-# Hermes Agent — ensure ~/.local/bin is on PATH
-export PATH="$HOME/.local/bin:$PATH"
-
-# Pi
-export PATH="/Users/chens/.volta/bin:$PATH"

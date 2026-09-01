@@ -54,7 +54,9 @@ export VOLTA_HOME="$HOME/.volta"
 # rbenv
 # ========================
 
-eval "$(rbenv init -)"
+if (( $+commands[rbenv] )); then
+    eval "$(rbenv init -)"
+fi
 
 # ========================
 # Go

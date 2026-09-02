@@ -1,62 +1,52 @@
-" Save a file as root (,W)
-noremap <leader>W :w !sudo
+" =====================================================================
+"  .vimrc.local — 用户本地习惯配置（主 .vimrc 末尾加载）
+" =====================================================================
 
-"" Directories for swp files
+" 以 root 权限保存（sudo tee）
+noremap <leader>W :w !sudo tee % >/dev/null
+
+" 不生成备份文件
 set nobackup
 
-let g:nerdtree_tabs_open_on_gui_startup = 0
-let g:nerdtree_tabs_open_on_console_startup = 0
-
-
-
-let g:DoxygenToolkit_authorName="cdadar, gunbanmi@gmail.com" 
+" -------------------------------------------------------------------
+" Doxygen 注释生成
+"  原映射 <C-D> 与内置"向下翻半页"冲突，改为 <leader>dox
+" -------------------------------------------------------------------
+let g:DoxygenToolkit_authorName="cdadar, gunbanmi@gmail.com"
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 let g:DoxygenToolkit_versionString=""
 let g:DoxygenToolkit_compactOneLineDoc = "yes"
 
-" 注释生成
 function! InsertDox()
-        "return "\:".getline('.')
-        " 空行 C-D 生成文件注释
-        if getline('.') =~ '^\s*$'
-                return "\:DoxAuthor\<CR>"
-        else
-        " 非空行 C-D 生成函数注释
-                return "\:Dox\<CR>\<ESC>"
+  " 空行 -> 文件注释，非空行 -> 函数注释
+  if getline('.') =~ '^\s*$'
+    return "\:DoxAuthor\<CR>"
+  else
+    return "\:Dox\<CR>\<ESC>"
+  endif
 endfunction
+map <expr> <leader>dox InsertDox()
 
-" C-D 生成注释
-map <expr> <C-D> InsertDox()
-
-
-" let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-
-set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-set termencoding=utf-8
-set encoding=utf-8
-
-" auto-formatter
-function! ESlintFormatter()
-    let l:npm_bin = ''
-    let l:eslint = 'eslint'
-    if executable('npm')
-        let l:npm_bin = split(system('npm bin'), '\n')[0]
-    endif
-    if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
-        let l:eslint = l:npm_bin . '/eslint'
-    endif
-    let g:formatdef_eslint = '"SRC=eslint-temp-${RANDOM}.js; cat - >$SRC; ' . l:eslint . ' --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
-endfunction
+" -------------------------------------------------------------------
+" Vue 文件识别（配合 leafOfTree/vim-vue-plugin）
+" -------------------------------------------------------------------
 autocmd BufReadPre *.vue let b:javascript_lib_use_vue = 1
-
-"autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
+
+" -------------------------------------------------------------------
+" ESLint 格式化（vim-autoformat）
+" -------------------------------------------------------------------
+function! ESlintFormatter()
+  let l:npm_bin = ''
+  let l:eslint = 'eslint'
+  if executable('npm')
+    let l:npm_bin = split(system('npm bin'), '\n')[0]
+  endif
+  if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+    let l:eslint = l:npm_bin . '/eslint'
+  endif
+  let g:formatdef_eslint = '"SRC=eslint-temp-${RANDOM}.js; cat - >$SRC; ' . l:eslint . ' --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
+endfunction
 autocmd FileType javascript :call ESlintFormatter()
 let g:formatters_javascript = ['eslint']
-
-
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-
-set rtp+=/opt/homebrew/opt/fzf

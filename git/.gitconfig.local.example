@@ -1,0 +1,21 @@
+# =====================================================================
+#  .gitconfig.local — Git 机器差异标准模板
+#  Git 不像 vim/zsh 能 source .local，身份差异用原生 includeIf：
+#  按【工作目录】自动切换 user 身份，零工具、零分支。
+# =====================================================================
+
+# 步骤 1：把下面这段加到 ~/.gitconfig（或 dotfiles/git/.gitconfig 主文件）
+#  - gitdir:~/project/   = 工作项目所在目录（改成你的实际目录）
+#  - ~/.gitconfig.work   = 工作身份文件（本机单独维护，不进 git 仓库）
+[includeIf "gitdir:~/project/"]
+	path = ~/.gitconfig.work
+
+# 步骤 2：在本机建 ~/.gitconfig.work（不进 git，内容示例）：
+#   [user]
+#   	email = work@company.com
+#   	name = 工作用名
+
+# 效果：
+#   - cd ~/project/xxx 下提交 → 用工作身份
+#   - 其他目录提交 → 用 ~/.gitconfig 基线的个人身份
+#   - 多台机器零冲突，新机器只需复制本模板 + 建 .gitconfig.work

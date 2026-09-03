@@ -1,0 +1,36 @@
+" =====================================================================
+"  .vimrc.local.example — Vim 机器差异标准模板
+"  用法：复制为 ~/.vimrc.local 并填本机值（主 .vimrc 末尾自动 source）
+"        cp vim/.vimrc.local.example ~/.vimrc.local
+"  =========================================================================
+"  这里只放【机器特定】配置（每台电脑不同）：
+"     - 作者/邮箱、快捷键习惯、代理、本地路径
+"  通用配置一律改主 .vimrc，不要放这里（避免多机分叉）
+" =====================================================================
+
+" ---- 作者信息（Doxygen 注释用，每机不同）----
+let g:DoxygenToolkit_authorName="你的名字, your@email.com"
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:DoxygenToolkit_compactOneLineDoc = "yes"
+
+" ---- 本机代理（不走代理就注释掉）----
+" let g:netrw_proxy = "http://127.0.0.1:7890"
+
+" ---- 本机路径 / 工具链（示例）----
+" let g:python3_host_prog = expand("~/.pyenv/shims/python3")
+
+" ---- 个人快捷键习惯（示例）----
+" inoremap jk <Esc>
+
+" =====================================================================
+"  Doxygen 注释生成示例（如需要 DoxygenToolkit）
+" =====================================================================
+let g:doxygen_enhanced_color=1
+function! InsertDox()
+  if getline('.') =~ '^\s*$'
+    return "\:DoxAuthor\<CR>"
+  else
+    return "\:Dox\<CR>\<ESC>"
+  endif
+endfunction
+map <expr> <leader>dox InsertDox()

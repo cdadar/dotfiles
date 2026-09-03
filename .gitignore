@@ -1,6 +1,8 @@
 .config/chromium
 *.bin
 .place_holder
+# tmux 插件由 tpm 管理（prefix+I 自动安装），不进 git
+/.tmux/plugins/
 default.yaml
 installation.yaml
 luna_pinyin.userdb.kct

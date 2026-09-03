@@ -246,6 +246,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 if !exists('g:airline_powerline_fonts')
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
   let g:airline#extensions#tabline#left_sep = ' '
   let g:airline#extensions#tabline#left_alt_sep = '|'
   let g:airline_left_sep = '▶'
@@ -281,19 +284,21 @@ let g:fzf_action = {
 " 5. coc.nvim 配置（LSP 补全 / 诊断 / 跳转）
 " -------------------------------------------------------------------
 " 首次启动自动安装的扩展（coc 按需装，也可 :CocInstall 单独装）
+" 覆盖：JS/TS/Vue、JSON、HTML、CSS、Go(gopls)、Python(pyright)、Rust、
+" PHP(intelephense)、VimL、YAML、bash、snippets(集成 ultisnips)
 let g:coc_global_extensions = [
-  \ 'coc-tsserver',      " JS/TS/Vue 补全
+  \ 'coc-tsserver',
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-css',
-  \ 'coc-go',            " Go (gopls)
-  \ 'coc-python',        " Python (pyright)
-  \ 'coc-rust-analyzer', " Rust
-  \ 'coc-phpls',         " PHP (intelephense)
-  \ 'coc-vimlsp',        " VimL
+  \ 'coc-go',
+  \ 'coc-python',
+  \ 'coc-rust-analyzer',
+  \ 'coc-phpls',
+  \ 'coc-vimlsp',
   \ 'coc-yaml',
-  \ 'coc-sh',            " bash
-  \ 'coc-snippets',      " 集成 ultisnips snippets
+  \ 'coc-sh',
+  \ 'coc-snippets',
   \ ]
 
 " TAB 补全 / snippet 跳转流程
@@ -424,7 +429,7 @@ cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
 cnoreabbrev W w
-Cnoreabbrev Q q
+cnoreabbrev Q q
 cnoreabbrev Qall qall
 
 " -------------------------------------------------------------------

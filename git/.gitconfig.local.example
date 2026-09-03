@@ -5,10 +5,13 @@
 # =====================================================================
 
 # 步骤 1：把下面这段加到 ~/.gitconfig（或 dotfiles/git/.gitconfig 主文件）
-#  - gitdir:~/project/   = 工作项目所在目录（改成你的实际目录）
-#  - ~/.gitconfig.work   = 工作身份文件（本机单独维护，不进 git 仓库）
+#  - gitdir:~/project/   = 公司项目根目录（默认工作身份）
+#  - gitdir:~/project/private/  = 个人目录，单独恢复个人身份（放在公司段后面覆盖）
+#  - ~/.gitconfig.work / ~/.gitconfig.personal = 身份文件（本机单独维护，不进 git）
 [includeIf "gitdir:~/project/"]
 	path = ~/.gitconfig.work
+[includeIf "gitdir:~/project/private/"]
+	path = ~/.gitconfig.personal
 
 # 步骤 2：在本机建 ~/.gitconfig.work（不进 git，内容示例）：
 #   [user]

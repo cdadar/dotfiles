@@ -154,3 +154,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+# Mac 工作机：~/project/ 下项目自动用工作身份（~/.gitconfig.work 每机维护，不进 git）
+# 必须放文件末尾：includeIf 后面的段会覆盖它，放前面会被 [user] 覆盖
+[includeIf "gitdir:~/project/"]
+	path = ~/.gitconfig.work

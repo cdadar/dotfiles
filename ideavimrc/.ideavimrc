@@ -294,7 +294,7 @@ nnoremap L $
 nnoremap T zt
 nnoremap M zz
 
-noremap YY "+y<CR>
+noremap YY "+yy
 noremap <leader>p "+gP<CR>
 noremap XX "+x<CR>
 

@@ -11,9 +11,7 @@ compinit
 
 
 
-# vars
-DOTFILES=$HOME/workspace/private/dotfiles/
-EMACSD=$HOME/.emacs.d
+# vars（机器特定路径已移到 ~/.zshrc.local：DOTFILES/EMACSD）
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -320,13 +318,10 @@ alias upgrade_repo='git pull --rebase --stat origin master'
 alias upgrade_dotfiles='cd $DOTFILES && upgrade_repo; cd - >/dev/null; reload'
 alias upgrade_emacs='emacs -Q --batch -L "$EMACSD/lisp/" -l "init-package.el" \
                            --eval "(progn (package-initialize) (update-config-and-packages))"'
-alias upgrade_omt='cd $HOME/.tmux && upgrade_repo; cd - >/dev/null'
 alias upgrade_zinit='zinit self-update && zinit update -a -p && zinit compinit && reload'
-alias upgrade_env='upgrade_dotfiles; sh $DOTFILES/install.sh'
 
 (( $+commands[cargo] )) && alias upgrade_cargo='cargo install cargo-update; cargo install-update -a'
 (( $+commands[gem] )) && alias upgrade_gem='gem update && gem cleanup'
-(( $+commands[go] )) && alias upgrade_go='$DOTFILES/install_go.sh'
 (( $+commands[npm] )) && alias upgrade_npm='for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2); do npm -g install "$package"; done'
 (( ! $+commands[brew] )) && (( $+commands[pip] )) && alias upgrade_pip="pip list --outdated --format=json | python -c '
 import json
@@ -354,8 +349,6 @@ alias toggleproxy='if [ -n "$http_proxy" ]; then unsetproxy; else setproxy; fi'
 
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
-
-alias gf=gf
 
 # Hermes Agent — ensure ~/.local/bin is on PATH
 export PATH="$HOME/.local/bin:$PATH"

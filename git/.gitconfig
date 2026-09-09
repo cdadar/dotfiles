@@ -159,3 +159,5 @@
 	path = ~/.gitconfig.work
 [includeIf "gitdir:~/project/private/"]
 	path = ~/.gitconfig.personal
+[init]
+	defaultBranch = main

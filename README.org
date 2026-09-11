@@ -85,6 +85,9 @@ stow更好的方法，请在 issue 中告诉我，谢谢～
 : stow -t $HOME tmux -D --adopt
 need xclip
 : tmux show-options -g -s set-clipboard
+*** brew
+: stow -t $HOME brew -D --adopt
+=brew/.Brewfile= 软链到 =~/.Brewfile=，=brew bundle --global= 直接读取。
 *** nodejs
 : stow -t $HOME nodejs -D --adopt
 *** ctags

@@ -1,5 +1,5 @@
 # Homebrew bundle 清单（macOS 工具链）
-# 由 ~/.zshrc 的 _bootstrap_brew_tools 按需安装；upgrade_brew 走 brew bundle --global
+# upgrade_brew（见 ~/.zshrc）走 brew bundle --global 安装
 brew "ripgrep"
 brew "fd"
 brew "fzf"

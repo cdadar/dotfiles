@@ -29,6 +29,8 @@ path=(
   $HOME/Library/Android/sdk/cmdline-tools/latest/bin
   "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
+  /opt/homebrew/bin            # Apple Silicon brew（x86 上不存在，会被下面过滤掉）
+  /opt/homebrew/sbin
   /usr/local/opt/postgresql@15/bin
   /Library/PostgreSQL/15/bin
   /usr/local/opt/ruby/bin
@@ -41,6 +43,14 @@ path=(
 
   $path
 )
+
+# 剔除不存在的目录（保持顺序；zsh 的 -U 只去重不检查存在性）
+_paths=()
+for _d in $path; do
+  [[ -d $_d ]] && _paths+=("$_d")
+done
+path=($_paths)
+unset _paths _d
 
 export PATH
 
@@ -106,6 +116,3 @@ export ALTERNATE_EDITOR=vim
 alias sudo="sudo "
 alias em='emacsclient -t -a ""'
 alias emc='emacsclient -nc -a ""'
-
-# Apple Silicon brew（跨机器保留）
-export PATH="/opt/homebrew/sbin:$PATH"

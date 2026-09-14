@@ -1,0 +1,19 @@
+# =====================================================================
+#  bash/.bashrc.local.example — bash 机器差异模板
+#  用法：cp bash/.bashrc.local.example ~/.bashrc.local 后填本机值
+#        （.bashrc 末尾自动 source，不存在则跳过）
+#  只放【机器特定】配置；通用配置一律改主 .bashrc，避免多机分叉
+# =====================================================================
+
+# ---- 本机 PATH 追加 ----
+# export PATH="$HOME/.cargo/bin:$PATH"
+
+# ---- 本机专有路径（换机器要改的：go sdk 版本、brew 前缀等）----
+# export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+# ---- 本机代理 ----
+# export http_proxy="http://127.0.0.1:7890"
+# export https_proxy="http://127.0.0.1:7890"
+
+# ---- 本机别名 / 环境变量 ----
+# alias ll='ls -lAh'

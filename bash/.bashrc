@@ -93,6 +93,12 @@ case "$-" in
     ;;
 esac
 
-# ---------------------------- SDKMAN（必须放最后） ----------------------------
+# ---------------------------- SDKMAN ----------------------------
 export SDKMAN_DIR="$HOME/.sdkman"
 [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+# ---------------------------- 本机差异（必须放最后） ----------------------------
+# 机器特定配置只进 ~/.bashrc.local（不进 git），模板见 bash/.bashrc.local.example
+if [ -f "$HOME/.bashrc.local" ]; then
+    . "$HOME/.bashrc.local"
+fi

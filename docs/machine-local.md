@@ -6,7 +6,7 @@ dotfiles 用 **单一 master 主干**，机器差异（工作机 vs 个人机）
 
 | 形态 | 适用 | 机制 | 示例 |
 |---|---|---|---|
-| **追加型** | 支持 source 的软件 | 主配置末尾 `source ~/xxx.local` | vim、zsh |
+| **追加型** | 支持 source 的软件 | 主配置末尾 `source ~/xxx.local` | vim、zsh、bash |
 | **整文件型** | 身份/整文件不同 | git 原生 `includeIf` | git user 身份 |
 
 ## 各软件标准模板
@@ -15,6 +15,7 @@ dotfiles 用 **单一 master 主干**，机器差异（工作机 vs 个人机）
 |---|---|---|---|
 | vim | `vim/.vimrc.local.example` | `cp vim/.vimrc.local.example ~/.vimrc.local` | ✅ 主 .vimrc 自动 source |
 | zsh | `zsh/.zshrc.local.example` | `cp zsh/.zshrc.local.example ~/.zshrc.local` | ✅ 主 .zshrc 自动 source |
+| bash | `bash/.bashrc.local.example` | `cp bash/.bashrc.local.example ~/.bashrc.local` | ✅ 主 .bashrc 末尾自动 source |
 | git | `git/.gitconfig.local.example` | 见模板内步骤（includeIf） | ✅ git 原生 includeIf |
 
 ## 新机器接入流程

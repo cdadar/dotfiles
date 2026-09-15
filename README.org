@@ -78,7 +78,7 @@ stow更好的方法，请在 issue 中告诉我，谢谢～
 *** vim
 : stow -t $HOME vim  -D --ignore=^[^\.]+\..*vim.* --adopt
 *** ideavimrc
-: stow -t $HOME ideavimrc -D --ignore=_ideavimrc\|idea_actionlist --adopt
+: stow -t $HOME ideavimrc -D --ignore=_ideavimrc --ignore=idea_actionlist --adopt
 *** git
 : stow -t $HOME git -D --adopt
 *** tmux
@@ -127,6 +127,21 @@ need xclip
 *** X11
 
 : stow -t $HOME X11 -D
+
+** 包清单与部署命令
+
+下表是本仓库的**现役部署命令**（上面各节的 =stow -D --adopt= 是首次收集配置时的
+一次性步骤，日常部署不要 =-D=）。顶层目录各是一个包，=docs/= 是文档不是包。
+
+: stow -t $HOME --ignore='\.example$' bash zsh git tmux nodejs ctags tar mpv ghostty alacritty aria2 mail sbcl pip
+: stow -t $HOME Xresources X11 wayland xmonad i3 awesome rofi   # Linux 桌面/窗口管理器
+: stow -t $HOME brew                                            # → ~/.Brewfile，brew bundle --global 读
+: stow -t $HOME vim --ignore='^[^\.]+\..*vim.*' --ignore='\.example$'
+: stow -t $HOME ideavimrc --ignore='_ideavimrc' --ignore='idea_actionlist'
+: stow -t $HOME/.config/hypr   hypr     # 单文件 hyprland.conf → ~/.config/hypr/
+: stow -t $HOME/.config/mpd    mpd
+: stow -t $HOME/.config/ranger ranger
+: stow -t $HOME/.config/sway   sway
 
 ** 机器差异管理（.local 机制）
 

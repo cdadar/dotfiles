@@ -1,8 +1,7 @@
 # OPENSPEC:START
 # OpenSpec shell completions configuration
-fpath=("/Users/chens/.zsh/completions" $fpath)
-autoload -Uz compinit
-compinit
+fpath=("$HOME/.zsh/completions" $fpath)
+# compinit 由下方 zinit 的 zicompinit 负责，这里不再重复初始化
 # OPENSPEC:END
 
 # copy https://github.com/seagle0128/dotfiles/blob/master/shell/.zshrc
@@ -56,6 +55,76 @@ if (( $+commands[brew] )); then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
+# 缺工具自动补齐（全新机器上首次开 shell 即装齐；已装则零成本跳过）
+# 格式：命令:brew包:apt包:pacman包:zypper包
+function _bootstrap_tools() {
+    local -a spec=(
+      rg:ripgrep:ripgrep:ripgrep:ripgrep
+      fd:fd:fd-find:fd:fd
+      fzf:fzf:fzf:fzf:fzf
+      eza:eza:eza:eza:eza
+      bat:bat:bat:bat:bat
+      delta:git-delta:git-delta:git-delta:git-delta
+      zoxide:zoxide:zoxide:zoxide:zoxide
+      lazygit:lazygit:lazygit:lazygit:lazygit
+      atuin:atuin:atuin:atuin:atuin
+      tldr:tldr:tldr:tldr:tldr
+      git-extras:git-extras:git-extras:git-extras:git-extras
+    ) missing=() pkgs=() parts
+    local s
+    for s in $spec; do
+        (( $+commands[${s%%:*}] )) || missing+=($s)
+    done
+    (( ${#missing} )) || return 0
+    if [[ $OSTYPE == darwin* ]] && (( $+commands[brew] )); then
+        for s in $missing; do parts=(${(s.:.)s}); pkgs+=($parts[2]); done
+    elif (( $+commands[apt-get] )); then
+        for s in $missing; do parts=(${(s.:.)s}); pkgs+=($parts[3]); done
+    elif (( $+commands[pacman] )); then
+        for s in $missing; do parts=(${(s.:.)s}); pkgs+=($parts[4]); done
+    elif (( $+commands[zypper] )); then
+        for s in $missing; do parts=(${(s.:.)s}); pkgs+=($parts[5]); done
+    else
+        print -P "%F{220}缺 ${(j: :)${(@)missing%%:*}}，无 brew/apt/pacman/zypper，交给下方 gh-r 兜底%f"
+        return 0
+    fi
+    print -P "%F{33}→ %F{220}安装缺失工具：${(j: :)pkgs}%f"
+    if [[ $OSTYPE == darwin* ]] && (( $+commands[brew] )); then
+        brew install $pkgs
+    elif (( $+commands[apt-get] )); then
+        sudo apt-get install -y $pkgs
+        (( $+commands[fdfind] )) && ! (( $+commands[fd] )) && alias fd=fdfind
+    elif (( $+commands[pacman] )); then
+        sudo pacman -S --noconfirm $pkgs
+    elif (( $+commands[zypper] )); then
+        sudo zypper install -y $pkgs
+    fi
+}
+_bootstrap_tools
+unset -f _bootstrap_tools
+
+# gh-r 兜底：包管理器装不到的场合（Linux 上 apt 没这个包 / 无 root / 新机器还没装 brew）
+# 直接从 GitHub Release 下二进制到 $ZPFX/bin（已在 PATH 中）；已装上则 if 守卫直接跳过
+# tldr / git-extras 没有二进制 release，不做兜底，只靠包管理器
+zinit ice as"program" from"gh-r" if'! (( $+commands[rg] ))' sbin'rg'
+zinit light BurntSushi/ripgrep
+zinit ice as"program" from"gh-r" if'! (( $+commands[fd] ))' sbin'fd'
+zinit light sharkdp/fd
+zinit ice as"program" from"gh-r" if'! (( $+commands[fzf] ))' sbin'fzf'
+zinit light junegunn/fzf
+zinit ice as"program" from"gh-r" if'! (( $+commands[eza] ))' sbin'eza'
+zinit light eza-community/eza
+zinit ice as"program" from"gh-r" if'! (( $+commands[bat] ))' sbin'bat'
+zinit light sharkdp/bat
+zinit ice as"program" from"gh-r" if'! (( $+commands[delta] ))' sbin'delta'
+zinit light dandavison/delta
+zinit ice as"program" from"gh-r" if'! (( $+commands[zoxide] ))' sbin'zoxide'
+zinit light ajeetdsouza/zoxide
+zinit ice as"program" from"gh-r" if'! (( $+commands[lazygit] ))' sbin'lazygit'
+zinit light jesseduffield/lazygit
+zinit ice as"program" from"gh-r" if'! (( $+commands[atuin] ))' sbin'atuin'
+zinit light atuinsh/atuin
+
 
 # Completion enhancements
 zinit wait lucid depth"1" for \
@@ -97,23 +166,19 @@ else
     zinit light agkozak/zsh-z
 fi
 
-# Git extras
-zinit ice wait lucid depth"1" as"program" \
-  pick"bin/git-*" \
-  src"etc/git-extras-completion.zsh" \
-  make'SKIP_CONFLICT_CHECK=1 PREFIX=$ZPFX install' \
-  atclone'export SKIP_CONFLICT_CHECK=1' \
-  atpull'%atclone' \
-  if'(( $+commands[make] ))'
-zinit light tj/git-extras
-
-# Prettify ls
-if (( $+commands[gls] )); then
-    alias ls='gls --color=tty --group-directories-first'
-else
-    alias ls='ls --color=tty --group-directories-first'
+# Git extras（用包管理器安装的版本；zinit 从源码 make install 与 brew 重复，已移除）
+# brew 不把 zsh completion 链到 site-functions，需手动 source（须在 compinit 之后）
+if (( $+commands[git-extras] )); then
+    for _f in "$(brew --prefix 2>/dev/null)"/Cellar/git-extras/*/share/git-extras/git-extras-completion.zsh(N) \
+              /usr/share/git-extras/git-extras-completion.zsh(N); do
+        source $_f
+        break
+    done
+    unset _f
 fi
 
+# Prettify ls（只有 gls 分支：BSD ls 不支持 --group-directories-first）
+(( $+commands[gls] )) && alias ls='gls --color=tty --group-directories-first'
 
 # FZF: fuzzy finder
 if (( $+commands[brew] )); then
@@ -343,12 +408,9 @@ for item in json.loads(sys.stdin.read()):
 PROXY=http://127.0.0.1:6152        # ss:1088, vr:8001
 NO_PROXY=10.*.*.*,192.168.*.*,*.local,localhost,127.0.0.1
 alias showproxy='echo "proxy=$http_proxy"'
-alias setproxy='export http_proxy=$PROXY; export https_proxy=$PROXY; all_proxy=$PROXY; export no_proxy=$NO_PROXY; showproxy'
+alias setproxy='export http_proxy=$PROXY; export https_proxy=$PROXY; export all_proxy=$PROXY; export no_proxy=$NO_PROXY; showproxy'
 alias unsetproxy='export http_proxy=; export https_proxy=; export all_proxy=; export no_proxy=; showproxy'
 alias toggleproxy='if [ -n "$http_proxy" ]; then unsetproxy; else setproxy; fi'
 
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
-
-# Hermes Agent — ensure ~/.local/bin is on PATH
-export PATH="$HOME/.local/bin:$PATH"

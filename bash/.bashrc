@@ -6,24 +6,16 @@
 
 # ---------------------------- PATH ----------------------------
 # 唯一来源：优先级从高到低，与 zsh/.zprofile 的 path 数组保持一致
-# (opencode / local / volta / rbenv / go / android / JetBrains / homebrew / 系统)
+# (opencode / local / volta / rbenv / go / homebrew / 系统)
+# 本机专有路径（go sdk 版本、Android SDK 等）见 ~/.bashrc.local
 _dotfiles_path="$HOME/.opencode/bin\
 :$HOME/.local/bin\
 :$HOME/.volta/bin\
 :$HOME/.rbenv/shims\
 :$HOME/.rbenv/bin\
 :$HOME/.go/bin\
-:$HOME/Library/go/sdk/go1.25.9/bin\
-:$HOME/Library/go/sdk/go1.15.15/bin\
-:$HOME/Library/Android/sdk/platform-tools\
-:$HOME/Library/Android/sdk/emulator\
-:$HOME/Library/Android/sdk/tools\
-:$HOME/Library/Android/sdk/tools/bin\
-:$HOME/Library/Android/sdk/cmdline-tools/latest/bin\
-:$HOME/Library/Application Support/JetBrains/Toolbox/scripts\
 :/opt/homebrew/bin\
 :/opt/homebrew/sbin\
-:/usr/local/opt/postgresql@15/bin\
 :/Library/PostgreSQL/15/bin\
 :/usr/local/opt/ruby/bin\
 :/usr/local/bin\
@@ -73,10 +65,8 @@ export ALTERNATE_EDITOR=vim EDITOR=vim VISUAL=vim
 export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
 
 # ---------------------------- locale ----------------------------
-case "$(tty 2>/dev/null)" in
-    /dev/tty*) export LC_ALL=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LANG=en_US.UTF-8 ;;
-    *)         export LC_ALL=zh_CN.UTF-8 LANGUAGE=zh_CN.UTF-8 LANG=zh_CN.UTF-8 ;;
-esac
+# 与 zsh/.zprofile 保持一致（曾是按 tty 分中英文，两个 shell 行为不一致）
+export LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 
 # ---------------------------- ssh ----------------------------
 export SSH_KEY_PATH="$HOME/.ssh"
@@ -88,8 +78,6 @@ case "$-" in
     alias em='emacsclient -t -a ""'   # 终端中开 emacs
     alias emc='emacsclient -nc -a ""' # emacs 图形界面
     alias wm_test='Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome'
-
-    ssh-add "$SSH_KEY_PATH/work_rsa" 2>/dev/null
     ;;
 esac
 

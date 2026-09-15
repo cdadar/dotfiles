@@ -8,8 +8,12 @@
 # ---- 本机 PATH 追加 ----
 # export PATH="$HOME/.cargo/bin:$PATH"
 
-# ---- 本机专有路径（换机器要改的：go sdk 版本、brew 前缀等）----
+# ---- 本机专有路径（换机器要改的：go sdk 版本、Android SDK、brew 前缀等）----
+# export PATH="$HOME/Library/go/sdk/go1.25.9/bin:$HOME/Library/Android/sdk/platform-tools:$PATH"
 # export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+# ---- 本机 SSH key（如工作机 work_rsa），只在交互 shell 加 ----
+# case "$-" in *i*) ssh-add "$HOME/.ssh/work_rsa" 2>/dev/null ;; esac
 
 # ---- 本机代理 ----
 # export http_proxy="http://127.0.0.1:7890"

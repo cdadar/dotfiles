@@ -18,3 +18,7 @@
 
 # ---- 本机别名（示例）----
 # alias ll='ls -lAh --color=auto'
+
+# ---- 本机专有变量（master 依赖，不定义则相关 alias 失效）----
+# export DOTFILES="$HOME/project/private/dotfiles/"   # upgrade_dotfiles / upgrade_repo
+# export EMACSD="$HOME/.emacs.d"                      # me / mte / upgrade_emacs

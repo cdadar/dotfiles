@@ -20,18 +20,9 @@ path=(
   $HOME/.rbenv/shims
   $HOME/.rbenv/bin
   $HOME/.go/bin
-  $HOME/Library/go/sdk/go1.25.9/bin
-  $HOME/Library/go/sdk/go1.15.15/bin
-  $HOME/Library/Android/sdk/platform-tools
-  $HOME/Library/Android/sdk/emulator
-  $HOME/Library/Android/sdk/tools
-  $HOME/Library/Android/sdk/tools/bin
-  $HOME/Library/Android/sdk/cmdline-tools/latest/bin
-  "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
   /opt/homebrew/bin            # Apple Silicon brew（x86 上不存在，会被下面过滤掉）
   /opt/homebrew/sbin
-  /usr/local/opt/postgresql@15/bin
   /Library/PostgreSQL/15/bin
   /usr/local/opt/ruby/bin
 
@@ -41,6 +32,7 @@ path=(
   /usr/sbin
   /sbin
 
+  # 本机专有路径（go sdk 版本、Android SDK、JetBrains 等）见 ~/.zshrc.local
   $path
 )
 
@@ -80,12 +72,8 @@ export GOPROXY=https://goproxy.cn,direct
 # Android
 # ========================
 
+# Android SDK 路径属本机专有，见 ~/.zshrc.local；ANDROID_HOME 通用，保留
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-# Android / JetBrains 路径已并入上方 path 数组
-
-# ========================
-# JetBrains Toolbox
-# ========================
 
 # ========================
 # SDKMAN
@@ -98,8 +86,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # SSH
 # ========================
 
+# 具体 key 属本机专有（如 work_rsa），ssh-add 见 ~/.zshrc.local
 export SSH_KEY_PATH="$HOME/.ssh"
-ssh-add "$SSH_KEY_PATH/work_rsa" 2>/dev/null
 
 # ========================
 # 编辑器

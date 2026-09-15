@@ -235,14 +235,16 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
-# preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview \
-       'eza -1 --color=always --icons=auto --group-directories-first $realpath || \
-       ls -1 --color=always --group-directories-first $realpath'
-# preview context of the file or directory
-zstyle ':fzf-tab:complete:(ls|exa|eza|bat|cat|vi|vim|nvim|emacs|code|cursor):*' fzf-preview \
-       'bat --color=always --plain --language=sh $realpath 2>/dev/null || \
-       eza -1 --color=always --icons=auto --group-directories-first $realpath'
+# 预览文件/目录（所有命令的文件参数通用规则；更具体的 git-*/man/brew 等规则优先生效）
+# 目录 → eza 列表；文件 → bat 语法高亮，--line-range :500 避免大文件卡住
+#（自上游 seagle0128/dotfiles，原文 $realpath 误写成 $realpat，这里已修）
+zstyle ':fzf-tab:complete:*:argument-rest' fzf-preview \
+       'if [ -d $realpath ]; then \
+          eza -1 --color=always --icons=auto --group-directories-first $realpath || \
+          ls -1 --color=always --group-directories-first $realpath; \
+        else \
+          bat --color=always --plain --line-range :500 $realpath || cat $realpath; \
+        fi'
 # custom fzf flags
 # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
 # zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
@@ -319,9 +321,9 @@ function rgv () {
 if [[ $OSTYPE == darwin* ]]; then
     zinit snippet PZTM::osx
     if (( $+commands[brew] )); then
-        alias bu='brew upgrade'
-        alias bcu='brew cu --all --yes'
-        alias bua='bu; bcu; brew cleanup --prune=all'
+        # --greedy：连 auto_updates 的 cask 一起升，替代已废弃的 brew cu（不再依赖 buo/cask-upgrade tap）
+        alias bu='brew update; brew upgrade --greedy --yes'
+        alias bua='bu; brew cleanup --prune=14'
     fi
 elif [[ $OSTYPE == linux* ]]; then
     if (( $+commands[apt-get] )); then

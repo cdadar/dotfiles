@@ -41,7 +41,13 @@ readlink ~/.zshrc            # 确认仍然是软链（见下方铁律 2）
 ```sh
 zsh -n zsh/.zshrc && zsh -n zsh/.zprofile && bash -n bash/.bashrc
 zsh -lic exit          # 应无新报错（本机噪音：非 tty 下 "can't change option: zle" 可忽略）
+shellcheck zsh/.zshrc zsh/.zprofile bash/.bashrc   # 应无输出
 ```
+
+zsh 文件顶部的 `# shellcheck disable=...` 只屏蔽 sh/bash 解析器对 zsh 语法的误报，
+**解析错误（SC10xx）仍会报出**（本仓库真踩过：`*(N)` 这类 zsh glob qualifier 会让
+ShellCheck 在 `for` 处报 SC1036/SC1058）。所以 `shellcheck` 无输出 = 语法层面没变坏，
+语义仍以 `zsh -n` + 实跑为准。
 
 基线：启动 ~0.5s、PATH 无重复项、`comps` 非空。改完 shell 配置跑一遍再交付。
 

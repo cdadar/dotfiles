@@ -1,3 +1,6 @@
+# shellcheck disable=SC1087,SC1090,SC1091,SC2015,SC2016,SC2086,SC2125,SC2128,SC2139,SC2148,SC2154,SC2206,SC2296
+# 本文件是 zsh，ShellCheck 只认 sh/bash，说明见 zsh/.zshrc 顶部
+
 # ========================
 # 基础环境
 # ========================

@@ -1,3 +1,8 @@
+# shellcheck disable=SC1087,SC1090,SC1091,SC2015,SC2016,SC2086,SC2125,SC2128,SC2139,SC2148,SC2154,SC2206,SC2296
+# 本文件是 zsh，ShellCheck 只认 sh/bash：以上均为 zsh 语法的误报（${(j: :)..}、$+commands[x]、
+# fzf-tab 里故意延迟展开的 $word、rc 文件不该有 shebang 等）。只屏蔽具体检查项，
+# 解析错误（SC1009/SC1036/SC1058/SC1072/SC1073）仍会报出。语法检查用 `zsh -n`。
+
 # OPENSPEC:START
 # OpenSpec shell completions configuration
 fpath=("$HOME/.zsh/completions" $fpath)
@@ -169,10 +174,9 @@ fi
 # Git extras（用包管理器安装的版本；zinit 从源码 make install 与 brew 重复，已移除）
 # brew 不把 zsh completion 链到 site-functions，需手动 source（须在 compinit 之后）
 if (( $+commands[git-extras] )); then
-    for _f in "$(brew --prefix 2>/dev/null)"/Cellar/git-extras/*/share/git-extras/git-extras-completion.zsh(N) \
-              /usr/share/git-extras/git-extras-completion.zsh(N); do
-        source $_f
-        break
+    for _f in "$(brew --prefix git-extras 2>/dev/null)/share/git-extras/git-extras-completion.zsh" \
+              /usr/share/git-extras/git-extras-completion.zsh; do
+        [[ -f $_f ]] && source $_f && break
     done
     unset _f
 fi

@@ -1,3 +1,6 @@
+# shellcheck disable=SC1091,SC2148
+# rc 文件被 .bash_profile / .profile source，不写 shebang；source 的对象路径运行期才决定
+
 # =====================================================================
 #  ~/.bashrc —— bash 环境总入口（PATH / 工具链 / 别名）
 #  login shell 由 .bash_profile source，POSIX sh login 由 .profile source

@@ -197,6 +197,12 @@ if [[ -f "$FZF/key-bindings.zsh" ]]; then
     source "$FZF/key-bindings.zsh"
 fi
 
+# Atuin（shell 历史，^R）。必须放在 fzf key-bindings 之后：fzf 会把 ^R 绑到
+# fzf-history-widget，放前面会被覆盖。atuin 由 _bootstrap_tools / gh-r 兜底安装。
+if (( $+commands[atuin] )); then
+    eval "$(atuin init zsh)"
+fi
+
 # Git utilities powered by FZF
 zinit ice wait lucid depth"1"
 zinit light wfxr/forgit
@@ -357,7 +363,7 @@ if (( $+commands[btop] )); then
 elif (( $+commands[btm] )); then
     alias top=btm
 fi
-(( $+commands[rg] )) && alias grep=rg
+# 不把 grep 别名为 rg：BSD/GNU grep 与 rg 的选项语义不同（如 rg 的 -E 是 --encoding），会静默失效
 (( $+commands[tldr] )) && alias help=tldr
 (( $+commands[delta] )) && alias diff=delta
 (( $+commands[duf] )) && alias df=duf

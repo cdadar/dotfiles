@@ -14,14 +14,21 @@ dotfiles 用 **单一 master 主干**，机器差异（工作机 vs 个人机）
 | 软件 | 示例文件 | 本机落地 | 是否已支持加载 |
 |---|---|---|---|
 | vim | `vim/.vimrc.local.example` | `cp vim/.vimrc.local.example ~/.vimrc.local` | ✅ 主 .vimrc 自动 source |
-| zsh | `zsh/.zshrc.local.example` | `cp zsh/.zshrc.local.example ~/.zshrc.local` | ✅ 主 .zshrc 自动 source |
+| zsh（环境层） | `zsh/.zshenv.local.example` | `cp zsh/.zshenv.local.example ~/.zshenv.local` | ✅ 主 .zshenv 末尾自动 source（每个 zsh 进程，含 `zsh -c` / Emacs） |
+| zsh（交互层） | `zsh/.zshrc.local.example` | `cp zsh/.zshrc.local.example ~/.zshrc.local` | ✅ 主 .zshrc 自动 source（仅交互 shell） |
 | bash | `bash/.bashrc.local.example` | `cp bash/.bashrc.local.example ~/.bashrc.local` | ✅ 主 .bashrc 末尾自动 source |
 | git | `git/.gitconfig.local.example` | 见模板内步骤（includeIf） | ✅ git 原生 includeIf |
+
+zsh 分两层的原因：`.zshenv` 被**每个** zsh 进程读取，`.zshrc` 只被交互 shell 读取。
+本机 SDK 路径、工具环境变量（`ANDROID_HOME`、`JAVA_HOME`、镜像变量等）放环境层，
+否则 `zsh -c`、IDE 任务、Emacs 的 `exec-path-from-shell` 都拿不到；别名、代理别名、
+`ssh-add`、补全放交互层。
 
 ## 新机器接入流程
 
 1. `git clone` dotfiles，checkout master（唯一主干）
 2. 复制需要的 `.local.example` 到本机对应位置，填本机值
+   （zsh 环境层 `~/.zshenv.local` + 交互层 `~/.zshrc.local` 都要，见上表）
 3. git 身份按模板加 `includeIf` 段 + 建 `~/.gitconfig.work`
 4. 完成 —— 本机差异全部落在 `.local` 文件，不进分支
 

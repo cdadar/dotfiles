@@ -25,6 +25,19 @@ readlink ~/.zshrc            # 确认仍然是软链（见下方铁律 2）
 4. **可移植性**：不写 `/Users/chens` 这类宿主路径，用 `$HOME`；判断工具存在一律用
    `(( $+commands[x] ))` 守卫，别假设装了。
 
+## shell 配置落点（改前先确认）
+
+- `zsh/.zshenv` —— **每个** zsh 进程都读（含 `zsh -c`、脚本）：PATH、环境变量。
+  必须不产生 stdout（会污染 `$(zsh -c ...)`）。PATH 顺序只在 `_dotfiles_path_head` 定义一次。
+  末尾 source `~/.zshenv.local`：本机 SDK 路径/工具环境变量（Emacs 的
+  `exec-path-from-shell` 只跑 `zsh -l`，拿不到 `.zshrc.local` 里的东西）。
+- `zsh/.zprofile` —— 仅 login：在 `/etc/zprofile` 的 path_helper 之后把 PATH 顺序压回
+  （它会先把 `/usr/local/bin` 前置，盖掉 volta/go sdk），另放 rbenv/sdkman 这类 eval 型集成。
+- `zsh/.zshrc` —— 交互：插件、别名、补全 + source `~/.zshrc.local`（别名/代理/ssh-add）。
+  **别名和只给交互用的机器差异都不放 .zprofile / .zshenv**（非 login 的交互 shell 与
+  Emacs 都不该看到它们）。
+- `bash/.bashrc` —— bash 全部（由 `.bash_profile` / `.profile` source）。
+
 ## 工具兜底（两级，别拆）
 
 `zsh/.zshrc` 里两级都靠守卫跳过，已装则零成本：

@@ -1,0 +1,34 @@
+# =====================================================================
+#  .zshenv.local.example — Zsh 机器差异·环境层模板
+#  用法：cp zsh/.zshenv.local.example ~/.zshenv.local 并填本机值
+#        （主 .zshenv 末尾自动 source，不存在则跳过）
+#  =====================================================================
+#  放【所有 zsh 进程都要看到】的机器差异：本机 SDK 路径、工具环境变量。
+#  .zshenv 被每个 zsh 进程读取（含 `zsh -c`、脚本、Emacs 的 exec-path-from-shell），
+#  所以这里的东西 Emacs / IDE / 脚本都拿得到。
+#
+#  区分：
+#    ~/.zshenv.local  → 环境变量、PATH（本文件，所有 shell）
+#    ~/.zshrc.local   → 交互专属：别名、代理别名、ssh-add、补全（只有交互 shell）
+#  本文件必须不产生 stdout（会污染 `$(zsh -c ...)`）。
+# =====================================================================
+
+# ---- 本机 SDK 路径（换机器要改：go sdk 版本、Android SDK 位置）----
+# 要压过 /usr/local/bin（如 go sdk vs brew go）就插到 _dotfiles_path_head 前面；
+# .zshenv 用它定顺序，.zprofile 在 macOS 的 path_helper 之后会恢复同一顺序。
+# _dotfiles_path_head=(
+#   $HOME/Library/go/sdk/go1.25.9/bin
+#   $HOME/Library/Android/sdk/platform-tools
+#   $_dotfiles_path_head
+# )
+# 只追加到末尾的简单情况：export PATH="$HOME/.cargo/bin:$PATH"
+
+# ---- 工具环境变量（本机专有）----
+# export ANDROID_HOME="$HOME/Library/Android/sdk"
+# export ANDROID_SDK_ROOT="$ANDROID_HOME"
+# export JAVA_HOME="$(/usr/libexec/java_home -v 17 2>/dev/null)"
+# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+
+# ---- 宿主/工具路径（本仓库其它配置会引用的变量）----
+# export DOTFILES="$HOME/project/private/dotfiles/"
+# export EMACSD="$HOME/.emacs.d"

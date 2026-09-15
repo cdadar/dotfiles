@@ -352,6 +352,10 @@ alias zshconf="$EDITOR $HOME/.zshrc; $EDITOR $HOME/.zshrc.local"
 alias reload='exec zsh'
 alias h='history'
 alias c='clear'
+# alias 只对交互 shell 有意义，所以放 .zshrc 而不是 .zprofile（否则非 login 的交互 shell 拿不到）
+alias sudo='sudo '
+alias em='emacsclient -t -a ""'   # 终端中开 emacs
+alias emc='emacsclient -nc -a ""' # emacs 图形界面
 
 # Modern Unix commands
 # See https://github.com/ibraheemdev/modern-unix

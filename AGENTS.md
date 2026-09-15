@@ -15,27 +15,26 @@ readlink ~/.zshrc            # 确认仍然是软链（见下方铁律 2）
 ## 铁律
 
 1. **只改 master**（仓库里的文件）。`$HOME` 下的是软链，改那里等于改 master，但要先确认它还是软链。
-2. **别让编辑器写穿软链**：`~/.zshrc`、`~/.bashrc`、`~/.vimrc` 等都是 `$HOME` → 仓库的软链。
-   有的编辑器保存时先写临时文件再 rename，会把软链替换成普通文件 —— 之后 `$HOME` 副本与
-   master 分叉、仓库改动再也不生效（本仓库踩过：`~/.zshrc` 变成 Sep 1 旧副本，master 的修复
-   一直没上线）。改完 `readlink` 确认；不是软链就 `rm` 掉再 `stow -t $HOME zsh` 重建。
-3. **机器/身份相关不进 master**：本机路径、代理、SSH key、公司邮箱。zsh → `~/.zshrc.local`，
-   bash → `~/.bashrc.local`，git → `~/.gitconfig.{work,personal}`（原生 `includeIf`）。
-   模板是同名 `.example` 文件，改 master 时同步模板。
+2. **别让编辑器写穿软链**：`~/.zshrc`/`~/.bashrc`/`~/.vimrc` 等都是 `$HOME` → 仓库的软链。
+   有的编辑器保存时先写临时文件再 rename，会把软链换成普通文件，此后 `$HOME` 副本与 master
+   分叉、仓库改动不再生效（踩过：`~/.zshrc` 变成旧副本，master 的修复一直没上线）。
+   改完 `readlink` 确认；不是软链就 `rm` 掉再 `stow -t $HOME zsh` 重建。
+3. **机器/身份相关不进 master**：本机路径、代理、SSH key、公司邮箱 —— zsh 环境层
+   `~/.zshenv.local`、交互层 `~/.zshrc.local`，bash `~/.bashrc.local`，git
+   `~/.gitconfig.{work,personal}`（`includeIf`）。模板是同名 `.example`，改 master 时同步模板。
 4. **可移植性**：不写 `/Users/chens` 这类宿主路径，用 `$HOME`；判断工具存在一律用
    `(( $+commands[x] ))` 守卫，别假设装了。
 
 ## shell 配置落点（改前先确认）
 
-- `zsh/.zshenv` —— **每个** zsh 进程都读（含 `zsh -c`、脚本）：PATH、环境变量。
-  必须不产生 stdout（会污染 `$(zsh -c ...)`）。PATH 顺序只在 `_dotfiles_path_head` 定义一次。
-  末尾 source `~/.zshenv.local`：本机 SDK 路径/工具环境变量（Emacs 的
-  `exec-path-from-shell` 只跑 `zsh -l`，拿不到 `.zshrc.local` 里的东西）。
-- `zsh/.zprofile` —— 仅 login：在 `/etc/zprofile` 的 path_helper 之后把 PATH 顺序压回
-  （它会先把 `/usr/local/bin` 前置，盖掉 volta/go sdk），另放 rbenv/sdkman 这类 eval 型集成。
-- `zsh/.zshrc` —— 交互：插件、别名、补全 + source `~/.zshrc.local`（别名/代理/ssh-add）。
-  **别名和只给交互用的机器差异都不放 .zprofile / .zshenv**（非 login 的交互 shell 与
-  Emacs 都不该看到它们）。
+- `zsh/.zshenv` —— **每个** zsh 进程都读（含 `zsh -c`、脚本、Emacs 的 exec-path-from-shell）：
+  PATH、环境变量，必须不产生 stdout（会污染 `$(zsh -c ...)`）。PATH 顺序只在
+  `_dotfiles_path_head` 定义一次；末尾 source `~/.zshenv.local`，那里的路径用
+  `_dotfiles_path_head=(... $_dotfiles_path_head)` 插到最前。
+- `zsh/.zprofile` —— 仅 login：调 `_dotfiles_path_restore` 把 path_helper 前置的
+  `/usr/local/bin` 压回去（否则盖掉 volta/go sdk），另放 rbenv/sdkman 这类 eval 型集成。
+- `zsh/.zshrc` —— 交互：插件、别名、补全 + source `~/.zshrc.local`。**别名与交互专属的
+  机器差异不放 .zshenv/.zprofile**（非 login 的交互 shell 与 Emacs 都不该看到）。
 - `bash/.bashrc` —— bash 全部（由 `.bash_profile` / `.profile` source）。
 
 ## 工具兜底（两级，别拆）
@@ -52,17 +51,16 @@ readlink ~/.zshrc            # 确认仍然是软链（见下方铁律 2）
 ## 验证改动
 
 ```sh
-zsh -n zsh/.zshrc && zsh -n zsh/.zprofile && bash -n bash/.bashrc
-zsh -lic exit          # 应无新报错（本机噪音：非 tty 下 "can't change option: zle" 可忽略）
-shellcheck zsh/.zshrc zsh/.zprofile bash/.bashrc   # 应无输出
+zsh -n zsh/.zshenv && zsh -n zsh/.zprofile && zsh -n zsh/.zshrc && bash -n bash/.bashrc
+zsh -lic exit          # 无新报错（本机噪音：非 tty 下 "can't change option: zle" 忽略）
+shellcheck zsh/.zshenv zsh/.zprofile zsh/.zshrc bash/.bashrc bash/.bash_profile bash/.profile
 ```
 
 zsh 文件顶部的 `# shellcheck disable=...` 只屏蔽 sh/bash 解析器对 zsh 语法的误报，
-**解析错误（SC10xx）仍会报出**（本仓库真踩过：`*(N)` 这类 zsh glob qualifier 会让
-ShellCheck 在 `for` 处报 SC1036/SC1058）。所以 `shellcheck` 无输出 = 语法层面没变坏，
-语义仍以 `zsh -n` + 实跑为准。
+**解析错误（SC10xx）仍会报出**（踩过：`*(N)` 这类 glob qualifier 让 ShellCheck 在
+`for` 处报 SC1036/SC1058）。shellcheck 无输出 = 语法层面没变坏，语义仍以 `zsh -n` + 实跑为准。
 
-基线：启动 ~0.5s、PATH 无重复项、`comps` 非空。改完 shell 配置跑一遍再交付。
+基线：启动 ~0.5s、PATH 无重复项、`comps` 非空；`zsh -lc` 与 `zsh -lic` 的 PATH 应逐项相同。
 
 ## 提交
 

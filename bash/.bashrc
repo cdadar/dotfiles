@@ -67,6 +67,10 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export ALTERNATE_EDITOR=vim EDITOR=vim VISUAL=vim
 export STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0
 
+# ---------------------------- Pi（coding agent） ----------------------------
+# ask_user 用 inline 渲染（默认 overlay 弹窗会盖住上方输出）
+export PI_ASK_USER_DISPLAY_MODE=inline
+
 # ---------------------------- locale ----------------------------
 # 与 zsh/.zprofile 保持一致（曾是按 tty 分中英文，两个 shell 行为不一致）
 export LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8

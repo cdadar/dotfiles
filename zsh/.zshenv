@@ -101,6 +101,14 @@ export GOPROXY=https://goproxy.cn,direct
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 # ========================
+# Pi（coding agent）
+# ========================
+
+# ask_user 用 inline 渲染：默认的 overlay 弹窗会盖住上方输出，而选项往往要靠
+# 这些输出才能定（overlay 下可按 alt+o 临时隐藏，见 pi-ask-user README）
+export PI_ASK_USER_DISPLAY_MODE=inline
+
+# ========================
 # 编辑器 / SSH
 # ========================
 

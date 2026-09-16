@@ -164,7 +164,7 @@ if (( $+commands[zoxide] )); then
            --tabstop=1 --exit-0 --select-1 \
            --preview '(eza --tree --level 3 --color=always \
            --group-directories-first {2} || tree -NC {2}) 2>/dev/null'"
-    type zi >/dev/null 2>&1 && unalias zi
+    (( $+aliases[zi] )) && unalias zi
     eval "$(zoxide init zsh)"
 else
     zinit ice wait lucid depth"1"
@@ -384,6 +384,11 @@ fi
 
 # Git
 alias gtr='git tag -d $(git tag) && git fetch --tags' # Refresh local tags from remote
+
+# Pi coding agent
+# piq = 日常瘦身版：剔除 subagent / goal 的 tool schema（实测每轮省约 3.1k tok 固定开销）
+# 要委派子代理或建 goal 时用完整版 pi；想再省可把 web_search,fetch_content,get_search_content 加到列表里（再省约 2.6k）
+(( $+commands[pi] )) && alias piq='pi --exclude-tools Agent,get_subagent_result,steer_subagent,create_goal,get_goal'
 
 # Emacs
 alias me="emacs -Q -l $EMACSD/init-mini.el" # mini emacs

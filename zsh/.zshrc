@@ -391,8 +391,9 @@ alias gtr='git tag -d $(git tag) && git fetch --tags' # Refresh local tags from 
 (( $+commands[pi] )) && alias piq='pi --exclude-tools Agent,get_subagent_result,steer_subagent'
 
 # Emacs
-alias me="emacs -Q -l $EMACSD/init-mini.el" # mini emacs
-alias mte="emacs -Q -nw -l $EMACSD/init-mini.el" # mini terminal emacs
+# 单引号：$EMACSD 由 ~/.zshrc.local 定义，双引号会在 alias 定义时（本文件靠前）展开成空
+alias me='emacs -Q -l $EMACSD/init-mini.el' # mini emacs
+alias mte='emacs -Q -nw -l $EMACSD/init-mini.el' # mini terminal emacs
 alias e="$EDITOR -n"
 alias ec="$EDITOR -n -c"
 alias ef="$EDITOR -c"

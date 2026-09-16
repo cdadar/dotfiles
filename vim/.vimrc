@@ -586,6 +586,47 @@ let g:vue_disable_pre_processors=1
 let g:vim_vue_plugin_load_full_syntax = 1
 
 " -------------------------------------------------------------------
+" 8.1 工具链 / 编辑习惯（通用；机器特定的作者信息见 ~/.vimrc.local）
+" -------------------------------------------------------------------
+
+" 以 root 权限保存（sudo tee）
+noremap <leader>W :w !sudo tee % >/dev/null
+
+" Doxygen 注释生成：空行 → 文件注释，非空行 → 函数注释
+" 原映射 <C-D> 与内置「向下翻半页」冲突，改到 <leader>dox
+let g:DoxygenToolkit_briefTag_funcName = "yes"
+let g:doxygen_enhanced_color = 1
+let g:DoxygenToolkit_versionString = ""
+let g:DoxygenToolkit_compactOneLineDoc = "yes"
+function! InsertDox()
+  if getline('.') =~ '^\s*$'
+    return "\:DoxAuthor\<CR>"
+  else
+    return "\:Dox\<CR>\<ESC>"
+  endif
+endfunction
+map <expr> <leader>dox InsertDox()
+
+" Vue 文件识别（配合 leafOfTree/vim-vue-plugin）
+autocmd BufReadPre *.vue let b:javascript_lib_use_vue = 1
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
+
+" ESLint 格式化（vim-autoformat）
+function! ESlintFormatter()
+  let l:npm_bin = ''
+  let l:eslint = 'eslint'
+  if executable('npm')
+    let l:npm_bin = split(system('npm bin'), '\n')[0]
+  endif
+  if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+    let l:eslint = l:npm_bin . '/eslint'
+  endif
+  let g:formatdef_eslint = '"SRC=eslint-temp-${RANDOM}.js; cat - >$SRC; ' . l:eslint . ' --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
+endfunction
+autocmd FileType javascript :call ESlintFormatter()
+let g:formatters_javascript = ['eslint']
+
+" -------------------------------------------------------------------
 " 9. 用户本地配置
 " -------------------------------------------------------------------
 if filereadable(expand("~/.vimrc.local"))

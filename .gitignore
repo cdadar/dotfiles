@@ -12,6 +12,7 @@ symbols.yaml
 user.yaml
 weasel.yaml
 .vim/
+.vimrc.local
 .directory
 tags
 watch_later/

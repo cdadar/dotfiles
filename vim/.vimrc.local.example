@@ -5,13 +5,12 @@
 "  =========================================================================
 "  这里只放【机器特定】配置（每台电脑不同）：
 "     - 作者/邮箱、快捷键习惯、代理、本地路径
-"  通用配置一律改主 .vimrc，不要放这里（避免多机分叉）
+"  通用配置一律改主 .vimrc（如 Doxygen 生成、Vue/ESLint 等见 .vimrc 第 8.1 节），
+"  不要放这里，也不要放本仓库 vim/.vimrc.local（该文件已不再纳入 git）。
 " =====================================================================
 
-" ---- 作者信息（Doxygen 注释用，每机不同）----
+" ---- 作者信息（Doxygen 注释用，每机不同；其余 Doxygen 设置在主 .vimrc）----
 let g:DoxygenToolkit_authorName="你的名字, your@email.com"
-let g:DoxygenToolkit_briefTag_funcName="yes"
-let g:DoxygenToolkit_compactOneLineDoc = "yes"
 
 " ---- 本机代理（不走代理就注释掉）----
 " let g:netrw_proxy = "http://127.0.0.1:7890"
@@ -21,16 +20,3 @@ let g:DoxygenToolkit_compactOneLineDoc = "yes"
 
 " ---- 个人快捷键习惯（示例）----
 " inoremap jk <Esc>
-
-" =====================================================================
-"  Doxygen 注释生成示例（如需要 DoxygenToolkit）
-" =====================================================================
-let g:doxygen_enhanced_color=1
-function! InsertDox()
-  if getline('.') =~ '^\s*$'
-    return "\:DoxAuthor\<CR>"
-  else
-    return "\:Dox\<CR>\<ESC>"
-  endif
-endfunction
-map <expr> <leader>dox InsertDox()

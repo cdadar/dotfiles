@@ -385,11 +385,6 @@ fi
 # Git
 alias gtr='git tag -d $(git tag) && git fetch --tags' # Refresh local tags from remote
 
-# Pi coding agent
-# piq = 日常瘦身版：剔除 subagent 的 tool schema（实测每轮省约 2.8k tok 固定开销）
-# 要委派子代理时用完整版 pi；想再省可把 web_search,fetch_content,get_search_content 加到列表里（再省约 2.6k）
-(( $+commands[pi] )) && alias piq='pi --exclude-tools Agent,get_subagent_result,steer_subagent'
-
 # Emacs
 # 单引号：$EMACSD 由 ~/.zshrc.local 定义，双引号会在 alias 定义时（本文件靠前）展开成空
 alias me='emacs -Q -l $EMACSD/init-mini.el' # mini emacs

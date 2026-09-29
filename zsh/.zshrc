@@ -71,6 +71,7 @@ function _bootstrap_tools() {
       bat:bat:bat:bat:bat
       delta:git-delta:git-delta:git-delta:git-delta
       zoxide:zoxide:zoxide:zoxide:zoxide
+      direnv:direnv:direnv:direnv:direnv
       lazygit:lazygit:lazygit:lazygit:lazygit
       atuin:atuin:atuin:atuin:atuin
       tldr:tldr:tldr:tldr:tldr
@@ -125,6 +126,9 @@ zinit ice as"program" from"gh-r" if'! (( $+commands[delta] ))' sbin'delta'
 zinit light dandavison/delta
 zinit ice as"program" from"gh-r" if'! (( $+commands[zoxide] ))' sbin'zoxide'
 zinit light ajeetdsouza/zoxide
+# direnv 的 release 资产是裸二进制（direnv.darwin-arm64 / direnv.linux-amd64），无扩展名可识别，需 mv 改名后再 sbin
+zinit ice as"program" from"gh-r" if'! (( $+commands[direnv] ))' mv"direnv.* -> direnv" sbin'direnv'
+zinit light direnv/direnv
 zinit ice as"program" from"gh-r" if'! (( $+commands[lazygit] ))' sbin'lazygit'
 zinit light jesseduffield/lazygit
 zinit ice as"program" from"gh-r" if'! (( $+commands[atuin] ))' sbin'atuin'
@@ -155,6 +159,11 @@ zinit light laggardkernel/zsh-tmux
 #
 # Utilities
 #
+
+# direnv：进目录自动加载 .envrc（工具由 _bootstrap_tools / gh-r 兜底安装）
+if (( $+commands[direnv] )); then
+    eval "$(direnv hook zsh)"
+fi
 
 # Z
 if (( $+commands[zoxide] )); then
@@ -210,6 +219,10 @@ fi
 # Git utilities powered by FZF
 zinit ice wait lucid depth"1"
 zinit light wfxr/forgit
+
+# fzf-git.sh：Ctrl-G 系列键位直接挑 branch/commit/stash/log 等（junegunn 官方，forgit 无键位不冲突）
+zinit ice wait lucid depth"1" pick"fzf-git.sh"
+zinit light junegunn/fzf-git.sh
 
 # Replace zsh's default completion selection menu with fzf
 zinit ice wait lucid depth"1" atload"zicompinit; zicdreplay" blockf

@@ -23,6 +23,14 @@
 # )
 # 只追加到末尾的简单情况：export PATH="$HOME/.cargo/bin:$PATH"
 
+# ---- 工具启动脚本目录（macOS 常见：JetBrains Toolbox / 其它 GUI 工具投放 CLI 入口）----
+# Toolbox 会在固定位置生成 idea/goland/pycharm/webstorm/datagrip/studio 启动脚本。
+# 路径带空格，必须整体加引号；目录不存在时会被 .zshenv 的存在性过滤自动剔掉，不用额外判断。
+# _dotfiles_path_head=(
+#   "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+#   $_dotfiles_path_head
+# )
+
 # ---- 工具环境变量（本机专有）----
 # export ANDROID_HOME="$HOME/Library/Android/sdk"
 # export ANDROID_SDK_ROOT="$ANDROID_HOME"

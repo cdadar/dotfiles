@@ -17,6 +17,14 @@ fpath=("$HOME/.zsh/completions" $fpath)
 
 # vars（机器特定路径已移到 ~/.zshrc.local：DOTFILES/EMACSD）
 
+# 终端自动行为：iTerm2 里自动进 tmux，JetBrains IDE 自带终端（JediTerm）里不进。
+# laggardkernel/zsh-tmux 插件在本地终端默认自动 attach，它认这个环境变量来跳过。
+# 必须放在本文件加载 zinit 插件（见下方 zsh-tmux）之前。
+# 若 JetBrains 终端里 `echo $NO_AUTO_TMUX` 不是 1，用 `env | grep -iE "jetbrains|terminal_emulator|term_program"` 看它标记了什么，再往下面的 case 里补。
+case "$TERMINAL_EMULATOR$TERM_PROGRAM$__CFBundleIdentifier" in
+  *JetBrains*|*jetbrains*) export NO_AUTO_TMUX=1 ;;
+esac
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"

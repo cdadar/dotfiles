@@ -128,10 +128,49 @@ need xclip
 
 : stow -t $HOME X11 -D
 
+** 新机器初始化（bootstrap.sh）
+
+全新机器两步：拉仓库、跑脚本。脚本幂等，可重复跑。
+
+: git clone git@github.com:cdadar/dotfiles.git ~/project/private/dotfiles
+: cd ~/project/private/dotfiles && ./bootstrap.sh --dry-run   # 先空跑看动作
+: cd ~/project/private/dotfiles && ./bootstrap.sh
+
+脚本做的五件事：
+
+1. 装 =git= / =curl= / =stow=（缺则走 brew / apt-get / dnf / pacman / zypper）；
+   macOS 缺 Homebrew 时先用官方脚本装 brew。
+2. 按下节包清单逐包 =stow=，macOS 跳过 Linux 桌面包（=Xresources= / =X11= /
+   =wayland= / =xmonad= / =i3= / =awesome= / =rofi= / =hypr= / =mpd= / =ranger= /
+   =sway=）。stow 不建 =-t= 目标目录，脚本先 =mkdir -p=。
+3. 缺 =~/.zshenv.local= / =~/.zshrc.local= / =~/.bashrc.local= / =~/.vimrc.local= 时
+   从仓库对应 =.example= 模板复制，已存在则不动（机器差异见 =docs/machine-local.md=）。
+4. macOS 跑 =brew bundle --global=（读 =~/.Brewfile=）。
+5. 校验 =~/.zshrc= 等关键文件仍是软链（防被编辑器写穿），再打印后续手工步骤。
+
+选项：
+
+- =--dry-run=（=-n=）只打印将执行的动作，不改任何文件。
+- =--no-brew= 跳过 Homebrew：不装 brew、不跑 =brew bundle=（Linux 本来就不需要）。
+
+后续手工（脚本不代劳，跑完会再打印一遍）：重开 =exec zsh= 让 zinit 与工具兜底自动
+装上；填本机 =.local= 与 =~/.gitconfig.work= / =.personal=；tmux 里 =prefix I=；vim
+首次启动自动装 vim-plug 并 =PlugInstall=。
+
+脚本不管 =~/.emacs.d=、=~/project/private/script=、=~/.pi/agent=、=~/.ssh=——各自
+仓库或备份负责（pi 配置用 =script/personal/bak_pi.sh= 的备份恢复）。
+
+stow 遇到本机已有同名普通文件会整包失败并列出冲突文件（stow 不覆盖非本仓库文件），
+脚本以非零码退出：把内容并进仓库版本，或先挪开该文件再重跑。别往 =$HOME= 手写文件，
+那会是普通文件而不是软链。
+
 ** 包清单与部署命令
 
-下表是本仓库的**现役部署命令**（上面各节的 =stow -D --adopt= 是首次收集配置时的
+下表是本仓库的*现役部署命令*（上面各节的 =stow -D --adopt= 是首次收集配置时的
 一次性步骤，日常部署不要 =-D=）。顶层目录各是一个包，=docs/= 是文档不是包。
+
+新机器直接用上节的 =./bootstrap.sh=：它执行的就是下面这些命令（包清单在脚本的
+=PACKAGES_*= 变量里）。*改包清单两处一起改*：脚本与本节，否则两边会漂。
 
 : stow -t $HOME --ignore='\.example$' bash zsh git tmux nodejs ctags tar mpv ghostty alacritty aria2 mail sbcl pip
 : stow -t $HOME Xresources X11 wayland xmonad i3 awesome rofi   # Linux 桌面/窗口管理器

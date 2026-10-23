@@ -8,9 +8,12 @@
 
 ```sh
 cd ~/project/private/dotfiles
-stow -t $HOME <pkg>          # 部署一个包；包清单见 README.org「包清单与部署命令」
+./bootstrap.sh --dry-run     # 新机器：先空跑看动作；去掉 --dry-run 一把部署（stow + .local + brew bundle）
+stow -t $HOME <pkg>          # 单包部署；包清单见 README.org「包清单与部署命令」
 readlink ~/.zshrc            # 确认仍然是软链（见下方铁律 2）
 ```
+
+包清单在 `bootstrap.sh` 的 `PACKAGES_*` 变量与 README.org 两处，改一处要同步另一处。
 
 ## 铁律
 

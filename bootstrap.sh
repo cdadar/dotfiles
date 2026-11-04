@@ -124,7 +124,7 @@ ensure_brew() {
     command -v brew >/dev/null || die "Homebrew 装完仍不在 PATH，新开一个 shell 重跑本脚本"
 }
 
-say "部署 dotfiles → $HOME（仓库：$REPO_DIR）"
+say "部署 dotfiles → ${HOME}（仓库：${REPO_DIR}）"
 ((DRY_RUN)) && warn "dry-run 模式：只打印，不改文件"
 
 if [ "$OS" = macos ]; then
@@ -173,7 +173,7 @@ PACKAGES_LINUX_CONFIG="hypr mpd ranger sway" # 目标是 ~/.config/<包名>
 
 ALL_PKGS="$PACKAGES_COMMON vim ideavimrc brew $PACKAGES_LINUX_BASE $PACKAGES_LINUX_DESKTOP $PACKAGES_LINUX_CONFIG"
 for p in $ALL_PKGS; do
-    [ -d "$REPO_DIR/$p" ] || die "包目录缺失：$p（仓库不完整？）"
+    [ -d "$REPO_DIR/$p" ] || die "包目录缺失：${p}（仓库不完整？）"
 done
 
 say "链接通用配置"

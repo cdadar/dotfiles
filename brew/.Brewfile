@@ -10,4 +10,4 @@ brew "git-delta"
 brew "zoxide"
 brew "lazygit"
 brew "atuin"
-brew "tldr"
+brew "tealdeer" # 提供 tldr 命令（homebrew-core 已无 tldr 公式）

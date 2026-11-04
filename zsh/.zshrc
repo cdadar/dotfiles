@@ -82,7 +82,7 @@ function _bootstrap_tools() {
       direnv:direnv:direnv:direnv:direnv
       lazygit:lazygit:lazygit:lazygit:lazygit
       atuin:atuin:atuin:atuin:atuin
-      tldr:tldr:tldr:tldr:tldr
+      tldr:tealdeer:tldr:tldr:tldr   # brew 侧是 tealdeer（homebrew-core 已无 tldr 公式）
       git-extras:git-extras:git-extras:git-extras:git-extras
     ) missing=() pkgs=() parts
     local s

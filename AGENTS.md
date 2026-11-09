@@ -49,12 +49,23 @@ readlink ~/.zshrc            # 确认仍然是软链（见下方铁律 2）
    `lbin` 由未加载的 `zinit-annex-binary-symlink` 提供，用了会静默失效（下了二进制但不在
    PATH 上，本仓库踩过）。没有二进制 release 的（tldr/git-extras）只进第 1 级。
 
-新增工具时两级一起加。
+新增工具时两级一起加。**公式会改名或消失**：`brew bundle` 报某依赖失败时先 `brew search <名>`
+确认现名（实测 `tldr` 已下架，改由 `tealdeer` 提供 `tldr` 命令），Brewfile 与
+`_bootstrap_tools` 的 brew 列两处同改，行尾注明为何不用原公式名。
 
 ## 验证改动
 
 ```sh
 zsh -n zsh/.zshenv && zsh -n zsh/.zprofile && zsh -n zsh/.zshrc && bash -n bash/.bashrc
+bash -n bootstrap.sh
+# macOS bash 3.2：`$var` 后紧跟中文/全角标点，括号字符会被吃进变量名
+#（`$HOME（` → "HOME?: unbound variable"）。逐文件跑，命中就是行号；
+# 注释、单引号内（传给 perl/awk 的程序、alias 值）不展开，那里是误报。
+# 正则首位排 A-Za-z_，位置参数 `$1（` 不报（bash 对位置参数只取一位数字）
+for f in bootstrap.sh zsh/.zshenv zsh/.zprofile zsh/.zshrc \
+         bash/.bashrc bash/.bash_profile bash/.profile; do
+  perl -ne 'while (/\$([A-Za-z_][A-Za-z_0-9]*)([^\x00-\x7F])/g) { printf "%s:%d: \$%s%s\n", $ARGV, $., $1, $2 }' "$f"
+done
 zsh -lic exit          # 无新报错（本机噪音：非 tty 下 "can't change option: zle" 忽略）
 shellcheck zsh/.zshenv zsh/.zprofile zsh/.zshrc bash/.bashrc bash/.bash_profile bash/.profile
 ```

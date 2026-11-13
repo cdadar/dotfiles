@@ -153,6 +153,10 @@
 	user = cdadar
 [http]
 	version = HTTP/1.1
+# 公司 GitLab 一律走 SSH：go 拉模块时 git 子进程的 cwd 在 ~/.go/pkg/mod/cache/vcs/
+# 下，includeIf "gitdir:~/project/" 不生效，所以这条必须无条件全局，不能只放 .gitconfig.work
+[url "git@gitlab.zzengine.net:"]
+	insteadOf = https://gitlab.zzengine.net/
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

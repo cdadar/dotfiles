@@ -1,23 +1,14 @@
 # =====================================================================
-#  bash/.bashrc.local.example — bash 机器差异模板
-#  用法：cp bash/.bashrc.local.example ~/.bashrc.local 后填本机值
-#        （.bashrc 末尾自动 source，不存在则跳过）
-#  只放【机器特定】配置；通用配置一律改主 .bashrc，避免多机分叉
+#  .bashrc.local.example — bash 机器差异（复制为 ~/.bashrc.local，主 .bashrc 自动 source）
+#  只放本机 PATH、代理、SSH key、别名；通用配置改主 .bashrc。
+#  分工与红线见 docs/machine-local.md。
 # =====================================================================
 
-# ---- 本机 PATH 追加 ----
-# export PATH="$HOME/.cargo/bin:$PATH"
+# 本机 PATH（换机器要改的 SDK / brew 前缀）
+# export PATH="$HOME/Library/go/sdk/go1.25.9/bin:/opt/homebrew/bin:$PATH"
 
-# ---- 本机专有路径（换机器要改的：go sdk 版本、Android SDK、brew 前缀等）----
-# export PATH="$HOME/Library/go/sdk/go1.25.9/bin:$HOME/Library/Android/sdk/platform-tools:$PATH"
-# export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-
-# ---- 本机 SSH key（如工作机 work_rsa），只在交互 shell 加 ----
-# case "$-" in *i*) ssh-add "$HOME/.ssh/work_rsa" 2>/dev/null ;; esac
-
-# ---- 本机代理 ----
+# 代理（不走就注释掉）
 # export http_proxy="http://127.0.0.1:7890"
-# export https_proxy="http://127.0.0.1:7890"
 
-# ---- 本机别名 / 环境变量 ----
-# alias ll='ls -lAh'
+# SSH key 只在交互 shell 加
+# case "$-" in *i*) ssh-add "$HOME/.ssh/work_rsa" 2>/dev/null ;; esac

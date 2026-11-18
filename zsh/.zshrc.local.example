@@ -1,25 +1,17 @@
 # =====================================================================
-#  .zshrc.local.example — Zsh 机器差异标准模板
-#  用法：复制为 ~/.zshrc.local 并填本机值（.zshrc 末尾自动 source）
-#        cp zsh/.zshrc.local.example ~/.zshrc.local
-#  =====================================================================
-#  只放【交互 shell 专属】的机器差异：别名、代理别名、ssh-add、工具补全。
-#  环境变量 / PATH 这类「所有 zsh 进程（含脚本、Emacs）都要看到」的机器差异放
-#  ~/.zshenv.local（见 zsh/.zshenv.local.example），不要放这里。
-#  通用配置一律改主 .zshrc，不要放这里（避免多机分叉）
+#  .zshrc.local.example — Zsh 机器差异·交互层（复制为 ~/.zshrc.local）
+#  只放【交互 shell 专属】：别名、代理、ssh-add、补全。
+#  环境变量 / PATH 放 ~/.zshenv.local（否则脚本、Emacs 拿不到）。
+#  通用配置改主 .zshrc。分工见 docs/machine-local.md。
 # =====================================================================
 
-# ---- 本机代理（不走代理就注释掉）----
+# 本机代理（不走就注释掉）
 # export http_proxy="http://127.0.0.1:7890"
-# export https_proxy="http://127.0.0.1:7890"
-# export all_proxy="socks5://127.0.0.1:7890"
+# export https_proxy="$http_proxy"
 
-# ---- 本机 PATH 追加（示例）----
-# export PATH="$HOME/.cargo/bin:$PATH"
-
-# ---- 本机别名（示例）----
+# 本机别名
 # alias ll='ls -lAh --color=auto'
 
-# ---- 本机专有变量（master 依赖，不定义则相关 alias 失效）----
-# export DOTFILES="$HOME/project/private/dotfiles/"   # upgrade_dotfiles / upgrade_repo
-# export EMACSD="$HOME/.emacs.d"                      # me / mte / upgrade_emacs
+# master 的 alias 依赖这两个变量，不定义则 me / upgrade_emacs / upgrade_dotfiles 失效
+# export EMACSD="$HOME/.emacs.d"
+# export DOTFILES="$HOME/project/private/dotfiles/"

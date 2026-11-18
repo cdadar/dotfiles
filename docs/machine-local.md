@@ -39,3 +39,6 @@ zsh 分两层的原因：`.zshenv` 被**每个** zsh 进程读取，`.zshrc` 只
 - 新增软件需要 `.local` 支持时：主配置末尾加一行
   `[ -f $HOME/.xxx.local ] && source $HOME/.xxx.local`（bash/zsh）或对应 source 语句（vim）
   并在仓库建 `xxx/.xxx.local.example`
+- **模板只写关键信息**：每个 `.local.example` 就四块——落地位置（复制到哪、谁 source）、
+  这里该装什么（一句话 + 该去哪），一两个最小例子，细则指针（各目录 `AGENTS.md`
+  或 `docs/git-identity.md`）。不罗列全部可能配置、不抄主配置内容、不写长篇说明。

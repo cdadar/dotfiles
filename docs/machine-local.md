@@ -17,7 +17,7 @@ dotfiles 用 **单一 master 主干**，机器差异（工作机 vs 个人机）
 | zsh（环境层） | `zsh/.zshenv.local.example` | `cp zsh/.zshenv.local.example ~/.zshenv.local` | ✅ 主 .zshenv 末尾自动 source（每个 zsh 进程，含 `zsh -c` / Emacs） |
 | zsh（交互层） | `zsh/.zshrc.local.example` | `cp zsh/.zshrc.local.example ~/.zshrc.local` | ✅ 主 .zshrc 自动 source（仅交互 shell） |
 | bash | `bash/.bashrc.local.example` | `cp bash/.bashrc.local.example ~/.bashrc.local` | ✅ 主 .bashrc 末尾自动 source |
-| git | `git/.gitconfig.local.example` | 见模板内步骤（includeIf） | ✅ git 原生 includeIf |
+| git | `git/.gitconfig.local.example`（模板）· `docs/git-identity.md`（手册） | 照模板建 `~/.gitconfig.work` / `~/.gitconfig.personal` / `~/.gitconfig.local` | ✅ git 原生 includeIf + master 末尾 `[include]` |
 
 zsh 分两层的原因：`.zshenv` 被**每个** zsh 进程读取，`.zshrc` 只被交互 shell 读取。
 本机 SDK 路径、工具环境变量（`ANDROID_HOME`、`JAVA_HOME`、镜像变量等）放环境层，
@@ -29,7 +29,7 @@ zsh 分两层的原因：`.zshenv` 被**每个** zsh 进程读取，`.zshrc` 只
 1. `git clone` dotfiles，checkout master（唯一主干）
 2. 复制需要的 `.local.example` 到本机对应位置，填本机值
    （zsh 环境层 `~/.zshenv.local` + 交互层 `~/.zshrc.local` 都要，见上表）
-3. git 身份按模板加 `includeIf` 段 + 建 `~/.gitconfig.work`
+3. git 身份照 `git/.gitconfig.local.example` 建 `~/.gitconfig.local` + `~/.gitconfig.work` / `~/.gitconfig.personal`（步骤与自检见 `docs/git-identity.md`）
 4. 完成 —— 本机差异全部落在 `.local` 文件，不进分支
 
 ## 规则

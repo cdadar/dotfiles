@@ -187,6 +187,6 @@ stow 遇到本机已有同名普通文件会整包失败并列出冲突文件（
 本仓库使用单一 =master= 主干，机器差异（工作机 vs 个人机）不用分支，用每机 =*.local= 文件表达：
 
 - 追加型（vim/zsh/bash）：复制 =xxx/.xxx.local.example= 到本机 =~/.xxx.local= 填值，主配置末尾自动 =source=。
-- 整文件型（git 身份）：用 git 原生 =includeIf=，见 =git/.gitconfig.local.example=。
+- 整文件型（git 身份）：用 git 原生 =includeIf=，规则模板见 =git/.gitconfig.local.example=，判定规则/边界/恢复步骤见 =docs/git-identity.md=。
 
 标准模板与规则见 =docs/machine-local.md=。新增机器 = clone + 复制 .local.example = 即可，不切分支、不 rebase。

@@ -1,24 +1,24 @@
 # =====================================================================
-#  .gitconfig.local — Git 机器差异标准模板
-#  Git 不像 vim/zsh 能 source .local，身份差异用原生 includeIf：
-#  按【工作目录】自动切换 user 身份，零工具、零分支。
+#  .gitconfig.local.example — git 身份判定规则（复制为 ~/.gitconfig.local，填本机真值）
+#  前提：master 末尾有 [include] path = ~/.gitconfig.local；
+#        ~/.gitconfig.work、~/.gitconfig.personal 两个身份文件存在。
+#  规则为什么这么排、边界、恢复步骤、自检：docs/git-identity.md
+#  ⚠ 公开仓库：只写占位符，真值从手册的「占位符 ↔ 真值来源」抄。
 # =====================================================================
 
-# 步骤 1：把下面这段加到 ~/.gitconfig（或 dotfiles/git/.gitconfig 主文件）
-#  - gitdir:~/project/   = 公司项目根目录（默认工作身份）
-#  - gitdir:~/project/private/  = 个人目录，单独恢复个人身份（放在公司段后面覆盖）
-#  - ~/.gitconfig.work / ~/.gitconfig.personal = 身份文件（本机单独维护，不进 git）
-[includeIf "gitdir:~/project/"]
+# 目录维度：公司目录 → 公司身份；其中的个人目录 → 个人身份
+[includeIf "gitdir:~/<公司项目根>/"]
 	path = ~/.gitconfig.work
-[includeIf "gitdir:~/project/private/"]
+[includeIf "gitdir:~/<公司项目根>/<个人目录>/"]
 	path = ~/.gitconfig.personal
 
-# 步骤 2：在本机建 ~/.gitconfig.work（不进 git，内容示例）：
-#   [user]
-#   	email = work@company.com
-#   	name = 工作用名
+# 远端维度·个人账号（ssh / https 两种克隆写法都要列，缺一种就静默漏判）
+[includeIf "hasconfig:remote.*.url:git@github.com:<你的 GitHub 账号>/**"]
+	path = ~/.gitconfig.personal
+[includeIf "hasconfig:remote.*.url:https://github.com/<你的 GitHub 账号>/**"]
+	path = ~/.gitconfig.personal
 
-# 效果：
-#   - cd ~/project/xxx 下提交 → 用工作身份
-#   - 其他目录提交 → 用 ~/.gitconfig 基线的个人身份
-#   - 多台机器零冲突，新机器只需复制本模板 + 建 .gitconfig.work
+# 远端维度·公司（必须排最后：多远端冲突时落公司身份才是 fail-safe 方向）
+# glob 必须写成 :**/**，写成 :** 不匹配（需 Git >= 2.36）
+[includeIf "hasconfig:remote.*.url:git@<公司 GitLab 域名>:**/**"]
+	path = ~/.gitconfig.work

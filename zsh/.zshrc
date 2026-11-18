@@ -454,3 +454,5 @@ alias toggleproxy='if [ -n "$http_proxy" ]; then unsetproxy; else setproxy; fi'
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
 export PATH="$HOME/.local/bin:$PATH"
+
+alias gf='git fetch'
